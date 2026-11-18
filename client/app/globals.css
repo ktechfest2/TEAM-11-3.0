@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ============ AwaVote design tokens ============ */
+:root {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --surface-2: #eef1ee;
+  --ink: #0e1a14;
+  --muted: #475850;
+  --line: #cfd8d2;
+  --brand: #0b6b47;
+  --brand-strong: #07563a;
+  --brand-ink: #ffffff;
+  --brand-soft: #e1f0e8;
+  --ok: #0f6a39;      --ok-soft: #e0f3e7;
+  --warn: #7a4a00;    --warn-soft: #fff1d6;
+  --danger: #a8251c;  --danger-soft: #fde6e3;
+  --info: #1d4a85;    --info-soft: #e4edf9;
+  --focus: #f2b705;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-contrast="high"]) {
+    --bg: #0d1411;
+    --surface: #15201b;
+    --surface-2: #1c2a24;
+    --ink: #eef4f0;
+    --muted: #a9bab1;
+    --line: #2f4038;
+    --brand: #3ccf8e;
+    --brand-strong: #63dda5;
+    --brand-ink: #04140c;
+    --brand-soft: #173a2a;
+    --ok: #6fdc9c;      --ok-soft: #133524;
+    --warn: #f5c165;    --warn-soft: #3b2c0e;
+    --danger: #ff8f84;  --danger-soft: #42171386;
+    --info: #9cc1f5;    --info-soft: #172a45;
+    color-scheme: dark;
+  }
+}
+
+/* High contrast: black / white / yellow, overrides everything */
+:root[data-contrast="high"] {
+  --bg: #000000;
+  --surface: #000000;
+  --surface-2: #111111;
+  --ink: #ffffff;
+  --muted: #ffffff;
+  --line: #ffffff;
+  --brand: #ffd400;
+  --brand-strong: #ffe766;
+  --brand-ink: #000000;
+  --brand-soft: #222200;
+  --ok: #7dff9b;      --ok-soft: #000000;
+  --warn: #ffd400;    --warn-soft: #000000;
+  --danger: #ff6b6b;  --danger-soft: #000000;
+  --info: #8fd3ff;    --info-soft: #000000;
+  --focus: #00e5ff;
+  color-scheme: dark;
+}
+
+/* Text size scale (default is large: 18px base) */
+html { font-size: 112.5%; }
+html[data-text-size="md"] { font-size: 100%; }
+html[data-text-size="lg"] { font-size: 112.5%; }
+html[data-text-size="xl"] { font-size: 125%; }
+html[data-text-size="xxl"] { font-size: 143.75%; }
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+[data-contrast="high"] a, [data-contrast="high"] button { text-decoration-thickness: 2px; }
+
+/* Reduced motion: honour both the OS setting and the in-app toggle */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+html[data-reduce-motion="true"] *, html[data-reduce-motion="true"] *::before, html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+}
+
+.sr-only-focusable:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+dialog::backdrop { background: rgb(0 0 0 / 0.55); }
+
+input[type="number"]::-webkit-inner-spin-button { opacity: 1; }

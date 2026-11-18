@@ -1,0 +1,384 @@
+{
+ "updated_at": "2026-11-18",
+ "verification": "Every fact below was checked against an INEC publication on the date shown. News reports were used only to locate INEC documents, never as the source of a fact.",
+ "legal_framework": {
+  "name": "Electoral Act 2026",
+  "note": "Replaced the Electoral Act 2022; signed in February 2026 (as reported). Read the Act itself for exact provisions."
+ },
+ "parties": {
+  "source": {
+   "url": "https://www.inecnigeria.org/parties",
+   "checked_at": "2026-11-18"
+  },
+  "registered": [
+   {
+    "acronym": "A",
+    "name": "Accord"
+   },
+   {
+    "acronym": "AA",
+    "name": "Action Alliance"
+   },
+   {
+    "acronym": "ADP",
+    "name": "Action Democratic Party"
+   },
+   {
+    "acronym": "APP",
+    "name": "Action Peoples Party"
+   },
+   {
+    "acronym": "AAC",
+    "name": "African Action Congress"
+   },
+   {
+    "acronym": "ADC",
+    "name": "African Democratic Congress"
+   },
+   {
+    "acronym": "APC",
+    "name": "All Progressives Congress"
+   },
+   {
+    "acronym": "APGA",
+    "name": "All Progressives Grand Alliance"
+   },
+   {
+    "acronym": "APM",
+    "name": "Allied Peoples Movement"
+   },
+   {
+    "acronym": "BP",
+    "name": "Boot Party"
+   },
+   {
+    "acronym": "DLA",
+    "name": "Democratic Leadership Alliance"
+   },
+   {
+    "acronym": "LP",
+    "name": "Labour Party"
+   },
+   {
+    "acronym": "NDP",
+    "name": "National Democratic Party"
+   },
+   {
+    "acronym": "NRM",
+    "name": "National Rescue Movement"
+   },
+   {
+    "acronym": "NNPP",
+    "name": "New Nigeria Peoples Party"
+   },
+   {
+    "acronym": "NDC",
+    "name": "Nigeria Democratic Congress"
+   },
+   {
+    "acronym": "PDP",
+    "name": "Peoples Democratic Party"
+   },
+   {
+    "acronym": "PRP",
+    "name": "Peoples Redemption Party"
+   },
+   {
+    "acronym": "SDP",
+    "name": "Social Democratic Party"
+   },
+   {
+    "acronym": "YPP",
+    "name": "Young Progressives Party"
+   },
+   {
+    "acronym": "YP",
+    "name": "Youth Party"
+   },
+   {
+    "acronym": "ZLP",
+    "name": "Zenith Labour Party"
+   }
+  ]
+ },
+ "states": [
+  {
+   "slug": "abia",
+   "name": "Abia",
+   "governorship_2027": true
+  },
+  {
+   "slug": "adamawa",
+   "name": "Adamawa",
+   "governorship_2027": true
+  },
+  {
+   "slug": "akwa-ibom",
+   "name": "Akwa Ibom",
+   "governorship_2027": true
+  },
+  {
+   "slug": "anambra",
+   "name": "Anambra",
+   "governorship_2027": false
+  },
+  {
+   "slug": "bauchi",
+   "name": "Bauchi",
+   "governorship_2027": true
+  },
+  {
+   "slug": "bayelsa",
+   "name": "Bayelsa",
+   "governorship_2027": false
+  },
+  {
+   "slug": "benue",
+   "name": "Benue",
+   "governorship_2027": true
+  },
+  {
+   "slug": "borno",
+   "name": "Borno",
+   "governorship_2027": true
+  },
+  {
+   "slug": "cross-river",
+   "name": "Cross River",
+   "governorship_2027": true
+  },
+  {
+   "slug": "delta",
+   "name": "Delta",
+   "governorship_2027": true
+  },
+  {
+   "slug": "ebonyi",
+   "name": "Ebonyi",
+   "governorship_2027": true
+  },
+  {
+   "slug": "edo",
+   "name": "Edo",
+   "governorship_2027": false
+  },
+  {
+   "slug": "ekiti",
+   "name": "Ekiti",
+   "governorship_2027": false
+  },
+  {
+   "slug": "enugu",
+   "name": "Enugu",
+   "governorship_2027": true
+  },
+  {
+   "slug": "gombe",
+   "name": "Gombe",
+   "governorship_2027": true
+  },
+  {
+   "slug": "imo",
+   "name": "Imo",
+   "governorship_2027": false
+  },
+  {
+   "slug": "jigawa",
+   "name": "Jigawa",
+   "governorship_2027": true
+  },
+  {
+   "slug": "kaduna",
+   "name": "Kaduna",
+   "governorship_2027": true
+  },
+  {
+   "slug": "kano",
+   "name": "Kano",
+   "governorship_2027": true
+  },
+  {
+   "slug": "katsina",
+   "name": "Katsina",
+   "governorship_2027": true
+  },
+  {
+   "slug": "kebbi",
+   "name": "Kebbi",
+   "governorship_2027": true
+  },
+  {
+   "slug": "kogi",
+   "name": "Kogi",
+   "governorship_2027": false
+  },
+  {
+   "slug": "kwara",
+   "name": "Kwara",
+   "governorship_2027": true
+  },
+  {
+   "slug": "lagos",
+   "name": "Lagos",
+   "governorship_2027": true
+  },
+  {
+   "slug": "nasarawa",
+   "name": "Nasarawa",
+   "governorship_2027": true
+  },
+  {
+   "slug": "niger",
+   "name": "Niger",
+   "governorship_2027": true
+  },
+  {
+   "slug": "ogun",
+   "name": "Ogun",
+   "governorship_2027": true
+  },
+  {
+   "slug": "ondo",
+   "name": "Ondo",
+   "governorship_2027": false
+  },
+  {
+   "slug": "osun",
+   "name": "Osun",
+   "governorship_2027": false
+  },
+  {
+   "slug": "oyo",
+   "name": "Oyo",
+   "governorship_2027": true
+  },
+  {
+   "slug": "plateau",
+   "name": "Plateau",
+   "governorship_2027": true
+  },
+  {
+   "slug": "rivers",
+   "name": "Rivers",
+   "governorship_2027": true
+  },
+  {
+   "slug": "sokoto",
+   "name": "Sokoto",
+   "governorship_2027": true
+  },
+  {
+   "slug": "taraba",
+   "name": "Taraba",
+   "governorship_2027": true
+  },
+  {
+   "slug": "yobe",
+   "name": "Yobe",
+   "governorship_2027": true
+  },
+  {
+   "slug": "zamfara",
+   "name": "Zamfara",
+   "governorship_2027": true
+  },
+  {
+   "slug": "fct",
+   "name": "Federal Capital Territory",
+   "governorship_2027": false
+  }
+ ],
+ "elections": [
+  {
+   "id": "presidential",
+   "label": "Presidential",
+   "date": "2027-01-16",
+   "scope": "national",
+   "districts": "nationwide",
+   "with_running_mate": "Vice-President",
+   "collation": [
+    "polling_unit",
+    "ward",
+    "lga",
+    "state",
+    "national"
+   ]
+  },
+  {
+   "id": "senate",
+   "label": "Senate",
+   "date": "2027-01-16",
+   "scope": "senatorial_district",
+   "districts": "109 senatorial districts (3 per state, 1 for the FCT)",
+   "collation": [
+    "polling_unit",
+    "ward",
+    "lga",
+    "senatorial_district"
+   ]
+  },
+  {
+   "id": "house_of_reps",
+   "label": "House of Representatives",
+   "date": "2027-01-16",
+   "scope": "federal_constituency",
+   "districts": "360 federal constituencies",
+   "collation": [
+    "polling_unit",
+    "ward",
+    "lga",
+    "federal_constituency"
+   ]
+  },
+  {
+   "id": "governorship",
+   "label": "Governorship",
+   "date": "2027-02-06",
+   "scope": "state",
+   "districts": "28 states (not Anambra, Bayelsa, Edo, Ekiti, Imo, Kogi, Ondo, Osun — their governorship elections are off-cycle)",
+   "with_running_mate": "Deputy Governor",
+   "collation": [
+    "polling_unit",
+    "ward",
+    "lga",
+    "state"
+   ]
+  },
+  {
+   "id": "state_assembly",
+   "label": "State House of Assembly",
+   "date": "2027-02-06",
+   "scope": "state_constituency",
+   "districts": "state constituencies in all 36 states (none in the FCT)",
+   "collation": [
+    "polling_unit",
+    "ward",
+    "lga",
+    "state_constituency"
+   ]
+  }
+ ],
+ "dates_source": {
+  "url": "https://www.inecnigeria.org/elections/calendar",
+  "checked_at": "2026-11-18"
+ },
+ "offcycle_governorship_states": [
+  "anambra",
+  "bayelsa",
+  "edo",
+  "ekiti",
+  "imo",
+  "kogi",
+  "ondo",
+  "osun"
+ ],
+ "offcycle_note": "These states elect governors on separate dates set by INEC. AwaVote does not list off-cycle dates until INEC publishes them.",
+ "result_forms": {
+  "polling_unit": "Form EC8A — completed, signed and publicly posted at every polling unit, then transmitted to INEC's Result Viewing Portal (IReV).",
+  "higher_levels": "Results are added up (collated) on the EC8 series of forms at each level above the polling unit, ending with the declaration by the returning officer."
+ },
+ "not_covered": [
+  "FCT Area Council elections (held separately)",
+  "Local government elections (run by State Independent Electoral Commissions, not INEC)"
+ ]
+}

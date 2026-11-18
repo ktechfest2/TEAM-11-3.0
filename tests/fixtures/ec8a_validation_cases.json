@@ -1,0 +1,52 @@
+{
+  "description": "Shared EC8A arithmetic-validation cases. Used by BOTH the server (pytest) and client (vitest) test suites so the offline and online validators cannot drift apart.",
+  "cases": [
+    {
+      "name": "fully consistent sheet",
+      "input": {"registered_voters": 800, "accredited_voters": 410, "ballots_issued": 800, "unused_ballots": 386, "spoiled_ballots": 4, "rejected_votes": 6, "total_valid_votes": 404, "total_used_ballots": 414, "total_votes_cast": 410,
+                "party_votes": [{"party": "AAA", "votes": 200}, {"party": "BBB", "votes": 150}, {"party": "CCC", "votes": 54}]},
+      "expected_status": "consistent",
+      "expected_failures": []
+    },
+    {
+      "name": "party votes do not add up to total valid votes",
+      "input": {"rejected_votes": 6, "total_valid_votes": 410, "total_votes_cast": 416,
+                "party_votes": [{"party": "AAA", "votes": 200}, {"party": "BBB", "votes": 150}, {"party": "CCC", "votes": 54}]},
+      "expected_status": "needs_review",
+      "expected_failures": ["party_sum_equals_valid"]
+    },
+    {
+      "name": "valid plus rejected differs from total votes cast",
+      "input": {"rejected_votes": 6, "total_valid_votes": 404, "total_votes_cast": 420,
+                "party_votes": [{"party": "AAA", "votes": 404}]},
+      "expected_status": "needs_review",
+      "expected_failures": ["valid_plus_rejected_equals_cast"]
+    },
+    {
+      "name": "votes cast exceed accredited voters",
+      "input": {"registered_voters": 800, "accredited_voters": 300, "rejected_votes": 6, "total_valid_votes": 404,
+                "party_votes": [{"party": "AAA", "votes": 404}]},
+      "expected_status": "needs_review",
+      "expected_failures": ["votes_cast_within_accredited"]
+    },
+    {
+      "name": "accredited exceeds register and ballot accounting mismatch",
+      "input": {"registered_voters": 300, "accredited_voters": 410, "ballots_issued": 800, "unused_ballots": 300, "spoiled_ballots": 4, "rejected_votes": 6, "total_valid_votes": 404, "total_used_ballots": 414,
+                "party_votes": [{"party": "AAA", "votes": 404}]},
+      "expected_status": "needs_review",
+      "expected_failures": ["accredited_within_register", "issued_equals_used_plus_unused"]
+    },
+    {
+      "name": "no party figures entered",
+      "input": {"rejected_votes": 6, "total_valid_votes": 404, "total_votes_cast": 410, "party_votes": []},
+      "expected_status": "incomplete",
+      "expected_failures": []
+    },
+    {
+      "name": "negative figure",
+      "input": {"rejected_votes": -1, "total_valid_votes": 10, "party_votes": [{"party": "AAA", "votes": 10}]},
+      "expected_status": "needs_review",
+      "expected_failures": ["non_negative_integers"]
+    }
+  ]
+}

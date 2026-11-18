@@ -1,0 +1,706 @@
+{
+ "description": "Official INEC 'final list of candidates' documents for the 2027 general election. The ONLY source used for candidate data in AwaVote.",
+ "index_pages": {
+  "presidential": "https://www.inecnigeria.org/press/updated-list-of-candidates-for-2027-presidential-election",
+  "governorship": "https://www.inecnigeria.org/press/updated-final-list-of-candidates-for-2027-governorship-election",
+  "senate": "https://www.inecnigeria.org/press/updated-list-of-candidates-for-2027-senatorial-district-elections",
+  "house_of_reps": "https://www.inecnigeria.org/press/updated-list-of-candidates-for-jan-2027-national-assembly-elections",
+  "state_assembly": "https://www.inecnigeria.org/press/updated-list-of-candidates-for-2027-state-houses-of-assembly-elections"
+ },
+ "index_checked_at": "2026-11-18",
+ "known_gaps": [
+  "Niger State House of Representatives final list is not linked on INEC's index page as of 2026-11-18."
+ ],
+ "documents": [
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "abia",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/6ee29a2b-0c92-480e-b469-a457351c499d-final-list-abia-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "adamawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/424e2528-6aa2-452f-a551-9c9a9c055a4d-final-list-adamawa-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "akwa-ibom",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/4e31eae9-3721-421d-8ccc-f8c02f3eb62a-final-list-akwa-ibom-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "bauchi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/0232173a-20f9-473d-a56a-ae0492d8169d-final-list-bauchi-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "benue",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/49a4fc1e-6899-450c-bc1f-0388cd9bc963-final-list-benue-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "borno",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/41f71265-9e74-42cd-be55-5733d4e4342f-final-list-borno-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "cross-river",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c9b7e238-7a10-40ba-9e27-633b4397d136-final-list-cross-river-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "delta",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/97bcd644-ef9e-4751-afa8-28c4fafe8951-final-list-delta-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "ebonyi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c4ef0dc0-ba7c-4441-9db9-369ba1f48224-final-list-ebonyi-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "enugu",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/4126cc16-d556-4e0e-9ff8-8947c19b5566-final-list-enugu-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "gombe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/11f391de-0419-4bca-ae86-004614ad090b-final-list-gombe-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "jigawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b6dbe840-43b1-4bf3-bccb-4210306785fc-final-list-jigawa-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "kaduna",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/ef32cc91-2a28-4883-af97-a027de583755-final-list-kaduna-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "kano",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/cd543ff1-1260-4166-8d7f-23410db9ad34-final-list-kano-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "katsina",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/cd3e7a87-3b65-4a2e-9ea9-f10bec69262a-final-list-katsina-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "kebbi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5f953a0-fb2b-4f94-b769-955a910326c3-final-list-kebbi-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "kwara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/942ff700-58d1-4164-9c56-ceaa14c71663-final-list-kwara-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "lagos",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d93fe7ec-8438-4222-94a3-405d2aa2d0e6-final-list-lagos-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "nasarawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/f718eb8f-7ea3-4590-b527-6720335a0bf7-final-list-nasarawa-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "niger",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/94ee0809-cb19-4ced-9842-8b2a664278d9-final-list-niger-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "ogun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d104f3ab-b5b8-4565-ad1d-3445e698e37e-final-list-ogun-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "oyo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/67453900-d8a3-4c9a-a123-595e678b8529-final-list-oyo-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "plateau",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/66c1890f-8fff-449e-bbb7-c479b9cd09bd-final-list-plateau-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "rivers",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/81d476df-5101-426b-af72-8e493dba1cb2-final-list-rivers-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "sokoto",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/8414ae46-5809-422a-be27-8a4bf8b76e00-final-list-sokoto-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "taraba",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/a9054bdd-3b75-4fbb-9526-16c991f3e48a-final-list-taraba-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "yobe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/823ae984-9a7e-46a3-a95a-8cba4fd301db-final-list-yobe-governorship.pdf"
+  },
+  {
+   "election": "governorship",
+   "state": "zamfara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/04ecd651-c70b-4a05-a50e-b8cce1f4b0cc-final-list-zamfara-governorship.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "abia",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/36fbebd3-fe46-4b3e-bed1-8491e408ba7d-finallist-abia-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "adamawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b7c2e458-3737-41b4-a502-c957cc5aff37-final-list-adamawa-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "akwa-ibom",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/ffeb25aa-df0b-46ff-9c09-b87cb36ff1a4-final-list-akwa-ibom-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "anambra",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/5c032e8f-595d-47f8-b9ee-f8db9eab901a-final-list-anambra-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "bauchi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/2d9554ac-04aa-4f0a-ac17-cf023df2e31c-final-list-bauchi-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "bayelsa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/9a97955d-eb07-48fd-9ae8-e35f36b968f9-final-list-bayelsa-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "benue",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/8baf8ce3-ff49-473b-93f6-a46438e80756-final-list-benue-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "borno",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/235c3317-6a39-457a-bdd4-848ae618f234-final-list-borno-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "cross-river",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/f27468f1-f702-4389-884f-81441acef40e-final-list-cross-river-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "delta",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/17a0ce60-fd86-448b-968d-b3e43f986c0a-final-list-delta-senatorial-district.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "ebonyi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/88bba233-35c1-41e1-82da-3485ffcd3e99-final-list-ebonyi-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "edo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/f0e1cbc6-3714-492b-8501-fc430cba3ec2-final-list-edo-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "ekiti",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/2313d519-90d8-4707-b210-b17ed1c8a5df-final-list-ekiti-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "enugu",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/2e6ab820-0d7f-4374-b2fe-f38b483bcf4e-final-list-enugu-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "fct",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/175c6d52-e660-46e1-b7be-1f0c203a7804-final-list-fct-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "gombe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b4d8cfd5-6e39-4a14-b93e-c1fa9b692640-final-list-gombe-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "imo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/58bef5ff-7a9c-416b-a329-750854e45320-final-list-imo-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "jigawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/75535207-d641-472c-9fa9-d0b4359f9dac-final-list-jigawa-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "kaduna",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/12afba99-bbe6-4863-ab8a-5969b10a35b2-final-list-kaduna-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "kano",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b65960b5-8634-4dfa-8d01-34a3e7e86168-final-list-kano-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "katsina",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/9b0c07c2-16a5-41f2-868b-c5dabbe4f437-final-list-katsina-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "kebbi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/90980694-6c9f-4748-b4d1-2c342ee57815-final-list-kebbi-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "kogi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d75b042d-95c0-49d8-b470-4244e736980a-final-list-kogi-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "kwara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/bb2465a7-a01f-4d72-9f0f-11c96a8aa7b4-final-list-kwara-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "lagos",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/9b209609-1e9e-428c-ae67-26b2b7973cec-final-list-lagos-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "nasarawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c7c54cd2-1c53-4f89-9248-31b285fc53dd-final-list-nasarawa-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "niger",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b773ec70-f16d-48f9-aab0-695d07134b22-final-list-niger-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "ogun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/575410f2-ddd8-4375-b894-8280537fce76-final-list-ogun-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "ondo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/aaf46764-5e3e-45f0-b1c9-8397a18b4246-final-list-ondo-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "osun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/5760dc54-ed19-400a-bb64-e5bf13686dcc-final-list-osun-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "oyo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c7bcba45-c7eb-49a1-8cc9-89d14062dce5-final-list-oyo-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "plateau",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/6aa5c547-25ad-4d0b-83ec-6b5fa4c23e82-final-list-plateau-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "rivers",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/f04fa9cc-d430-40ba-bbcb-a9c99a27151d-final-list-rivers-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "sokoto",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/76527ef5-dda9-4500-ad4a-e41e3467171f-final-list-sokoto-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "taraba",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/745e3932-7e38-4fb7-acd8-39646f376f6f-final-list-taraba-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "yobe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/18f73ad7-1505-41d8-84f7-198c8db60860-final-list-yobe-senatorial-districts.pdf"
+  },
+  {
+   "election": "senate",
+   "state": "zamfara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/8837879d-7cd5-455a-87f9-961999df1577-final-list-zamfara-senatorial-districts.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "abia",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/04fad3c4-9b95-41e3-8274-b0ee5af4af46-final-list-abia-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "adamawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/a8c62e25-5b04-4905-b974-4efea47bdc20-final-list-adamawa-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "akwa-ibom",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/a74ce2ea-97b2-4501-9e34-42326a3ce32b-final-list-akwa-ibom-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "anambra",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/a8428179-a3cb-434d-8ef8-f5e0c7ee6eec-final-list-anambra-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "bauchi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d7ce7ff6-561e-4f59-941c-327c95651eb6-final-list-bauchi-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "bayelsa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/0547bd33-f531-44e4-936b-891e7d6e8b7d-final-list-bayelsa-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "benue",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b3c01ae1-27b8-48e3-ae6d-8ed7b572cf9b-final-list-benue-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "borno",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/18c70795-bd2a-4bea-8698-afc295ac9df7-final-list-borno-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "cross-river",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/78a85e34-eb45-4a53-9b67-93855e05401d-final-list-cross-river-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "delta",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/f3c6db63-90a4-4d11-8204-6fec9ffe8c98-final-list-delta-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "ebonyi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/ac90be86-4447-4b27-833c-700eee710ef9-final-list-ebonyi-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "edo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/ca06271f-783f-4c3c-92c4-30c333fb648c-final-list-edo-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "ekiti",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c567b843-8717-497a-b557-00939c3c9ee1-final-list-ekiti-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "enugu",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/1ea34f2b-67f4-4b62-934f-935bd3d46045-final-list-enugu-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "fct",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/236bfed6-2af2-46e7-9f46-e4c6b040d9ed-final-list-fct-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "gombe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/3cf293d5-ea52-4e35-b596-fd5091339cec-final-list-gombe-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "imo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/18ca2097-6d75-48d1-860c-c2dc26c31adc-final-list-imo-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "jigawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d2eb5a4e-6724-40b0-adf1-c8a482f974f7-final-list-jigawa-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "kaduna",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/0b608362-4af5-4d36-8ce5-fba3823c614c-final-list-kaduna-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "kano",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c6e34589-197a-4af4-8985-f6249531ef93-final-list-kano-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "katsina",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/31239243-649e-4ac5-96e7-8f397a32e766-final-list-katsina-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "kebbi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/93326321-6af7-4b18-b15f-2ad8662c8e03-final-list-kebbi-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "kogi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/85c54bb6-65db-43eb-8114-9a004af296cb-final-list-kogi-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "kwara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/1dc39178-4275-4c36-91eb-e5ba9be0ebb3-final-list-kwara-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "lagos",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b7e9758b-56ae-4068-89c0-8a4b38dd5d35-final-list-lagos-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "nasarawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/3f0bdb61-5db0-42e6-bf8f-d1f7215faab1-final-list-nasarawa-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "ogun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/7c5b3570-3109-49fa-9ca4-d9a3ad8b9099-final-list-ogun-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "ondo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/107afff1-b907-4ca5-a30d-a20cb423bbcd-final-list-ondo-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "osun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/44ad47da-4486-42f3-a464-28ae2a166e5d-final-list-osun-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "oyo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/c45831d4-7d94-4bff-8af2-bd6f1c8b1b78-final-list-oyo-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "plateau",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/d2c89597-2d7c-491d-9373-fb2838c537f7-final-list-plateau-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "rivers",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/911f5b5b-d19d-4a2c-9360-aabc0cf83e9c-final-list-rivers-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "sokoto",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/8e75326d-5c8c-471c-aac1-ae40754a9143-final-list-sokoto-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "taraba",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/0d79101b-14e1-45d6-8849-fb190aa89e79-final-list-taraba-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "yobe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/91d3a4e8-9463-49a2-ae6a-d57a82f909c3-final-list-yobe-house-of-representatives.pdf"
+  },
+  {
+   "election": "house_of_reps",
+   "state": "zamfara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/10/82932ae2-6f44-433c-bcc8-c8855e36c051-final-list-zamfara-house-of-representatives.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "abia",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/ac59d893-39d0-4969-84a6-db657179e9fe-final-list-abia-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "adamawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/e0d212e8-f364-457e-90b3-b922fd771d5b-final-list-adamawa-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "akwa-ibom",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/8476ad34-6533-45b6-a8e6-cb98c6c0e147-final-list-akwa-ibom-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "anambra",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/7988565f-2e4f-4950-918e-aafa05930b21-final-list-anambra-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "bauchi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/fb91e2b1-d390-4ec8-9fc8-f53e6ca5a320-final-list-bauchi-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "bayelsa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/8ee23498-e1e5-4889-afcd-6a66825897af-final-list-bayelsa-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "benue",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/4a9b9873-54cf-497b-9644-f0701030093e-final-list-benue-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "borno",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/0576b1b5-a140-4440-8ff2-31ce4529baee-final-list-borno-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "cross-river",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/524944ca-542c-4eba-b004-082b4c619cf2-final-list-cross-river-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "delta",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/2cc58954-a27f-42cc-b73a-69e785658b9a-final-list-delta-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "ebonyi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/b1f6c1fe-482b-44fe-9dca-e25d5199e45d-final-list-ebonyi-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "edo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/2c62b8b2-1907-4be6-9ffe-4d46c5718e72-final-list-edo-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "ekiti",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/9b1ea343-c1b3-43af-baed-c6e373b582ae-final-list-ekiti-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "enugu",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/bf83db2a-6e5a-41aa-9dde-1d0a4eb55a3a-final-list-enugu-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "gombe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/883e14d2-9276-4e28-85ce-b90b7455a9c9-final-list-gombe-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "imo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/dcc0317c-db1c-44bf-bf40-71ebc8f620b8-final-list-imo-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "jigawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/ea3428f8-1e8a-4876-a044-c79828ef901b-final-list-jigawa-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "kaduna",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/de363ad6-830d-4820-9f25-d6e5e64d73dc-final-list-kaduna-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "kano",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/21ececff-e8e5-4ab8-92b3-a7568e743f68-final-list-kano-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "katsina",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/2e995323-063f-4b70-9ed4-33ebca031084-final-list-katsina-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "kebbi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/a289edc2-98c5-41ce-b125-718086abfc29-final-list-kebbi-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "kogi",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/0f4e7c3e-4130-493c-87a4-2954a7f829ba-final-list-kogi-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "kwara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/617e6890-9c98-479b-b572-438a51a38b4d-final-list-kwara-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "lagos",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/3a98d2ad-ccb7-4787-b919-85229f7ac426-final-list-lagos-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "nasarawa",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/d635d399-175e-4fab-9919-99b9340998f3-final-list-nasarawa-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "niger",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/233140b3-b62b-426f-8ee1-8ae6159c9dd4-final-list-niger-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "ogun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/e57099a0-c0f3-4bf0-91f6-ca7e0b34a67a-final-list-ogun-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "ondo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/880fe78e-4be3-4d73-a4f4-9beee5c98213-final-list-ondo-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "osun",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/1bc85d9c-301a-4e21-8bf2-579a66dc4e9d-final-list-osun-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "oyo",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/a752f3ef-224f-4d5b-8ffb-fbfe23436e4a-final-list-oyo-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "plateau",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/4c6444f7-1a1c-4aed-922e-715eaa3081f1-final-list-plateau-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "rivers",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/d1a4b1f7-a34c-4432-b70b-e91b7dc1c01b-final-list-rivers-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "sokoto",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/82ca84a1-dc13-46a0-8949-87c166f155f7-final-list-sokoto-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "taraba",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/6d21f60b-4136-4308-8097-7bde197021e8-final-list-taraba-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "yobe",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/ff842fba-098a-4b24-aa68-a46a36be942e-final-list-yobe-state-house-of-assembly.pdf"
+  },
+  {
+   "election": "state_assembly",
+   "state": "zamfara",
+   "url": "https://www.inecnigeria.org/documents/uploads/2026/11/e4cbdf1f-d641-4ac4-9640-45420a3db1c6-final-list-zamfara-state-house-of-assembly.pdf"
+  }
+ ]
+}

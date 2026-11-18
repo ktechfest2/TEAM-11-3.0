@@ -1,0 +1,830 @@
+{
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf": {
+  "path": "raw/presidential/nigeria.pdf",
+  "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+  "bytes": 102341,
+  "fetched_at": "2026-11-18T12:02:02+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/6ee29a2b-0c92-480e-b469-a457351c499d-final-list-abia-governorship.pdf": {
+  "path": "raw/governorship/abia.pdf",
+  "sha256": "7f781d2189cbe52340b4aa0e0b8fdd7a3c3e97e447cea0cee7f6d27b2de5c96c",
+  "bytes": 86956,
+  "fetched_at": "2026-11-18T12:02:07+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/424e2528-6aa2-452f-a551-9c9a9c055a4d-final-list-adamawa-governorship.pdf": {
+  "path": "raw/governorship/adamawa.pdf",
+  "sha256": "dfcc71e4796ac998c80b1133eba6d144a057df883d99b4f33a0af5b2676f5bd2",
+  "bytes": 101346,
+  "fetched_at": "2026-11-18T12:02:09+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/4e31eae9-3721-421d-8ccc-f8c02f3eb62a-final-list-akwa-ibom-governorship.pdf": {
+  "path": "raw/governorship/akwa-ibom.pdf",
+  "sha256": "1d3326f506e5cf44cfaad6f61322f9adb7529d5c972dc033528e55cbd9381159",
+  "bytes": 102987,
+  "fetched_at": "2026-11-18T12:02:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/0232173a-20f9-473d-a56a-ae0492d8169d-final-list-bauchi-governorship.pdf": {
+  "path": "raw/governorship/bauchi.pdf",
+  "sha256": "6c5733d5acf6416db5ed659c88cb7d5de5a21a2ecb397751f1b5723753f91083",
+  "bytes": 101310,
+  "fetched_at": "2026-11-18T12:02:18+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/49a4fc1e-6899-450c-bc1f-0388cd9bc963-final-list-benue-governorship.pdf": {
+  "path": "raw/governorship/benue.pdf",
+  "sha256": "12de447e7d3c762bf55b8ad3ccab5550282bfb8b1436c401e769841b35e9b1fa",
+  "bytes": 88319,
+  "fetched_at": "2026-11-18T12:02:41+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/41f71265-9e74-42cd-be55-5733d4e4342f-final-list-borno-governorship.pdf": {
+  "path": "raw/governorship/borno.pdf",
+  "sha256": "7b52e9955e189b55e6323fb6141d7a0e9fc8f0c6cf6191f76d9f44c4dfca28cb",
+  "bytes": 86642,
+  "fetched_at": "2026-11-18T12:03:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c9b7e238-7a10-40ba-9e27-633b4397d136-final-list-cross-river-governorship.pdf": {
+  "path": "raw/governorship/cross-river.pdf",
+  "sha256": "aa9e07c8922423ef176cd0efd19b7f93ae88ab63cfd92660d2109b41cad66595",
+  "bytes": 85952,
+  "fetched_at": "2026-11-18T12:03:32+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/97bcd644-ef9e-4751-afa8-28c4fafe8951-final-list-delta-governorship.pdf": {
+  "path": "raw/governorship/delta.pdf",
+  "sha256": "109ca84c6f2184d3bbc4cfdbec5e66ef7f1e64fe7452df2de8b0eb93b9a733b5",
+  "bytes": 90158,
+  "fetched_at": "2026-11-18T12:03:40+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c4ef0dc0-ba7c-4441-9db9-369ba1f48224-final-list-ebonyi-governorship.pdf": {
+  "path": "raw/governorship/ebonyi.pdf",
+  "sha256": "d52d93378f42a6a7051b303b0ee79dfddf8b0a2ec3e0976c9d83d812fc3ab35a",
+  "bytes": 74695,
+  "fetched_at": "2026-11-18T12:03:52+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/4126cc16-d556-4e0e-9ff8-8947c19b5566-final-list-enugu-governorship.pdf": {
+  "path": "raw/governorship/enugu.pdf",
+  "sha256": "8e258e457b069f98844482d23116b8f7ed1abe42789afc78341d2ea1d995efb7",
+  "bytes": 88627,
+  "fetched_at": "2026-11-18T12:03:59+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/11f391de-0419-4bca-ae86-004614ad090b-final-list-gombe-governorship.pdf": {
+  "path": "raw/governorship/gombe.pdf",
+  "sha256": "1d1ad81fd0882b879de546008248d1b755136d81a6119f1563b4d4a56bbe8027",
+  "bytes": 102301,
+  "fetched_at": "2026-11-18T12:04:05+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b6dbe840-43b1-4bf3-bccb-4210306785fc-final-list-jigawa-governorship.pdf": {
+  "path": "raw/governorship/jigawa.pdf",
+  "sha256": "8d9b750681df998b467201978ddf19faf43f86c194e1e4b678fab1f67516d686",
+  "bytes": 87149,
+  "fetched_at": "2026-11-18T12:04:10+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/ef32cc91-2a28-4883-af97-a027de583755-final-list-kaduna-governorship.pdf": {
+  "path": "raw/governorship/kaduna.pdf",
+  "sha256": "930b4875134ceceb5ef8e5deb5f469f58ed005a07d8f887799f06c5cd5f00478",
+  "bytes": 101512,
+  "fetched_at": "2026-11-18T12:04:17+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/cd543ff1-1260-4166-8d7f-23410db9ad34-final-list-kano-governorship.pdf": {
+  "path": "raw/governorship/kano.pdf",
+  "sha256": "25ea734342df768e50ea525eb369009aece33de3c3c6ca8ffe4e0804de77bcda",
+  "bytes": 103187,
+  "fetched_at": "2026-11-18T12:04:21+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/cd3e7a87-3b65-4a2e-9ea9-f10bec69262a-final-list-katsina-governorship.pdf": {
+  "path": "raw/governorship/katsina.pdf",
+  "sha256": "b2ec5e398a516a98a1b33bde440cc664e8e0a7a79debe7d6cf45e5300235597a",
+  "bytes": 86829,
+  "fetched_at": "2026-11-18T12:04:26+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b5f953a0-fb2b-4f94-b769-955a910326c3-final-list-kebbi-governorship.pdf": {
+  "path": "raw/governorship/kebbi.pdf",
+  "sha256": "ae1788c851c6858a8266e5bc3b63dda8a6bc1eb637a71de4538e0f99ad9101fe",
+  "bytes": 88025,
+  "fetched_at": "2026-11-18T12:04:29+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/942ff700-58d1-4164-9c56-ceaa14c71663-final-list-kwara-governorship.pdf": {
+  "path": "raw/governorship/kwara.pdf",
+  "sha256": "68a66e45075f846012ea8cf2b13a6597e2bbe45838a175c996d69d8638f86433",
+  "bytes": 87868,
+  "fetched_at": "2026-11-18T12:04:31+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d93fe7ec-8438-4222-94a3-405d2aa2d0e6-final-list-lagos-governorship.pdf": {
+  "path": "raw/governorship/lagos.pdf",
+  "sha256": "705aa9fecf805a709df3ea8f032bc13a26a828bb0463e608744ae462d97f38bb",
+  "bytes": 101327,
+  "fetched_at": "2026-11-18T12:04:33+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/f718eb8f-7ea3-4590-b527-6720335a0bf7-final-list-nasarawa-governorship.pdf": {
+  "path": "raw/governorship/nasarawa.pdf",
+  "sha256": "db0c3ca0fb7a05b0e3f3ee50e0775568d92258c267ec4fba58d1df896e269f92",
+  "bytes": 88952,
+  "fetched_at": "2026-11-18T12:04:37+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/94ee0809-cb19-4ced-9842-8b2a664278d9-final-list-niger-governorship.pdf": {
+  "path": "raw/governorship/niger.pdf",
+  "sha256": "a51e9687a64463883d7f6b19d353f741401afdc4289b00eb534fb6159b4d218b",
+  "bytes": 89713,
+  "fetched_at": "2026-11-18T12:04:41+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d104f3ab-b5b8-4565-ad1d-3445e698e37e-final-list-ogun-governorship.pdf": {
+  "path": "raw/governorship/ogun.pdf",
+  "sha256": "723aba3bb6d6085f06393dec030db696953e303117ba24703132083ee5b27924",
+  "bytes": 87840,
+  "fetched_at": "2026-11-18T12:04:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/67453900-d8a3-4c9a-a123-595e678b8529-final-list-oyo-governorship.pdf": {
+  "path": "raw/governorship/oyo.pdf",
+  "sha256": "7575ae43b4d064acb4ff541ef7b3b07f824f48ea76bc2bb45e06abe83ad1f5ee",
+  "bytes": 101740,
+  "fetched_at": "2026-11-18T12:04:59+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/66c1890f-8fff-449e-bbb7-c479b9cd09bd-final-list-plateau-governorship.pdf": {
+  "path": "raw/governorship/plateau.pdf",
+  "sha256": "cbb40e34746fee629114a15e3770c29bb760a9a16de0363ffb8502927b26c7a0",
+  "bytes": 101044,
+  "fetched_at": "2026-11-18T12:05:02+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/81d476df-5101-426b-af72-8e493dba1cb2-final-list-rivers-governorship.pdf": {
+  "path": "raw/governorship/rivers.pdf",
+  "sha256": "b36c0e3ace691b867f69c385eb538ecdff09bfdce29c5ba5db77ef483e144b89",
+  "bytes": 102428,
+  "fetched_at": "2026-11-18T12:05:08+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/8414ae46-5809-422a-be27-8a4bf8b76e00-final-list-sokoto-governorship.pdf": {
+  "path": "raw/governorship/sokoto.pdf",
+  "sha256": "d0c10569eb3e546681a799938de83b5188d0d5c734a8e7a1678670a8960c7b09",
+  "bytes": 101333,
+  "fetched_at": "2026-11-18T12:05:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/a9054bdd-3b75-4fbb-9526-16c991f3e48a-final-list-taraba-governorship.pdf": {
+  "path": "raw/governorship/taraba.pdf",
+  "sha256": "d89cf05621c3ed301c53d0448abb2b8c7e385ad292e79e420d7cdb3fa7a9759a",
+  "bytes": 102212,
+  "fetched_at": "2026-11-18T12:05:21+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/823ae984-9a7e-46a3-a95a-8cba4fd301db-final-list-yobe-governorship.pdf": {
+  "path": "raw/governorship/yobe.pdf",
+  "sha256": "f67a6ce2fb67f7592644a7018f3cf84001c76ff61d71e4c9a6738e05ffb5bc97",
+  "bytes": 86858,
+  "fetched_at": "2026-11-18T12:05:24+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/04ecd651-c70b-4a05-a50e-b8cce1f4b0cc-final-list-zamfara-governorship.pdf": {
+  "path": "raw/governorship/zamfara.pdf",
+  "sha256": "357f4c09d7a88dd57fd1529414c761028e70dd481ab0af2c16588149594d2f22",
+  "bytes": 89278,
+  "fetched_at": "2026-11-18T12:05:26+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/36fbebd3-fe46-4b3e-bed1-8491e408ba7d-finallist-abia-senatorial-districts.pdf": {
+  "path": "raw/senate/abia.pdf",
+  "sha256": "a927a840ad0e8260a110b1fcf5816d99669ad6163012107e2ba074a050b33540",
+  "bytes": 104225,
+  "fetched_at": "2026-11-18T12:05:28+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b7c2e458-3737-41b4-a502-c957cc5aff37-final-list-adamawa-senatorial-districts.pdf": {
+  "path": "raw/senate/adamawa.pdf",
+  "sha256": "46e417da01f88fe77c8c19d8a772e1817eaa0731dd005d8c2e9d9ed32f507c70",
+  "bytes": 103018,
+  "fetched_at": "2026-11-18T12:05:31+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/ffeb25aa-df0b-46ff-9c09-b87cb36ff1a4-final-list-akwa-ibom-senatorial-districts.pdf": {
+  "path": "raw/senate/akwa-ibom.pdf",
+  "sha256": "05dc3739b6c6be6f480afb49f6d92b900b4f20feed2ec54ac1907b760ec9f58c",
+  "bytes": 103938,
+  "fetched_at": "2026-11-18T12:05:35+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/5c032e8f-595d-47f8-b9ee-f8db9eab901a-final-list-anambra-senatorial-districts.pdf": {
+  "path": "raw/senate/anambra.pdf",
+  "sha256": "b5907a81ddaca4f67e0568a7edce94b215a65a7504075735f56c057b0b142c72",
+  "bytes": 105853,
+  "fetched_at": "2026-11-18T12:05:41+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/2d9554ac-04aa-4f0a-ac17-cf023df2e31c-final-list-bauchi-senatorial-districts.pdf": {
+  "path": "raw/senate/bauchi.pdf",
+  "sha256": "a7446e56c4e9cecc40449c247e196addaae67a68e9e2c9fa11654b2a690b683c",
+  "bytes": 89369,
+  "fetched_at": "2026-11-18T12:05:49+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/9a97955d-eb07-48fd-9ae8-e35f36b968f9-final-list-bayelsa-senatorial-districts.pdf": {
+  "path": "raw/senate/bayelsa.pdf",
+  "sha256": "ccd63dc2f784da6c4177c519740b75733e80ba87bf928a269e4831991ee61a68",
+  "bytes": 104837,
+  "fetched_at": "2026-11-18T12:05:54+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/8baf8ce3-ff49-473b-93f6-a46438e80756-final-list-benue-senatorial-districts.pdf": {
+  "path": "raw/senate/benue.pdf",
+  "sha256": "030c94ac3194d78d022ac9ebfa59d385ba540d260087c8f54e3e34e58ff0b147",
+  "bytes": 102699,
+  "fetched_at": "2026-11-18T12:05:59+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/235c3317-6a39-457a-bdd4-848ae618f234-final-list-borno-senatorial-districts.pdf": {
+  "path": "raw/senate/borno.pdf",
+  "sha256": "b3f310adc76ce2367a658ef1bc7339be23064b89dca8a7f2e8de330c274ee55b",
+  "bytes": 90628,
+  "fetched_at": "2026-11-18T12:06:12+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/f27468f1-f702-4389-884f-81441acef40e-final-list-cross-river-senatorial-districts.pdf": {
+  "path": "raw/senate/cross-river.pdf",
+  "sha256": "9bb9ddca365ab03c7787094e6c12fb14d8069a20d20d3cd2cfb838b6909ed2e1",
+  "bytes": 87770,
+  "fetched_at": "2026-11-18T12:06:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/17a0ce60-fd86-448b-968d-b3e43f986c0a-final-list-delta-senatorial-district.pdf": {
+  "path": "raw/senate/delta.pdf",
+  "sha256": "1e71eaf9154bb54c1821f5982e15f869f2c60c1e9ed0a0f7d0e9e8df3e1f11df",
+  "bytes": 94045,
+  "fetched_at": "2026-11-18T12:06:17+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/88bba233-35c1-41e1-82da-3485ffcd3e99-final-list-ebonyi-senatorial-districts.pdf": {
+  "path": "raw/senate/ebonyi.pdf",
+  "sha256": "69089368ad172e0b41f68bc48fba8ef233bf5f5fa1622487aa6cae51ca44c98d",
+  "bytes": 89005,
+  "fetched_at": "2026-11-18T12:06:25+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/f0e1cbc6-3714-492b-8501-fc430cba3ec2-final-list-edo-senatorial-districts.pdf": {
+  "path": "raw/senate/edo.pdf",
+  "sha256": "21bd5489719d09a34fbcc3ec2c1f7559551d67a5335a0fd7a9c8311674b8b4fc",
+  "bytes": 87803,
+  "fetched_at": "2026-11-18T12:06:33+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/2313d519-90d8-4707-b210-b17ed1c8a5df-final-list-ekiti-senatorial-districts.pdf": {
+  "path": "raw/senate/ekiti.pdf",
+  "sha256": "2a99e72a4c222e6ccb0dc5f8d0a649000ca81dbf3d07fa3b52d5ec6252b49156",
+  "bytes": 74661,
+  "fetched_at": "2026-11-18T12:06:56+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/2e6ab820-0d7f-4374-b2fe-f38b483bcf4e-final-list-enugu-senatorial-districts.pdf": {
+  "path": "raw/senate/enugu.pdf",
+  "sha256": "369d5a08447444e4eeaa1e24347d92bbc14346d2561ae795908816ab38c39979",
+  "bytes": 90924,
+  "fetched_at": "2026-11-18T12:07:05+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/175c6d52-e660-46e1-b7be-1f0c203a7804-final-list-fct-senatorial-districts.pdf": {
+  "path": "raw/senate/fct.pdf",
+  "sha256": "0280953fda4d3938aaa65865c6dfd8028db257b7a8aadf68f2887b924fb442c8",
+  "bytes": 75348,
+  "fetched_at": "2026-11-18T12:07:10+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b4d8cfd5-6e39-4a14-b93e-c1fa9b692640-final-list-gombe-senatorial-districts.pdf": {
+  "path": "raw/senate/gombe.pdf",
+  "sha256": "3ee4300c064332d6b2154162aa1c8438f384a5e6feee2e8de60dbe9160288186",
+  "bytes": 103526,
+  "fetched_at": "2026-11-18T12:07:12+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/58bef5ff-7a9c-416b-a329-750854e45320-final-list-imo-senatorial-districts.pdf": {
+  "path": "raw/senate/imo.pdf",
+  "sha256": "11b91faf3daebe659b16daa06136ba9a032de5ea628fcc7330db773d48398b92",
+  "bytes": 105304,
+  "fetched_at": "2026-11-18T12:07:17+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/75535207-d641-472c-9fa9-d0b4359f9dac-final-list-jigawa-senatorial-districts.pdf": {
+  "path": "raw/senate/jigawa.pdf",
+  "sha256": "268efcc68723261bd87037b69e79eac0fdf10f39a4e1a7d2dce7e8e617e30c47",
+  "bytes": 90286,
+  "fetched_at": "2026-11-18T12:07:21+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/12afba99-bbe6-4863-ab8a-5969b10a35b2-final-list-kaduna-senatorial-districts.pdf": {
+  "path": "raw/senate/kaduna.pdf",
+  "sha256": "29d7f5eb075d9ddb3f863eacceaca85dab501bf2f8ad17a19a9cbe35963a4ddd",
+  "bytes": 90595,
+  "fetched_at": "2026-11-18T12:07:25+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b65960b5-8634-4dfa-8d01-34a3e7e86168-final-list-kano-senatorial-districts.pdf": {
+  "path": "raw/senate/kano.pdf",
+  "sha256": "09ffdd3e8bb999205123b5b58017e97b9dad3178966b16d51e870cb4152173ec",
+  "bytes": 106103,
+  "fetched_at": "2026-11-18T12:07:31+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/9b0c07c2-16a5-41f2-868b-c5dabbe4f437-final-list-katsina-senatorial-districts.pdf": {
+  "path": "raw/senate/katsina.pdf",
+  "sha256": "426ac058c31187e3fdf5f9983ceb36fab2175fe323260ed7ae14d3b37e07b52e",
+  "bytes": 87603,
+  "fetched_at": "2026-11-18T12:07:35+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/90980694-6c9f-4748-b4d1-2c342ee57815-final-list-kebbi-senatorial-districts.pdf": {
+  "path": "raw/senate/kebbi.pdf",
+  "sha256": "7a1faf160066e9915abd21b7617f7e5ad5e9dbd5b9b6dc6ac1fc067d32459ae8",
+  "bytes": 90448,
+  "fetched_at": "2026-11-18T12:07:39+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d75b042d-95c0-49d8-b470-4244e736980a-final-list-kogi-senatorial-districts.pdf": {
+  "path": "raw/senate/kogi.pdf",
+  "sha256": "9c394892c6dbd776788e7867c5aecea456c1609f99241007c4785051fe517d54",
+  "bytes": 93055,
+  "fetched_at": "2026-11-18T12:07:52+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/bb2465a7-a01f-4d72-9f0f-11c96a8aa7b4-final-list-kwara-senatorial-districts.pdf": {
+  "path": "raw/senate/kwara.pdf",
+  "sha256": "e1757105e7635bcdff5975195b52b410b84908995017465c09c8217694ee02fd",
+  "bytes": 91286,
+  "fetched_at": "2026-11-18T12:08:01+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/9b209609-1e9e-428c-ae67-26b2b7973cec-final-list-lagos-senatorial-districts.pdf": {
+  "path": "raw/senate/lagos.pdf",
+  "sha256": "7703b8932197360f37d235cfc6379a56e715dc953907d3b4642d66692488ad5b",
+  "bytes": 103275,
+  "fetched_at": "2026-11-18T12:08:04+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c7c54cd2-1c53-4f89-9248-31b285fc53dd-final-list-nasarawa-senatorial-districts.pdf": {
+  "path": "raw/senate/nasarawa.pdf",
+  "sha256": "5b66b1a1004c082d168bc15ff8650026843fce24cb1d68ef64f6fa0cf4f2245a",
+  "bytes": 103596,
+  "fetched_at": "2026-11-18T12:08:08+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b773ec70-f16d-48f9-aab0-695d07134b22-final-list-niger-senatorial-districts.pdf": {
+  "path": "raw/senate/niger.pdf",
+  "sha256": "20599836b6c9abf31fc1a3187e267129bcad5434e3e165fb9b186756a740c8df",
+  "bytes": 89871,
+  "fetched_at": "2026-11-18T12:08:11+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/575410f2-ddd8-4375-b894-8280537fce76-final-list-ogun-senatorial-districts.pdf": {
+  "path": "raw/senate/ogun.pdf",
+  "sha256": "192e96851e790f6589e113de2fc6ede511cbc91ccf46fe48fd3e3435f33c3e87",
+  "bytes": 103282,
+  "fetched_at": "2026-11-18T12:08:18+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/aaf46764-5e3e-45f0-b1c9-8397a18b4246-final-list-ondo-senatorial-districts.pdf": {
+  "path": "raw/senate/ondo.pdf",
+  "sha256": "dc0c0b688fbc51162b74a90e061a446f8f599517b6ff6971decf3969978c3893",
+  "bytes": 89665,
+  "fetched_at": "2026-11-18T12:08:21+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/5760dc54-ed19-400a-bb64-e5bf13686dcc-final-list-osun-senatorial-districts.pdf": {
+  "path": "raw/senate/osun.pdf",
+  "sha256": "ed6d8c09b19d957570fb99f43613fd2889f3e3257f06e89e4660e52a820f9f57",
+  "bytes": 91671,
+  "fetched_at": "2026-11-18T12:08:31+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c7bcba45-c7eb-49a1-8cc9-89d14062dce5-final-list-oyo-senatorial-districts.pdf": {
+  "path": "raw/senate/oyo.pdf",
+  "sha256": "3760f35a0e89c5a1ab30fbfcf39c209dab6b979996772d1477c66d5cc48ae09d",
+  "bytes": 103939,
+  "fetched_at": "2026-11-18T12:08:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/6aa5c547-25ad-4d0b-83ec-6b5fa4c23e82-final-list-plateau-senatorial-districts.pdf": {
+  "path": "raw/senate/plateau.pdf",
+  "sha256": "7b1aa684a6f98d431e820e782edbce6b64176697ff8db8c6befd45a8e6539ed2",
+  "bytes": 89695,
+  "fetched_at": "2026-11-18T12:08:45+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/f04fa9cc-d430-40ba-bbcb-a9c99a27151d-final-list-rivers-senatorial-districts.pdf": {
+  "path": "raw/senate/rivers.pdf",
+  "sha256": "d13994189cee2a777f0c983da79c40422da211c5c9b9cb49ae289616f273eab1",
+  "bytes": 104588,
+  "fetched_at": "2026-11-18T12:08:47+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/76527ef5-dda9-4500-ad4a-e41e3467171f-final-list-sokoto-senatorial-districts.pdf": {
+  "path": "raw/senate/sokoto.pdf",
+  "sha256": "1b88d8073b7604af9d1398ab8f009d318d64f8339c7f83c18cfdad641ff2f92f",
+  "bytes": 102378,
+  "fetched_at": "2026-11-18T12:08:49+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/745e3932-7e38-4fb7-acd8-39646f376f6f-final-list-taraba-senatorial-districts.pdf": {
+  "path": "raw/senate/taraba.pdf",
+  "sha256": "993ef5fae7846d79c38d5b7c9b14274a4f96e330cff96c65caed2d96589615ab",
+  "bytes": 102196,
+  "fetched_at": "2026-11-18T12:08:51+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/18f73ad7-1505-41d8-84f7-198c8db60860-final-list-yobe-senatorial-districts.pdf": {
+  "path": "raw/senate/yobe.pdf",
+  "sha256": "6d175da2ab335a35a4a86d8e6a4dfd541bd084b7dd760909179a23f2896f4441",
+  "bytes": 91221,
+  "fetched_at": "2026-11-18T12:08:53+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/8837879d-7cd5-455a-87f9-961999df1577-final-list-zamfara-senatorial-districts.pdf": {
+  "path": "raw/senate/zamfara.pdf",
+  "sha256": "39615b09ec80b799517c6e7f463fd0cb9e42cf7353c71febe38469df60ac9dd8",
+  "bytes": 103356,
+  "fetched_at": "2026-11-18T12:08:55+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/04fad3c4-9b95-41e3-8274-b0ee5af4af46-final-list-abia-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/abia.pdf",
+  "sha256": "5ddcf6580237f276e171973159b3b433771c285153bfe2b1297c72a249db4886",
+  "bytes": 167761,
+  "fetched_at": "2026-11-18T12:08:58+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/a8c62e25-5b04-4905-b974-4efea47bdc20-final-list-adamawa-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/adamawa.pdf",
+  "sha256": "c348da39a4e298c6eb2d2977860fb9feb5141a32614833242fd899c609471208",
+  "bytes": 168727,
+  "fetched_at": "2026-11-18T12:09:03+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/a74ce2ea-97b2-4501-9e34-42326a3ce32b-final-list-akwa-ibom-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/akwa-ibom.pdf",
+  "sha256": "1ba0595e65afc6e602335257c234ab4b9282369ee1a73a203a6763a020e0a8c3",
+  "bytes": 183162,
+  "fetched_at": "2026-11-18T12:09:11+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/a8428179-a3cb-434d-8ef8-f5e0c7ee6eec-final-list-anambra-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/anambra.pdf",
+  "sha256": "fe8eb8eb1fc176aa5984eccbd8e752275c9855913a258c81bd70e0ddfac24d0d",
+  "bytes": 195707,
+  "fetched_at": "2026-11-18T12:09:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d7ce7ff6-561e-4f59-941c-327c95651eb6-final-list-bauchi-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/bauchi.pdf",
+  "sha256": "ae9fe9b8daacb544febd0c32cbcf5c0d755203bf3cbfa9bbdf3988f91d056385",
+  "bytes": 198700,
+  "fetched_at": "2026-11-18T12:09:22+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/0547bd33-f531-44e4-936b-891e7d6e8b7d-final-list-bayelsa-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/bayelsa.pdf",
+  "sha256": "9e384ce6a80cfb33f1e7a47aa6400faaa4abe5f361974a823f3ac36e9ff9ee7c",
+  "bytes": 122035,
+  "fetched_at": "2026-11-18T12:09:24+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b3c01ae1-27b8-48e3-ae6d-8ed7b572cf9b-final-list-benue-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/benue.pdf",
+  "sha256": "c967fdef0289cd41afc7a92e405f20b80be081cd495fde1f0b6cdc5cd0383739",
+  "bytes": 184681,
+  "fetched_at": "2026-11-18T12:09:31+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/18c70795-bd2a-4bea-8698-afc295ac9df7-final-list-borno-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/borno.pdf",
+  "sha256": "89ef74b7d0c33613b1230a7b231ff1ad4bce28ea355fdc3556fd0ef03f00817a",
+  "bytes": 148987,
+  "fetched_at": "2026-11-18T12:09:34+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/78a85e34-eb45-4a53-9b67-93855e05401d-final-list-cross-river-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/cross-river.pdf",
+  "sha256": "9e7ad91e451f0a842ba35c3fe6e888953a1b586deb6656cd6d9212da06af794c",
+  "bytes": 134772,
+  "fetched_at": "2026-11-18T12:09:45+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/f3c6db63-90a4-4d11-8204-6fec9ffe8c98-final-list-delta-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/delta.pdf",
+  "sha256": "af5b9ffbac040ae3f5737a13aa977eb6294eebbb9b9ce785be82c362381f09d0",
+  "bytes": 198701,
+  "fetched_at": "2026-11-18T12:09:55+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/ac90be86-4447-4b27-833c-700eee710ef9-final-list-ebonyi-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/ebonyi.pdf",
+  "sha256": "72134dabf79ed04d261f8765788fa3a71d898142c86bb8c5800ee3f0d92744d1",
+  "bytes": 122898,
+  "fetched_at": "2026-11-18T12:10:00+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/ca06271f-783f-4c3c-92c4-30c333fb648c-final-list-edo-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/edo.pdf",
+  "sha256": "1fc7844d5b9402d85b04484debe53c5f9483edd0105426d503889cb5d24cb692",
+  "bytes": 108332,
+  "fetched_at": "2026-11-18T12:10:10+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c567b843-8717-497a-b557-00939c3c9ee1-final-list-ekiti-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/ekiti.pdf",
+  "sha256": "f2dda801dc1cef8af6e2c4f6689ab693c41de1de90840ac31040d334c1c8387b",
+  "bytes": 103380,
+  "fetched_at": "2026-11-18T12:10:22+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/1ea34f2b-67f4-4b62-934f-935bd3d46045-final-list-enugu-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/enugu.pdf",
+  "sha256": "3bb68961a12130e651ae6b56478936cf539bb67c6f294e92ce2955a7bc17807c",
+  "bytes": 149716,
+  "fetched_at": "2026-11-18T12:10:25+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/236bfed6-2af2-46e7-9f46-e4c6b040d9ed-final-list-fct-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/fct.pdf",
+  "sha256": "d63156960a937101f931763d6bd81053d804984f139968781e44ae5b5709a31a",
+  "bytes": 91691,
+  "fetched_at": "2026-11-18T12:10:29+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/3cf293d5-ea52-4e35-b596-fd5091339cec-final-list-gombe-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/gombe.pdf",
+  "sha256": "0305cde48f800c6d6350983ace93cb1bb00525d3463dcc5820affe0d929e34ce",
+  "bytes": 135003,
+  "fetched_at": "2026-11-18T12:10:34+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/18ca2097-6d75-48d1-860c-c2dc26c31adc-final-list-imo-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/imo.pdf",
+  "sha256": "6287d5435f7c60399a369ae1deb77b29d1968729e864719f7f935151799c9347",
+  "bytes": 244614,
+  "fetched_at": "2026-11-18T12:10:39+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d2eb5a4e-6724-40b0-adf1-c8a482f974f7-final-list-jigawa-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/jigawa.pdf",
+  "sha256": "b1faabd75e6d246b4c65b93d0d69740a26813338c0f43b39df0e9ecb58f885d8",
+  "bytes": 166903,
+  "fetched_at": "2026-11-18T12:10:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/0b608362-4af5-4d36-8ce5-fba3823c614c-final-list-kaduna-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/kaduna.pdf",
+  "sha256": "efc20601c435719075a302fa27152d53c82d982466083c4988ce4f9e88192a53",
+  "bytes": 219515,
+  "fetched_at": "2026-11-18T12:10:53+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c6e34589-197a-4af4-8985-f6249531ef93-final-list-kano-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/kano.pdf",
+  "sha256": "aaecd9c77702a170724627e74bc394c2cc191f693a7efe5f17c510009e41129c",
+  "bytes": 329529,
+  "fetched_at": "2026-11-18T12:11:01+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/31239243-649e-4ac5-96e7-8f397a32e766-final-list-katsina-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/katsina.pdf",
+  "sha256": "6f94d816bfb72b7c186e4f6bc2d1c58c7d0965b6b74f936540a81530c24a5ffb",
+  "bytes": 182063,
+  "fetched_at": "2026-11-18T12:11:05+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/93326321-6af7-4b18-b15f-2ad8662c8e03-final-list-kebbi-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/kebbi.pdf",
+  "sha256": "de0ea7dca021c051c56c49c8a581d2768bba7a7abe7f56243c277bc7ac8cc033",
+  "bytes": 135171,
+  "fetched_at": "2026-11-18T12:11:08+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/85c54bb6-65db-43eb-8114-9a004af296cb-final-list-kogi-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/kogi.pdf",
+  "sha256": "a2773e9add9320de45d0e7859cafce52b379c7d391c369d64c74e24b014436b9",
+  "bytes": 168372,
+  "fetched_at": "2026-11-18T12:11:14+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/1dc39178-4275-4c36-91eb-e5ba9be0ebb3-final-list-kwara-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/kwara.pdf",
+  "sha256": "755433c32034ff4c32b797e00b733d6733abf67ffe6b641349c43b62fc70861d",
+  "bytes": 123933,
+  "fetched_at": "2026-11-18T12:11:18+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/b7e9758b-56ae-4068-89c0-8a4b38dd5d35-final-list-lagos-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/lagos.pdf",
+  "sha256": "d874a944ea898f2c951295c16d2a15dbcc44a241f0cc9cfc77527818cbfe3cc1",
+  "bytes": 277971,
+  "fetched_at": "2026-11-18T12:11:23+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/3f0bdb61-5db0-42e6-bf8f-d1f7215faab1-final-list-nasarawa-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/nasarawa.pdf",
+  "sha256": "8248819ac8152c0eab7a516e9a6971eacf14cf2b6fb4984753a58156c717e359",
+  "bytes": 123552,
+  "fetched_at": "2026-11-18T12:11:26+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/7c5b3570-3109-49fa-9ca4-d9a3ad8b9099-final-list-ogun-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/ogun.pdf",
+  "sha256": "41365cbd7ba8364e581020e31d39281549de4e9ee15e5b0c90ecbf710400628f",
+  "bytes": 180875,
+  "fetched_at": "2026-11-18T12:11:30+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/107afff1-b907-4ca5-a30d-a20cb423bbcd-final-list-ondo-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/ondo.pdf",
+  "sha256": "e2bba6fecf34b796a4a485313f0b05e289b03babc8e2073e5ea80e9be961d673",
+  "bytes": 154644,
+  "fetched_at": "2026-11-18T12:11:33+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/44ad47da-4486-42f3-a464-28ae2a166e5d-final-list-osun-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/osun.pdf",
+  "sha256": "0342c3c58611599bda4167c3d11920b0ba234f7b94780c41bd9bebcd1b3dcdc0",
+  "bytes": 164106,
+  "fetched_at": "2026-11-18T12:11:35+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/c45831d4-7d94-4bff-8af2-bd6f1c8b1b78-final-list-oyo-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/oyo.pdf",
+  "sha256": "d509b1a46b3886e287c70b678bef01b440a36cfdc2018b86f55115b0edf873a4",
+  "bytes": 258185,
+  "fetched_at": "2026-11-18T12:11:38+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/d2c89597-2d7c-491d-9373-fb2838c537f7-final-list-plateau-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/plateau.pdf",
+  "sha256": "9767cf129996b43a46a9607d114bf384086f27a198812e9cbc6a590b3ac90017",
+  "bytes": 153266,
+  "fetched_at": "2026-11-18T12:11:40+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/911f5b5b-d19d-4a2c-9360-aabc0cf83e9c-final-list-rivers-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/rivers.pdf",
+  "sha256": "87972364aebd366fb2c0f53b4b071d272f72f9a5e2b3d5040e8c2bdc69f9dfc7",
+  "bytes": 218055,
+  "fetched_at": "2026-11-18T12:11:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/8e75326d-5c8c-471c-aac1-ae40754a9143-final-list-sokoto-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/sokoto.pdf",
+  "sha256": "b3f7d986a59ee19e6321170a07c9992025d260767bf1a109395b766261709d0e",
+  "bytes": 213350,
+  "fetched_at": "2026-11-18T12:11:46+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/0d79101b-14e1-45d6-8849-fb190aa89e79-final-list-taraba-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/taraba.pdf",
+  "sha256": "12d7f86fc10ca1ea00b9fe6a652a03f3fcd6d1da5b3760566dad4844d7bd0c37",
+  "bytes": 136493,
+  "fetched_at": "2026-11-18T12:11:48+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/91d3a4e8-9463-49a2-ae6a-d57a82f909c3-final-list-yobe-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/yobe.pdf",
+  "sha256": "241717b83d7e52a4d838f5a828adc251c0721e6f19bdd6c51eccacd2d9ebe330",
+  "bytes": 135576,
+  "fetched_at": "2026-11-18T12:11:50+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/10/82932ae2-6f44-433c-bcc8-c8855e36c051-final-list-zamfara-house-of-representatives.pdf": {
+  "path": "raw/house_of_reps/zamfara.pdf",
+  "sha256": "a8ffb8044910a8e1f40970174193d22349e34bc1a8f837eb80a18ea3a07dfe6a",
+  "bytes": 137976,
+  "fetched_at": "2026-11-18T12:11:53+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/ac59d893-39d0-4969-84a6-db657179e9fe-final-list-abia-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/abia.pdf",
+  "sha256": "08923e69894c8ea4ecbaeca16c02574f3db96b433be3850cd5dcf9e3bfdef1cf",
+  "bytes": 382176,
+  "fetched_at": "2026-11-18T12:11:56+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/e0d212e8-f364-457e-90b3-b922fd771d5b-final-list-adamawa-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/adamawa.pdf",
+  "sha256": "32bc8b7adb9090155a3194cf43393f4591c3c2ab32d68a9c8224cf9245d27903",
+  "bytes": 389278,
+  "fetched_at": "2026-11-18T12:11:59+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/8476ad34-6533-45b6-a8e6-cb98c6c0e147-final-list-akwa-ibom-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/akwa-ibom.pdf",
+  "sha256": "3863b2b41b35a150be61570459b7cb02fb1b181b98ade0f084edf92311ef70a1",
+  "bytes": 372690,
+  "fetched_at": "2026-11-18T12:12:02+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/7988565f-2e4f-4950-918e-aafa05930b21-final-list-anambra-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/anambra.pdf",
+  "sha256": "c9d400fc4cc3c969016b935a68262444395c56bceb288f2c5f1ed1095bcbca4f",
+  "bytes": 324536,
+  "fetched_at": "2026-11-18T12:12:07+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/fb91e2b1-d390-4ec8-9fc8-f53e6ca5a320-final-list-bauchi-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/bauchi.pdf",
+  "sha256": "eb03ac1973bde4261601c33afffb688b27a4fd3c3621ecdb712255f20db55c1a",
+  "bytes": 471618,
+  "fetched_at": "2026-11-18T12:12:25+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/8ee23498-e1e5-4889-afcd-6a66825897af-final-list-bayelsa-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/bayelsa.pdf",
+  "sha256": "471c5ef3854c2356ba3fa4be0020c628278f121a18d8551363858ffc5a336530",
+  "bytes": 316366,
+  "fetched_at": "2026-11-18T12:12:59+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/4a9b9873-54cf-497b-9644-f0701030093e-final-list-benue-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/benue.pdf",
+  "sha256": "566fe69c59902c6ed6f24ce9a22dc20edfa2922a9bf1c03bdefc68a957836b96",
+  "bytes": 461904,
+  "fetched_at": "2026-11-18T12:13:04+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/0576b1b5-a140-4440-8ff2-31ce4529baee-final-list-borno-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/borno.pdf",
+  "sha256": "4c1bd70c8d8df9c9eeb4f90b3a3af6f75f4e1f918bd333be4920b975f8a2da45",
+  "bytes": 269265,
+  "fetched_at": "2026-11-18T12:13:09+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/524944ca-542c-4eba-b004-082b4c619cf2-final-list-cross-river-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/cross-river.pdf",
+  "sha256": "74248b7ae8bffe2654c9a3d077a76408adc8be18bcd180f8655ad987025db603",
+  "bytes": 240578,
+  "fetched_at": "2026-11-18T12:13:27+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/2cc58954-a27f-42cc-b73a-69e785658b9a-final-list-delta-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/delta.pdf",
+  "sha256": "3f3859e120411bf2688c1d8254b8f378660012f51636da46915b506be04e2c46",
+  "bytes": 414592,
+  "fetched_at": "2026-11-18T12:13:30+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/b1f6c1fe-482b-44fe-9dca-e25d5199e45d-final-list-ebonyi-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/ebonyi.pdf",
+  "sha256": "ab800b1fd472a3e88d7f3528dd6974f2ab62a43e7256d0eeec574990a5487fa0",
+  "bytes": 323002,
+  "fetched_at": "2026-11-18T12:13:32+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/2c62b8b2-1907-4be6-9ffe-4d46c5718e72-final-list-edo-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/edo.pdf",
+  "sha256": "27930317853da1987cea1b3dcc3b7a72b25095330fb3fafe78baff89caf79a3e",
+  "bytes": 230691,
+  "fetched_at": "2026-11-18T12:13:36+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/9b1ea343-c1b3-43af-baed-c6e373b582ae-final-list-ekiti-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/ekiti.pdf",
+  "sha256": "cf03830681239c41f94af670d66a0260ebb0483db8b5e93ff5a720cc5a0fd1ef",
+  "bytes": 247674,
+  "fetched_at": "2026-11-18T12:13:38+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/bf83db2a-6e5a-41aa-9dde-1d0a4eb55a3a-final-list-enugu-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/enugu.pdf",
+  "sha256": "1a9bbe0472f58a56ed9fe5b1f3d1355f470ef8ebcc7138d656930b9da93e5712",
+  "bytes": 252722,
+  "fetched_at": "2026-11-18T12:13:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/883e14d2-9276-4e28-85ce-b90b7455a9c9-final-list-gombe-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/gombe.pdf",
+  "sha256": "82620217626a5f7763b4615bed84bfc52a1194a029fbfffd2459513c026e1e8b",
+  "bytes": 329203,
+  "fetched_at": "2026-11-18T12:13:45+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/dcc0317c-db1c-44bf-bf40-71ebc8f620b8-final-list-imo-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/imo.pdf",
+  "sha256": "c11fa481f1d4bc95142e182c5bd790679582a7c8c57aa25fec042e34f7ee023f",
+  "bytes": 427282,
+  "fetched_at": "2026-11-18T12:13:48+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/ea3428f8-1e8a-4876-a044-c79828ef901b-final-list-jigawa-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/jigawa.pdf",
+  "sha256": "a789d242911aa3875c3d200c044807f54f7b2e4b3a655f1bc002acb69a4f16cf",
+  "bytes": 283491,
+  "fetched_at": "2026-11-18T12:13:51+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/de363ad6-830d-4820-9f25-d6e5e64d73dc-final-list-kaduna-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/kaduna.pdf",
+  "sha256": "ed003beb1631de46ce23b6496d67ca17f7d922c50a23d4eff31010d84bc3781b",
+  "bytes": 392081,
+  "fetched_at": "2026-11-18T12:13:54+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/21ececff-e8e5-4ab8-92b3-a7568e743f68-final-list-kano-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/kano.pdf",
+  "sha256": "eeec7a133409cbad724dbbb3be0c7bb37263188266b23452d1f00845a99b95a4",
+  "bytes": 527564,
+  "fetched_at": "2026-11-18T12:13:58+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/2e995323-063f-4b70-9ed4-33ebca031084-final-list-katsina-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/katsina.pdf",
+  "sha256": "fb00ff507eb7377c767bce6f1d0cb62906b91561bb5a6e7fb9984d724f11b618",
+  "bytes": 326890,
+  "fetched_at": "2026-11-18T12:14:00+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/a289edc2-98c5-41ce-b125-718086abfc29-final-list-kebbi-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/kebbi.pdf",
+  "sha256": "47cd8d61afa94f76e3b72a394a9a15f21abe1a9e911f6f4f756b3ac6d95b1850",
+  "bytes": 232930,
+  "fetched_at": "2026-11-18T12:14:03+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/0f4e7c3e-4130-493c-87a4-2954a7f829ba-final-list-kogi-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/kogi.pdf",
+  "sha256": "d367236ba80c2ac807eca8e8aa88ae0957515547cc471d68b064972b5a335491",
+  "bytes": 345929,
+  "fetched_at": "2026-11-18T12:14:05+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/617e6890-9c98-479b-b572-438a51a38b4d-final-list-kwara-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/kwara.pdf",
+  "sha256": "0f654513668780a84a2c2f679650a84c3eceaba72c3f6e4d2ff1eceaaa10e151",
+  "bytes": 357430,
+  "fetched_at": "2026-11-18T12:14:08+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/3a98d2ad-ccb7-4787-b919-85229f7ac426-final-list-lagos-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/lagos.pdf",
+  "sha256": "4ee0b3c83b4fd2990db8a700ec8628d59ed8393763fc4a889b30b1557cba6dae",
+  "bytes": 423186,
+  "fetched_at": "2026-11-18T12:14:11+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/d635d399-175e-4fab-9919-99b9340998f3-final-list-nasarawa-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/nasarawa.pdf",
+  "sha256": "09997b194ed13511b8a9ad41c5a2172c0ebe14833982b71091992b20531b098e",
+  "bytes": 356504,
+  "fetched_at": "2026-11-18T12:14:13+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/233140b3-b62b-426f-8ee1-8ae6159c9dd4-final-list-niger-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/niger.pdf",
+  "sha256": "fd4afe1f550de9ab507c79c7a681497eadc3863077f9eae6b68d92dbfd21c97b",
+  "bytes": 354851,
+  "fetched_at": "2026-11-18T12:14:15+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/e57099a0-c0f3-4bf0-91f6-ca7e0b34a67a-final-list-ogun-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/ogun.pdf",
+  "sha256": "48db368adf7dc277d47312b5f93efc6125bed2f57afb87ad1f10f2ac671769bc",
+  "bytes": 401102,
+  "fetched_at": "2026-11-18T12:14:19+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/880fe78e-4be3-4d73-a4f4-9beee5c98213-final-list-ondo-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/ondo.pdf",
+  "sha256": "1c960a06903af35738b64040ec7baf235fc4e95b4af23685f7558618c81e77f1",
+  "bytes": 275881,
+  "fetched_at": "2026-11-18T12:14:23+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/1bc85d9c-301a-4e21-8bf2-579a66dc4e9d-final-list-osun-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/osun.pdf",
+  "sha256": "2d30abee5f03e7aed25456520243f7b1138ed5b4dafceeee75968a27600febb2",
+  "bytes": 339981,
+  "fetched_at": "2026-11-18T12:14:26+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/a752f3ef-224f-4d5b-8ffb-fbfe23436e4a-final-list-oyo-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/oyo.pdf",
+  "sha256": "ecd3ef0813e08f812479a45750d5d043f436639cd283bed44a9d1a26c2e85698",
+  "bytes": 525384,
+  "fetched_at": "2026-11-18T12:14:35+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/4c6444f7-1a1c-4aed-922e-715eaa3081f1-final-list-plateau-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/plateau.pdf",
+  "sha256": "17b807280046c00dfa9f81daee5991857b47e646eebd65eb79335c40e9e21a5c",
+  "bytes": 341522,
+  "fetched_at": "2026-11-18T12:14:39+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/d1a4b1f7-a34c-4432-b70b-e91b7dc1c01b-final-list-rivers-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/rivers.pdf",
+  "sha256": "c64c0ea27acc4d58fab1676f8b06597b17416c7782b7c1d7982e7daf5d1dec17",
+  "bytes": 507013,
+  "fetched_at": "2026-11-18T12:14:42+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/82ca84a1-dc13-46a0-8949-87c166f155f7-final-list-sokoto-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/sokoto.pdf",
+  "sha256": "fb3357b087e7d143bb5ed430a2739dc14f9ee0dfd98f5bf6ea4fb6e45aba5b6b",
+  "bytes": 354299,
+  "fetched_at": "2026-11-18T12:15:06+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/6d21f60b-4136-4308-8097-7bde197021e8-final-list-taraba-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/taraba.pdf",
+  "sha256": "d0e3260e56772b8e247a8e109b5c96b2555f1964fc6dcf3050ef3ca95cbb2eb0",
+  "bytes": 360476,
+  "fetched_at": "2026-11-18T12:15:11+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/ff842fba-098a-4b24-aa68-a46a36be942e-final-list-yobe-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/yobe.pdf",
+  "sha256": "9c604d1108d7c6d376c0ae4dd72d29ccc51fc613d30d7a34709120d926f6a050",
+  "bytes": 266933,
+  "fetched_at": "2026-11-18T12:15:14+00:00"
+ },
+ "https://www.inecnigeria.org/documents/uploads/2026/11/e4cbdf1f-d641-4ac4-9640-45420a3db1c6-final-list-zamfara-state-house-of-assembly.pdf": {
+  "path": "raw/state_assembly/zamfara.pdf",
+  "sha256": "acb1b467a0ec22c8d3b7670ee95cda623f27a387cd2b8e3ade00e18df8354332",
+  "bytes": 329460,
+  "fetched_at": "2026-11-18T12:15:16+00:00"
+ }
+}

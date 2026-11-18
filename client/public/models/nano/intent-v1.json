@@ -1,0 +1,45 @@
+{
+  "name": "awavote-nano-intent",
+  "version": "1.0.0-seed",
+  "dataset_version": "0.1.0-seed",
+  "dim": 4096,
+  "char_n": [
+    2,
+    3,
+    4
+  ],
+  "intents": [
+    "action.cancel",
+    "action.change_language",
+    "action.confirm",
+    "action.go_back",
+    "action.help",
+    "action.read_aloud",
+    "action.repeat",
+    "action.stop_speaking",
+    "nav.candidates",
+    "nav.countcam",
+    "nav.dashboard",
+    "nav.home",
+    "nav.incident",
+    "nav.polling_unit",
+    "nav.result_verify",
+    "nav.settings",
+    "nav.sync",
+    "nav.voteaccess",
+    "unknown"
+  ],
+  "languages": [
+    "en",
+    "pcm",
+    "yo",
+    "ha",
+    "ig"
+  ],
+  "thresholds": {
+    "min_confidence": 0.45,
+    "min_margin": 0.12
+  },
+  "size_bytes": 393695,
+  "status": "seed model — trained on unvalidated developer-written examples"
+}

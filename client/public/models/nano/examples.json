@@ -1,0 +1,332 @@
+{
+ "en": [
+  {
+   "intent": "action.change_language",
+   "text": "change language to yoruba"
+  },
+  {
+   "intent": "action.go_back",
+   "text": "go back"
+  },
+  {
+   "intent": "action.help",
+   "text": "help"
+  },
+  {
+   "intent": "action.read_aloud",
+   "text": "read this aloud"
+  },
+  {
+   "intent": "action.repeat",
+   "text": "repeat"
+  },
+  {
+   "intent": "action.stop_speaking",
+   "text": "stop talking"
+  },
+  {
+   "intent": "nav.candidates",
+   "text": "show the candidates"
+  },
+  {
+   "intent": "nav.countcam",
+   "text": "scan result sheet"
+  },
+  {
+   "intent": "nav.dashboard",
+   "text": "open transparency dashboard"
+  },
+  {
+   "intent": "nav.home",
+   "text": "go home"
+  },
+  {
+   "intent": "nav.incident",
+   "text": "report an incident"
+  },
+  {
+   "intent": "nav.polling_unit",
+   "text": "find my polling unit"
+  },
+  {
+   "intent": "nav.result_verify",
+   "text": "open result verification"
+  },
+  {
+   "intent": "nav.settings",
+   "text": "open settings"
+  },
+  {
+   "intent": "nav.sync",
+   "text": "sync now"
+  },
+  {
+   "intent": "nav.voteaccess",
+   "text": "election information"
+  }
+ ],
+ "pcm": [
+  {
+   "intent": "action.change_language",
+   "text": "change am to pidgin"
+  },
+  {
+   "intent": "action.go_back",
+   "text": "go back"
+  },
+  {
+   "intent": "action.help",
+   "text": "wetin i fit talk"
+  },
+  {
+   "intent": "action.read_aloud",
+   "text": "read am for me"
+  },
+  {
+   "intent": "action.repeat",
+   "text": "talk am again"
+  },
+  {
+   "intent": "action.stop_speaking",
+   "text": "keep quiet"
+  },
+  {
+   "intent": "nav.candidates",
+   "text": "show me the candidates"
+  },
+  {
+   "intent": "nav.countcam",
+   "text": "make i snap the result sheet"
+  },
+  {
+   "intent": "nav.dashboard",
+   "text": "show me the dashboard"
+  },
+  {
+   "intent": "nav.home",
+   "text": "carry me go home"
+  },
+  {
+   "intent": "nav.incident",
+   "text": "i wan report wahala"
+  },
+  {
+   "intent": "nav.polling_unit",
+   "text": "where my polling unit dey"
+  },
+  {
+   "intent": "nav.result_verify",
+   "text": "make i check the result"
+  },
+  {
+   "intent": "nav.settings",
+   "text": "make the writing big"
+  },
+  {
+   "intent": "nav.sync",
+   "text": "send everything wey i save"
+  },
+  {
+   "intent": "nav.voteaccess",
+   "text": "how i go take vote"
+  }
+ ],
+ "yo": [
+  {
+   "intent": "action.change_language",
+   "text": "yí èdè padà sí yorùbá"
+  },
+  {
+   "intent": "action.go_back",
+   "text": "padà sẹ́yìn"
+  },
+  {
+   "intent": "action.help",
+   "text": "ràn mí lọ́wọ́"
+  },
+  {
+   "intent": "action.read_aloud",
+   "text": "ka èyí sókè"
+  },
+  {
+   "intent": "action.repeat",
+   "text": "tún un sọ"
+  },
+  {
+   "intent": "action.stop_speaking",
+   "text": "dákẹ́"
+  },
+  {
+   "intent": "nav.candidates",
+   "text": "fi àwọn olùdíje hàn mí"
+  },
+  {
+   "intent": "nav.countcam",
+   "text": "ya fọ́tò ìwé èsì"
+  },
+  {
+   "intent": "nav.dashboard",
+   "text": "ṣí pátákó ìfihàn"
+  },
+  {
+   "intent": "nav.home",
+   "text": "lọ sí ojú ilé"
+  },
+  {
+   "intent": "nav.incident",
+   "text": "jábọ̀ ìṣẹ̀lẹ̀"
+  },
+  {
+   "intent": "nav.polling_unit",
+   "text": "wá ibùdó ìdìbò mi"
+  },
+  {
+   "intent": "nav.result_verify",
+   "text": "ṣí àyẹ̀wò èsì"
+  },
+  {
+   "intent": "nav.settings",
+   "text": "ṣí ètò"
+  },
+  {
+   "intent": "nav.sync",
+   "text": "fi gbogbo rẹ̀ ránṣẹ́"
+  },
+  {
+   "intent": "nav.voteaccess",
+   "text": "ìwífún nípa ìdìbò"
+  }
+ ],
+ "ha": [
+  {
+   "intent": "action.change_language",
+   "text": "canza harshe zuwa hausa"
+  },
+  {
+   "intent": "action.go_back",
+   "text": "koma baya"
+  },
+  {
+   "intent": "action.help",
+   "text": "taimako"
+  },
+  {
+   "intent": "action.read_aloud",
+   "text": "karanta wannan da ƙarfi"
+  },
+  {
+   "intent": "action.repeat",
+   "text": "maimaita"
+  },
+  {
+   "intent": "action.stop_speaking",
+   "text": "yi shiru"
+  },
+  {
+   "intent": "nav.candidates",
+   "text": "nuna min 'yan takara"
+  },
+  {
+   "intent": "nav.countcam",
+   "text": "ɗauki hoton takardar sakamako"
+  },
+  {
+   "intent": "nav.dashboard",
+   "text": "buɗe allon bayani"
+  },
+  {
+   "intent": "nav.home",
+   "text": "koma gida"
+  },
+  {
+   "intent": "nav.incident",
+   "text": "kai rahoton lamari"
+  },
+  {
+   "intent": "nav.polling_unit",
+   "text": "nemo rumfar zaɓe ta"
+  },
+  {
+   "intent": "nav.result_verify",
+   "text": "buɗe tantance sakamako"
+  },
+  {
+   "intent": "nav.settings",
+   "text": "buɗe saituna"
+  },
+  {
+   "intent": "nav.sync",
+   "text": "aika komai yanzu"
+  },
+  {
+   "intent": "nav.voteaccess",
+   "text": "bayanin zaɓe"
+  }
+ ],
+ "ig": [
+  {
+   "intent": "action.change_language",
+   "text": "gbanwee asụsụ gaa igbo"
+  },
+  {
+   "intent": "action.go_back",
+   "text": "laghachi azụ"
+  },
+  {
+   "intent": "action.help",
+   "text": "nyere m aka"
+  },
+  {
+   "intent": "action.read_aloud",
+   "text": "gụpụta nke a"
+  },
+  {
+   "intent": "action.repeat",
+   "text": "kwughachi ya"
+  },
+  {
+   "intent": "action.stop_speaking",
+   "text": "gbachi nkịtị"
+  },
+  {
+   "intent": "nav.candidates",
+   "text": "gosi m ndị na-azọ ọkwa"
+  },
+  {
+   "intent": "nav.countcam",
+   "text": "see foto akwụkwọ nsonaazụ"
+  },
+  {
+   "intent": "nav.dashboard",
+   "text": "mepee dashboard"
+  },
+  {
+   "intent": "nav.home",
+   "text": "laghachi n'ụlọ"
+  },
+  {
+   "intent": "nav.incident",
+   "text": "kọọ akụkọ ihe mere"
+  },
+  {
+   "intent": "nav.polling_unit",
+   "text": "chọta ebe ntuli aka m"
+  },
+  {
+   "intent": "nav.result_verify",
+   "text": "mepee nyocha nsonaazụ"
+  },
+  {
+   "intent": "nav.settings",
+   "text": "mepee ntọala"
+  },
+  {
+   "intent": "nav.sync",
+   "text": "zipu ihe niile ugbu a"
+  },
+  {
+   "intent": "nav.voteaccess",
+   "text": "ozi gbasara ntuli aka"
+  }
+ ]
+}

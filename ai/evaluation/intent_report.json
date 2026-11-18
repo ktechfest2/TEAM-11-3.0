@@ -1,0 +1,163 @@
+{
+  "model": {
+    "name": "awavote-nano-intent",
+    "version": "1.0.0-seed",
+    "dataset_version": "0.1.0-seed",
+    "dim": 4096,
+    "char_n": [
+      2,
+      3,
+      4
+    ],
+    "intents": [
+      "action.cancel",
+      "action.change_language",
+      "action.confirm",
+      "action.go_back",
+      "action.help",
+      "action.read_aloud",
+      "action.repeat",
+      "action.stop_speaking",
+      "nav.candidates",
+      "nav.countcam",
+      "nav.dashboard",
+      "nav.home",
+      "nav.incident",
+      "nav.polling_unit",
+      "nav.result_verify",
+      "nav.settings",
+      "nav.sync",
+      "nav.voteaccess",
+      "unknown"
+    ],
+    "languages": [
+      "en",
+      "pcm",
+      "yo",
+      "ha",
+      "ig"
+    ],
+    "thresholds": {
+      "min_confidence": 0.45,
+      "min_margin": 0.12
+    },
+    "size_bytes": 393695,
+    "status": "seed model — trained on unvalidated developer-written examples"
+  },
+  "train_utterances": 364,
+  "test_utterances": 39,
+  "per_language": {
+    "en": {
+      "n": 21,
+      "intent_accuracy": 0.714,
+      "language_id_accuracy": 0.762
+    },
+    "pcm": {
+      "n": 6,
+      "intent_accuracy": 1.0,
+      "language_id_accuracy": 0.667
+    },
+    "yo": {
+      "n": 4,
+      "intent_accuracy": 0.25,
+      "language_id_accuracy": 1.0
+    },
+    "ha": {
+      "n": 4,
+      "intent_accuracy": 0.25,
+      "language_id_accuracy": 1.0
+    },
+    "ig": {
+      "n": 4,
+      "intent_accuracy": 1.0,
+      "language_id_accuracy": 1.0
+    }
+  },
+  "errors": [
+    {
+      "text": "ya àwòrán ìwé èsì ìdìbò",
+      "lang": "yo",
+      "gold": "nav.countcam",
+      "pred": "nav.voteaccess",
+      "conf": 0.416
+    },
+    {
+      "text": "buɗe kyamara",
+      "lang": "ha",
+      "gold": "nav.countcam",
+      "pred": "nav.settings",
+      "conf": 0.276
+    },
+    {
+      "text": "tabbatar da sakamakon zaɓe",
+      "lang": "ha",
+      "gold": "nav.result_verify",
+      "pred": "nav.countcam",
+      "conf": 0.177
+    },
+    {
+      "text": "election materials are missing",
+      "lang": "en",
+      "gold": "nav.incident",
+      "pred": "nav.voteaccess",
+      "conf": 0.327
+    },
+    {
+      "text": "mo fẹ́ fi ìṣẹ̀lẹ̀ kan tó yín létí",
+      "lang": "yo",
+      "gold": "nav.incident",
+      "pred": "action.help",
+      "conf": 0.126
+    },
+    {
+      "text": "kayan zaɓe ba su iso ba",
+      "lang": "ha",
+      "gold": "nav.incident",
+      "pred": "nav.voteaccess",
+      "conf": 0.318
+    },
+    {
+      "text": "ẹ̀kọ́ fún olùdìbò",
+      "lang": "yo",
+      "gold": "nav.voteaccess",
+      "pred": "nav.candidates",
+      "conf": 0.236
+    },
+    {
+      "text": "what does this say",
+      "lang": "en",
+      "gold": "action.read_aloud",
+      "pred": "unknown",
+      "conf": 0.28
+    },
+    {
+      "text": "speak igbo",
+      "lang": "en",
+      "gold": "action.change_language",
+      "pred": "action.read_aloud",
+      "conf": 0.216
+    },
+    {
+      "text": "stop that",
+      "lang": "en",
+      "gold": "action.cancel",
+      "pred": "action.stop_speaking",
+      "conf": 0.557
+    },
+    {
+      "text": "silence",
+      "lang": "en",
+      "gold": "action.stop_speaking",
+      "pred": "nav.result_verify",
+      "conf": 0.141
+    },
+    {
+      "text": "who will win the election",
+      "lang": "en",
+      "gold": "unknown",
+      "pred": "nav.voteaccess",
+      "conf": 0.575
+    }
+  ],
+  "caveat": "Held-out split of a tiny developer-written seed set. This is a smoke test, NOT evidence of real-world language support."
+}

@@ -1,0 +1,830 @@
+[
+ {
+  "election": "presidential",
+  "state": "nigeria",
+  "entries": 19,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "abia",
+  "entries": 14,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "adamawa",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "akwa-ibom",
+  "entries": 20,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "bauchi",
+  "entries": 18,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "benue",
+  "entries": 15,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "borno",
+  "entries": 13,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "cross-river",
+  "entries": 10,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "delta",
+  "entries": 18,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "ebonyi",
+  "entries": 12,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "enugu",
+  "entries": 16,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "gombe",
+  "entries": 19,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "jigawa",
+  "entries": 14,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "kaduna",
+  "entries": 18,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "kano",
+  "entries": 20,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "katsina",
+  "entries": 12,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "kebbi",
+  "entries": 15,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "kwara",
+  "entries": 13,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "lagos",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "nasarawa",
+  "entries": 15,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "niger",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "ogun",
+  "entries": 13,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "oyo",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "plateau",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "rivers",
+  "entries": 19,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "sokoto",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "taraba",
+  "entries": 20,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "yobe",
+  "entries": 13,
+  "problems": []
+ },
+ {
+  "election": "governorship",
+  "state": "zamfara",
+  "entries": 17,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "abia",
+  "entries": 41,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "adamawa",
+  "entries": 38,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "akwa-ibom",
+  "entries": 37,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "anambra",
+  "entries": 42,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "bauchi",
+  "entries": 31,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "bayelsa",
+  "entries": 45,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "benue",
+  "entries": 39,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "borno",
+  "entries": 33,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "cross-river",
+  "entries": 25,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "delta",
+  "entries": 43,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "ebonyi",
+  "entries": 30,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "edo",
+  "entries": 26,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "ekiti",
+  "entries": 19,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "enugu",
+  "entries": 38,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "fct",
+  "entries": 20,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "gombe",
+  "entries": 37,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "imo",
+  "entries": 45,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "jigawa",
+  "entries": 31,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "kaduna",
+  "entries": 33,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "kano",
+  "entries": 48,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "katsina",
+  "entries": 23,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "kebbi",
+  "entries": 35,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "kogi",
+  "entries": 42,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "kwara",
+  "entries": 35,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "lagos",
+  "entries": 36,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "nasarawa",
+  "entries": 36,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "niger",
+  "entries": 34,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "ogun",
+  "entries": 37,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "ondo",
+  "entries": 31,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "osun",
+  "entries": 38,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "oyo",
+  "entries": 38,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "plateau",
+  "entries": 32,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "rivers",
+  "entries": 41,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "sokoto",
+  "entries": 36,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "taraba",
+  "entries": 35,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "yobe",
+  "entries": 36,
+  "problems": []
+ },
+ {
+  "election": "senate",
+  "state": "zamfara",
+  "entries": 37,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "abia",
+  "entries": 92,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "adamawa",
+  "entries": 95,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "akwa-ibom",
+  "entries": 104,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "anambra",
+  "entries": 108,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "bauchi",
+  "entries": 123,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "bayelsa",
+  "entries": 61,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "benue",
+  "entries": 118,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "borno",
+  "entries": 72,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "cross-river",
+  "entries": 63,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "delta",
+  "entries": 116,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "ebonyi",
+  "entries": 65,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "edo",
+  "entries": 51,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "ekiti",
+  "entries": 36,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "enugu",
+  "entries": 75,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "fct",
+  "entries": 37,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "gombe",
+  "entries": 64,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "imo",
+  "entries": 143,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "jigawa",
+  "entries": 87,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "kaduna",
+  "entries": 152,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "kano",
+  "entries": 253,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "katsina",
+  "entries": 104,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "kebbi",
+  "entries": 62,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "kogi",
+  "entries": 94,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "kwara",
+  "entries": 65,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "lagos",
+  "entries": 184,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "nasarawa",
+  "entries": 60,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "ogun",
+  "entries": 95,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "ondo",
+  "entries": 91,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "osun",
+  "entries": 80,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "oyo",
+  "entries": 152,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "plateau",
+  "entries": 86,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "rivers",
+  "entries": 146,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "sokoto",
+  "entries": 138,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "taraba",
+  "entries": 70,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "yobe",
+  "entries": 62,
+  "problems": []
+ },
+ {
+  "election": "house_of_reps",
+  "state": "zamfara",
+  "entries": 73,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "abia",
+  "entries": 321,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "adamawa",
+  "entries": 283,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "akwa-ibom",
+  "entries": 255,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "anambra",
+  "entries": 245,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "bauchi",
+  "entries": 367,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "bayelsa",
+  "entries": 261,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "benue",
+  "entries": 422,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "borno",
+  "entries": 218,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "cross-river",
+  "entries": 145,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "delta",
+  "entries": 343,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "ebonyi",
+  "entries": 237,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "edo",
+  "entries": 155,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "ekiti",
+  "entries": 175,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "enugu",
+  "entries": 191,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "gombe",
+  "entries": 257,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "imo",
+  "entries": 364,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "jigawa",
+  "entries": 234,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "kaduna",
+  "entries": 317,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "kano",
+  "entries": 449,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "katsina",
+  "entries": 293,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "kebbi",
+  "entries": 167,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "kogi",
+  "entries": 285,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "kwara",
+  "entries": 264,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "lagos",
+  "entries": 332,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "nasarawa",
+  "entries": 247,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "niger",
+  "entries": 314,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "ogun",
+  "entries": 299,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "ondo",
+  "entries": 191,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "osun",
+  "entries": 263,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "oyo",
+  "entries": 378,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "plateau",
+  "entries": 257,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "rivers",
+  "entries": 432,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "sokoto",
+  "entries": 292,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "taraba",
+  "entries": 284,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "yobe",
+  "entries": 213,
+  "problems": []
+ },
+ {
+  "election": "state_assembly",
+  "state": "zamfara",
+  "entries": 249,
+  "problems": []
+ }
+]

@@ -1,0 +1,667 @@
+{
+ "version": "0.1.0-seed",
+ "status": "BOOTSTRAP — NOT VALIDATED",
+ "notes": [
+  "Seed utterances for the AwaVote Nano command classifier.",
+  "The Yoruba, Hausa, Igbo and Nigerian Pidgin examples were drafted by the developers, NOT by native speakers.",
+  "They must be reviewed, corrected and greatly extended by native speakers (and with real ASR transcripts, including transcripts without tone marks) before any language is described as supported.",
+  "Diacritics are stripped during featurisation, so examples with or without tone marks map to the same features."
+ ],
+ "augment_prefixes": {
+  "en": [
+   "please",
+   "can you",
+   "i want to"
+  ],
+  "pcm": [
+   "abeg",
+   "make you",
+   "i wan"
+  ],
+  "yo": [
+   "jọ̀ọ́",
+   "ẹ jọ̀ọ́"
+  ],
+  "ha": [
+   "don allah",
+   "a taimaka"
+  ],
+  "ig": [
+   "biko",
+   "biko nụ"
+  ]
+ },
+ "intents": {
+  "nav.countcam": {
+   "en": [
+    "scan result sheet",
+    "scan this result sheet",
+    "take a picture of the result sheet",
+    "open camera",
+    "capture the result",
+    "photograph the result sheet",
+    "open count cam",
+    "snap the result",
+    "take a photo",
+    "scan the ec8a form",
+    "take picture of the result paper"
+   ],
+   "pcm": [
+    "make i snap the result sheet",
+    "scan dis result paper",
+    "open camera make i snap",
+    "snap the result",
+    "i wan snap the result sheet",
+    "bring camera make i snap",
+    "make we scan the paper"
+   ],
+   "yo": [
+    "ya fọ́tò ìwé èsì",
+    "ṣí kámẹ́rà",
+    "ya àwòrán ìwé èsì ìdìbò",
+    "mo fẹ́ ya fọ́tò ìwé èsì",
+    "ya fọ́tò èsì"
+   ],
+   "ha": [
+    "ɗauki hoton takardar sakamako",
+    "buɗe kyamara",
+    "ina so in ɗauki hoton sakamako",
+    "ɗauki hoto",
+    "ɗauki hoton sakamakon zaɓe"
+   ],
+   "ig": [
+    "see foto akwụkwọ nsonaazụ",
+    "mepee kamera",
+    "achọrọ m ise foto nsonaazụ",
+    "see onyonyo akwụkwọ nsonaazụ",
+    "see foto"
+   ]
+  },
+  "nav.result_verify": {
+   "en": [
+    "open result verification",
+    "verify the results",
+    "check the result",
+    "verify election result",
+    "check if the figures add up",
+    "result verify",
+    "enter result figures",
+    "confirm the vote count",
+    "check the numbers on the sheet"
+   ],
+   "pcm": [
+    "make i check the result",
+    "check if the result correct",
+    "verify the result",
+    "i wan confirm the vote count",
+    "open where dem dey check result",
+    "check if the figure balance"
+   ],
+   "yo": [
+    "ṣí àyẹ̀wò èsì",
+    "ṣàyẹ̀wò èsì ìdìbò",
+    "mo fẹ́ ṣàyẹ̀wò èsì",
+    "ṣe àrídájú èsì ìbò",
+    "ka iye ìbò náà wò"
+   ],
+   "ha": [
+    "buɗe tantance sakamako",
+    "tabbatar da sakamakon zaɓe",
+    "ina so in duba sakamako",
+    "duba ƙidayar ƙuri'u",
+    "tantance sakamako"
+   ],
+   "ig": [
+    "mepee nyocha nsonaazụ",
+    "nyochaa nsonaazụ ntuli aka",
+    "achọrọ m inyocha nsonaazụ",
+    "lelee ọnụ ọgụgụ votu",
+    "kwado nsonaazụ"
+   ]
+  },
+  "nav.polling_unit": {
+   "en": [
+    "find my polling unit",
+    "where is my polling unit",
+    "where do i vote",
+    "polling unit location",
+    "search for polling unit",
+    "look up my voting centre",
+    "show polling units near me"
+   ],
+   "pcm": [
+    "where my polling unit dey",
+    "where i go vote",
+    "find my polling unit for me",
+    "show me where dem dey vote",
+    "which place i go vote"
+   ],
+   "yo": [
+    "wá ibùdó ìdìbò mi",
+    "níbo ni ibùdó ìdìbò mi wà",
+    "níbo ni mo ti máa dìbò",
+    "fi ibùdó ìdìbò hàn mí"
+   ],
+   "ha": [
+    "nemo rumfar zaɓe ta",
+    "ina rumfar zaɓe ta take",
+    "a ina zan yi zaɓe",
+    "nuna min rumfar zaɓe"
+   ],
+   "ig": [
+    "chọta ebe ntuli aka m",
+    "ebee ka ebe ntuli aka m dị",
+    "ebee ka m ga-atu vootu",
+    "gosi m ebe ntuli aka"
+   ]
+  },
+  "nav.incident": {
+   "en": [
+    "report an incident",
+    "report violence",
+    "i want to report a problem",
+    "someone is buying votes",
+    "report intimidation",
+    "there is fighting at the polling unit",
+    "election materials are missing",
+    "report vote buying",
+    "report a problem at the polling unit"
+   ],
+   "pcm": [
+    "i wan report wahala",
+    "dem dey buy vote here",
+    "fight dey happen for polling unit",
+    "dem dey threaten people",
+    "material no reach",
+    "make i report something",
+    "wahala dey here"
+   ],
+   "yo": [
+    "jábọ̀ ìṣẹ̀lẹ̀",
+    "mo fẹ́ fi ìṣẹ̀lẹ̀ kan tó yín létí",
+    "wọ́n ń ra ìbò",
+    "ìjà ń ṣẹlẹ̀ ní ibùdó ìdìbò",
+    "jábọ̀ ìwà ipá",
+    "ohun èlò ìdìbò kò sí"
+   ],
+   "ha": [
+    "kai rahoton lamari",
+    "ina so in kai rahoto",
+    "ana sayen ƙuri'a",
+    "ana faɗa a rumfar zaɓe",
+    "kai rahoton tashin hankali",
+    "kayan zaɓe ba su iso ba"
+   ],
+   "ig": [
+    "kọọ akụkọ ihe mere",
+    "achọrọ m ịkọ ihe mere",
+    "ha na-azụ votu",
+    "ọgụ na-eme n'ebe ntuli aka",
+    "kọọ akụkọ ime ihe ike",
+    "ngwa ntuli aka erughị"
+   ]
+  },
+  "nav.voteaccess": {
+   "en": [
+    "election information",
+    "how do i vote",
+    "voter education",
+    "tell me about the election",
+    "election timetable",
+    "what does accreditation mean",
+    "voting procedure",
+    "frequently asked questions",
+    "when is the election"
+   ],
+   "pcm": [
+    "how i go take vote",
+    "tell me about the election",
+    "wetin i need to vote",
+    "when election go happen",
+    "explain how voting dey work"
+   ],
+   "yo": [
+    "ìwífún nípa ìdìbò",
+    "báwo ni mo ṣe máa dìbò",
+    "ẹ̀kọ́ fún olùdìbò",
+    "ìgbà wo ni ìdìbò",
+    "ṣàlàyé ìlànà ìdìbò"
+   ],
+   "ha": [
+    "bayanin zaɓe",
+    "yaya zan yi zaɓe",
+    "ilimin masu zaɓe",
+    "yaushe ne zaɓe",
+    "bayyana yadda ake zaɓe"
+   ],
+   "ig": [
+    "ozi gbasara ntuli aka",
+    "kedu ka m ga-esi tuo vootu",
+    "mmụta maka ndị ntuli aka",
+    "olee mgbe ntuli aka ga-eme",
+    "kọwaa usoro ntuli aka"
+   ]
+  },
+  "nav.dashboard": {
+   "en": [
+    "open transparency dashboard",
+    "show the dashboard",
+    "show statistics",
+    "show all submissions",
+    "show discrepancies",
+    "election overview"
+   ],
+   "pcm": [
+    "show me the dashboard",
+    "show wetin don happen so far",
+    "how many reports don enter"
+   ],
+   "yo": [
+    "ṣí pátákó ìfihàn",
+    "fi àkójọpọ̀ hàn mí",
+    "fi ìṣirò hàn mí"
+   ],
+   "ha": [
+    "buɗe allon bayani",
+    "nuna min ƙididdiga",
+    "nuna taƙaitaccen bayani"
+   ],
+   "ig": [
+    "mepee dashboard",
+    "gosi m ọnụ ọgụgụ",
+    "gosi m nchịkọta"
+   ]
+  },
+  "nav.sync": {
+   "en": [
+    "sync now",
+    "upload my evidence",
+    "check sync status",
+    "send saved reports",
+    "what is waiting to upload",
+    "show upload queue"
+   ],
+   "pcm": [
+    "send everything wey i save",
+    "upload am now",
+    "wetin never upload"
+   ],
+   "yo": [
+    "fi gbogbo rẹ̀ ránṣẹ́",
+    "gbé ẹ̀rí sókè",
+    "kí ló kù láti fi ránṣẹ́"
+   ],
+   "ha": [
+    "aika komai yanzu",
+    "loda shaida",
+    "me ya rage ba a aika ba"
+   ],
+   "ig": [
+    "zipu ihe niile ugbu a",
+    "bulite ihe akaebe",
+    "gịnị ka a na-ezipubeghị"
+   ]
+  },
+  "nav.settings": {
+   "en": [
+    "open settings",
+    "make the text bigger",
+    "accessibility settings",
+    "turn on high contrast",
+    "increase font size"
+   ],
+   "pcm": [
+    "make the writing big",
+    "open settings",
+    "make am clear well well"
+   ],
+   "yo": [
+    "ṣí ètò",
+    "mú ọ̀rọ̀ tóbi sí i",
+    "ètò ìrọ̀rùn"
+   ],
+   "ha": [
+    "buɗe saituna",
+    "ƙara girman rubutu",
+    "saitunan sauƙin amfani"
+   ],
+   "ig": [
+    "mepee ntọala",
+    "mee ka edemede buru ibu",
+    "ntọala nnweta"
+   ]
+  },
+  "nav.home": {
+   "en": [
+    "go home",
+    "go to home screen",
+    "main menu",
+    "take me home",
+    "start page"
+   ],
+   "pcm": [
+    "carry me go home",
+    "main menu",
+    "take me go first page"
+   ],
+   "yo": [
+    "lọ sí ojú ilé",
+    "padà sí ìbẹ̀rẹ̀",
+    "àkójọ àṣàyàn àkọ́kọ́"
+   ],
+   "ha": [
+    "koma gida",
+    "je zuwa shafin farko",
+    "babban menu"
+   ],
+   "ig": [
+    "laghachi n'ụlọ",
+    "gaa na ihuenyo mbụ",
+    "menu isi"
+   ]
+  },
+  "action.go_back": {
+   "en": [
+    "go back",
+    "back",
+    "previous page",
+    "return",
+    "go to previous screen"
+   ],
+   "pcm": [
+    "go back",
+    "comot for here",
+    "return back"
+   ],
+   "yo": [
+    "padà sẹ́yìn",
+    "padà",
+    "ojú ìwé tó kọjá"
+   ],
+   "ha": [
+    "koma baya",
+    "baya",
+    "shafin da ya gabata"
+   ],
+   "ig": [
+    "laghachi azụ",
+    "azụ",
+    "peeji gara aga"
+   ]
+  },
+  "action.read_aloud": {
+   "en": [
+    "read this aloud",
+    "read it to me",
+    "read the page",
+    "speak this",
+    "read out loud",
+    "what does this say"
+   ],
+   "pcm": [
+    "read am for me",
+    "talk wetin dey here",
+    "read dis one make i hear"
+   ],
+   "yo": [
+    "ka èyí sókè",
+    "kà á fún mi",
+    "ka ojú ìwé yìí"
+   ],
+   "ha": [
+    "karanta wannan da ƙarfi",
+    "karanta min",
+    "karanta shafin nan"
+   ],
+   "ig": [
+    "gụpụta nke a",
+    "gụọrọ m ya",
+    "gụọ peeji a"
+   ]
+  },
+  "action.change_language": {
+   "en": [
+    "change language to yoruba",
+    "switch to hausa",
+    "speak igbo",
+    "use pidgin",
+    "change language",
+    "english please",
+    "set language to english"
+   ],
+   "pcm": [
+    "change am to pidgin",
+    "make e dey talk yoruba",
+    "i wan hear hausa"
+   ],
+   "yo": [
+    "yí èdè padà sí yorùbá",
+    "sọ èdè hausa",
+    "lo èdè gẹ̀ẹ́sì"
+   ],
+   "ha": [
+    "canza harshe zuwa hausa",
+    "yi magana da turanci",
+    "canza zuwa yarbanci"
+   ],
+   "ig": [
+    "gbanwee asụsụ gaa igbo",
+    "jiri bekee",
+    "gbanwee asụsụ"
+   ]
+  },
+  "action.repeat": {
+   "en": [
+    "repeat",
+    "say that again",
+    "repeat that",
+    "again please",
+    "i didn't hear"
+   ],
+   "pcm": [
+    "talk am again",
+    "repeat am",
+    "i no hear"
+   ],
+   "yo": [
+    "tún un sọ",
+    "sọ ọ́ lẹ́ẹ̀kan sí i",
+    "mi ò gbọ́"
+   ],
+   "ha": [
+    "maimaita",
+    "sake faɗa",
+    "ban ji ba"
+   ],
+   "ig": [
+    "kwughachi ya",
+    "kwuo ya ọzọ",
+    "anụghị m"
+   ]
+  },
+  "action.help": {
+   "en": [
+    "help",
+    "what can i say",
+    "what can you do",
+    "voice commands",
+    "how do i use this app"
+   ],
+   "pcm": [
+    "wetin i fit talk",
+    "help me",
+    "how i go use dis app"
+   ],
+   "yo": [
+    "ràn mí lọ́wọ́",
+    "kí ni mo lè sọ",
+    "báwo ni mo ṣe lè lo áàpù yìí"
+   ],
+   "ha": [
+    "taimako",
+    "me zan iya faɗa",
+    "yaya ake amfani da wannan manhaja"
+   ],
+   "ig": [
+    "nyere m aka",
+    "gịnị ka m nwere ike ikwu",
+    "kedu ka m ga-esi jiri ngwa a"
+   ]
+  },
+  "action.confirm": {
+   "en": [
+    "yes",
+    "yes please",
+    "confirm",
+    "okay do it",
+    "correct",
+    "go ahead"
+   ],
+   "pcm": [
+    "yes o",
+    "na so",
+    "do am",
+    "correct"
+   ],
+   "yo": [
+    "bẹ́ẹ̀ni",
+    "ó dáa",
+    "ṣe é"
+   ],
+   "ha": [
+    "eh",
+    "to",
+    "yi shi",
+    "daidai ne"
+   ],
+   "ig": [
+    "ee",
+    "ọ dị mma",
+    "mee ya",
+    "eziokwu"
+   ]
+  },
+  "action.cancel": {
+   "en": [
+    "no",
+    "cancel",
+    "stop that",
+    "don't do it",
+    "never mind"
+   ],
+   "pcm": [
+    "no o",
+    "leave am",
+    "cancel am",
+    "no do am"
+   ],
+   "yo": [
+    "rárá",
+    "fagilé",
+    "má ṣe é"
+   ],
+   "ha": [
+    "a'a",
+    "soke",
+    "kar ka yi"
+   ],
+   "ig": [
+    "mba",
+    "kagbuo",
+    "emela ya"
+   ]
+  },
+  "action.stop_speaking": {
+   "en": [
+    "stop talking",
+    "be quiet",
+    "stop reading",
+    "silence",
+    "pause"
+   ],
+   "pcm": [
+    "keep quiet",
+    "stop to dey talk"
+   ],
+   "yo": [
+    "dákẹ́",
+    "dúró kíkà"
+   ],
+   "ha": [
+    "yi shiru",
+    "daina karantawa"
+   ],
+   "ig": [
+    "gbachi nkịtị",
+    "kwụsị ịgụ"
+   ]
+  },
+  "unknown": {
+   "en": [
+    "what is the weather today",
+    "tell me a joke",
+    "play music",
+    "who will win the election",
+    "call my mother",
+    "buy airtime",
+    "what is the price of rice",
+    "who should i vote for",
+    "send money",
+    "which party is the best"
+   ],
+   "pcm": [
+    "tell me joke",
+    "who go win",
+    "wetin una chop",
+    "play music for me",
+    "which party i go vote"
+   ],
+   "yo": [
+    "ta ni yóò borí",
+    "kọ orin",
+    "báwo ni ojú ọjọ́ ṣe rí"
+   ],
+   "ha": [
+    "wa zai ci zaɓe",
+    "kunna waƙa",
+    "yaya yanayi yake"
+   ],
+   "ig": [
+    "onye ga-emeri",
+    "kpọọ egwu",
+    "kedu ka ihu igwe dị"
+   ]
+  },
+  "nav.candidates": {
+   "en": [
+    "show the candidates",
+    "who are the candidates",
+    "list of candidates",
+    "candidates for governor",
+    "who is contesting",
+    "show presidential candidates"
+   ],
+   "pcm": [
+    "show me the candidates",
+    "who dey contest",
+    "who dey run for governor",
+    "make i see the candidates"
+   ],
+   "yo": [
+    "fi àwọn olùdíje hàn mí",
+    "ta ni àwọn olùdíje",
+    "àwọn olùdíje gómìnà"
+   ],
+   "ha": [
+    "nuna min 'yan takara",
+    "su wanene 'yan takara",
+    "'yan takarar gwamna"
+   ],
+   "ig": [
+    "gosi m ndị na-azọ ọkwa",
+    "ndị ole na-azọ ọkwa",
+    "ndị na-azọ ọkwa gọvanọ"
+   ]
+  }
+ }
+}

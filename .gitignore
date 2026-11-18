@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Server runtime data
+server/awavote.db
+server/awavote.db-*
+server/storage/
+server/.env
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+/docs

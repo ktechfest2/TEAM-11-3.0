@@ -1,0 +1,598 @@
+{
+ "election": "presidential",
+ "source_manifest": "server/data/inec/sources_2027.json",
+ "notes": [
+  "Niger State House of Representatives final list is not linked on INEC's index page as of 2026-11-18."
+ ],
+ "entries": [
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 1,
+   "party": "A",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": null,
+    "age": null,
+    "gender": null,
+    "pwd": null,
+    "remarks": "COURT ORDER"
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": null,
+    "age": null,
+    "gender": null,
+    "pwd": null,
+    "remarks": "COURT ORDER"
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": true
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 2,
+   "party": "AA",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "RUFAI ADEKUNLE OMO-AJE",
+    "age": 71,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "SHEHU HUSSAINI",
+    "age": 56,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 3,
+   "party": "AAC",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "SOWORE OMOYELE",
+    "age": 55,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "MAGASHI HARUNA GARBA",
+    "age": 49,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 4,
+   "party": "ADC",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ABUBAKAR ATIKU",
+    "age": 79,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "AMAECHI CHIBUIKE ROTIMI",
+    "age": 61,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 5,
+   "party": "ADP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ABBAS-BIN ALIYU",
+    "age": 44,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "IKE CHINAZAM",
+    "age": 50,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 6,
+   "party": "APC",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "TINUBU BOLA AHMED",
+    "age": 74,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "SHETTIMA KASHIM",
+    "age": 59,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 7,
+   "party": "APM",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "MAKINDE OLUSEYI ABIODUN",
+    "age": 58,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "MUSA LAWAL DAURA",
+    "age": 73,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 8,
+   "party": "APP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "YUSUF KABIRU",
+    "age": 54,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "OFORDILE PEACE EGOBIA",
+    "age": 47,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 9,
+   "party": "BP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ADENUGA SUNDAY",
+    "age": 52,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "MUSTAPHA USMAN TURAKI",
+    "age": 40,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 10,
+   "party": "DLA",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ADEBISI MOSES OLUSOJI",
+    "age": 35,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "ABUBAKAR NAFISAT USAKU",
+    "age": 35,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 11,
+   "party": "LP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "OKEREKE SUNDAY CHIBUZO",
+    "age": 43,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "KONTO HAJJA BINTU",
+    "age": 54,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 12,
+   "party": "NDC",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "OBI PETER GREGORY",
+    "age": 65,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "MUSA MOHAMMED RABIU KWANKWASO",
+    "age": 69,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 13,
+   "party": "NDP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "OKWORI ADA ELIZABETH FREDRICK",
+    "age": 48,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "CHUKWUEMEKA UCHENNA ANTHONY",
+    "age": 48,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 14,
+   "party": "NRM",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "OKEREKE NKEM ESTHER",
+    "age": 43,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "SULAIMAN NASIR MUHAMMED",
+    "age": 35,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 15,
+   "party": "PDP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ONOR SANDY OJANG",
+    "age": 60,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "UMARU BABANGIDA",
+    "age": 61,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 16,
+   "party": "PRP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "DUKE DONALD",
+    "age": 64,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "MOHAMMED SULE",
+    "age": 70,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 17,
+   "party": "SDP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "ADEBAYO ADEWOLE EBENEZER",
+    "age": 54,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "BUGAJE USMAN MUHAMMED",
+    "age": 74,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 18,
+   "party": "YPP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "AGADA PETER ADA",
+    "age": 54,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "KEY PATIENCE NDIDI",
+    "age": 52,
+    "gender": "F",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  },
+  {
+   "election": "presidential",
+   "state": "nigeria",
+   "sn": 19,
+   "party": "ZLP",
+   "constituency": null,
+   "candidate": {
+    "role": "candidate",
+    "position": "Presidential",
+    "name": "NWANYANWU DANIEL DABERECHUKWU",
+    "age": 66,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "running_mate": {
+    "role": "running_mate",
+    "position": "Vice-Presidential",
+    "name": "HASSAN KHALID",
+    "age": 37,
+    "gender": "M",
+    "pwd": "None",
+    "remarks": null
+   },
+   "source": {
+    "url": "https://www.inecnigeria.org/documents/uploads/2026/10/b5af9099-864c-4d5e-924d-e1a2c771c529-final-list-presidential.pdf",
+    "sha256": "89760a49c14ff64a94d2b5d21f649aa82a878305613c76ee7dd99f974f0eb915",
+    "fetched_at": "2026-11-18T12:02:02+00:00"
+   },
+   "court_order": false
+  }
+ ]
+}
