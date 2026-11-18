@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react";
 import { useApp } from "@/hooks/useApp";
 import PageHeader from "@/components/layout/PageHeader";
-import { Button, Card, Notice, Pill, Toggle } from "@/components/ui";
+import { Button, Card, Icon, Notice, Pill, Toggle } from "@/components/ui";
 import { LANGUAGES } from "@/lib/i18n/languages";
 import { languageSupport } from "@/components/languages/status";
 import { installPack, removePack as removeVoicePack } from "@/lib/nano/voicepack";
 import { PACKS, removePack } from "@/lib/nano/packs";
+import { applyTheme } from "@/components/layout/ThemeToggle";
+import SpeechStatus, { SpeechAttribution } from "@/components/voice/SpeechStatus";
 
 const SIZES = [["md", "A"], ["lg", "A+"], ["xl", "A++"], ["xxl", "A+++"]];
 
@@ -117,26 +119,17 @@ export default function SettingsPage() {
       <PageHeader title={t("settings.title")} />
 
       <Card>
-        <fieldset>
-          <legend className="mb-2 text-lg font-bold">{t("settings.language")}</legend>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {LANGUAGES.map((l) => (
-              <label key={l.code} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-3 ${settings.language === l.code ? "border-brand bg-brand-soft" : "border-line"}`}>
-                <input type="radio" name="lang" value={l.code} checked={settings.language === l.code} onChange={() => updateSettings({ language: l.code })} className="h-5 w-5 accent-[var(--brand)]" />
-                <span lang={l.bcp47} className="min-w-0">
-                  <span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}
-                  <SupportBadges code={l.code} />
-                </span>
-              </label>
+        <fieldset className="mb-4">
+          <legend className="mb-2 text-lg font-bold">{t("settings.theme")}</legend>
+          <div className="grid grid-cols-3 gap-1 rounded-2xl bg-surface-2 p-1" role="radiogroup">
+            {[["system", "settings"], ["light", "sun"], ["dark", "moon"]].map(([v, icon]) => (
+              <button key={v} type="button" role="radio" aria-checked={(settings.theme || "system") === v} onClick={() => applyTheme(updateSettings, v)}
+                className={`flex min-h-12 items-center justify-center gap-2 rounded-xl text-sm font-semibold transition ${(settings.theme || "system") === v ? "bg-surface text-ink shadow-sm ring-1 ring-line" : "text-muted"}`}>
+                <Icon name={icon} size={18} /> {t(`theme.${v}`)}
+              </button>
             ))}
           </div>
         </fieldset>
-        <p className="mt-3 text-sm text-muted">{t("lang.explainer")}</p>
-        <VoicePackRow />
-        <a href="/languages" className="mt-3 inline-block font-semibold text-brand underline">{t("lang.dashboardLink")}</a>
-      </Card>
-
-      <Card>
         <fieldset>
           <legend className="mb-2 text-lg font-bold">{t("settings.textSize")}</legend>
           <div className="grid grid-cols-4 gap-2">
@@ -158,7 +151,43 @@ export default function SettingsPage() {
       </Card>
 
       <Card>
-        <h2 className="text-lg font-bold">{t("voice.packsTitle")}</h2>
+        <fieldset>
+          <legend className="mb-2 text-lg font-bold">{t("settings.language")}</legend>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {LANGUAGES.filter((l) => l.tier === 1 || l.code === settings.language).map((l) => (
+              <label key={l.code} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-3 ${settings.language === l.code ? "border-brand bg-brand-soft" : "border-line"}`}>
+                <input type="radio" name="lang" value={l.code} checked={settings.language === l.code} onChange={() => updateSettings({ language: l.code })} className="h-5 w-5 accent-[var(--brand)]" />
+                <span lang={l.bcp47} className="min-w-0">
+                  <span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}
+                  <SupportBadges code={l.code} />
+                </span>
+              </label>
+            ))}
+          </div>
+          <details className="group mt-3 rounded-2xl ring-1 ring-line">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 font-semibold">
+              {t("lang.more", { n: LANGUAGES.filter((l) => l.tier === 2 && l.code !== settings.language).length })}
+              <Icon name="chevronRight" size={20} className="transition group-open:rotate-90" />
+            </summary>
+            <div className="grid gap-2 p-2 sm:grid-cols-2">
+              {LANGUAGES.filter((l) => l.tier === 2 && l.code !== settings.language).map((l) => (
+                <label key={l.code} className="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl px-3 hover:bg-surface-2">
+                  <input type="radio" name="lang" value={l.code} checked={false} onChange={() => updateSettings({ language: l.code })} className="h-5 w-5 accent-[var(--brand)]" />
+                  <span lang={l.bcp47} className="min-w-0"><span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}<SupportBadges code={l.code} /></span>
+                </label>
+              ))}
+            </div>
+          </details>
+        </fieldset>
+        <p className="mt-3 text-sm text-muted">{t("lang.explainer")}</p>
+        <VoicePackRow />
+        <a href="/languages" className="mt-3 inline-block font-semibold text-brand underline">{t("lang.dashboardLink")}</a>
+      </Card>
+
+      <Card>
+        <h2 className="text-lg font-bold">{t("speech.title")}</h2>
+        <div className="mt-3 flex flex-col gap-2"><SpeechStatus showReady /><SpeechAttribution /></div>
+        <h3 className="mt-5 font-bold">{t("voice.packsTitle")}</h3>
         <ul className="mt-3 flex flex-col gap-3">{PACKS.map((p) => <PackRow key={p.id} pack={p} />)}</ul>
         <Toggle label={t("settings.onlineSpeech")} hint={t("settings.onlineSpeechHint")} checked={settings.allowOnlineSpeech} onChange={(v) => updateSettings({ allowOnlineSpeech: v })} />
         {packs["tts-mms-yor"] && <Toggle label={t("settings.mmsVoice")} checked={settings.mmsVoice} onChange={(v) => updateSettings({ mmsVoice: v })} />}

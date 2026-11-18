@@ -124,7 +124,7 @@ export function PromptsTab({ lang, published }) {
         <p className="mt-1 text-sm text-muted" lang="en">English: {SOURCE_MESSAGES[key]}</p>
       </Card>
       {rec.state === "recording" && <Level level={rec.level} />}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      { }
       {rec.take && <audio controls src={rec.take.url} className="w-full" />}
       <div className="grid gap-2 sm:grid-cols-3">
         <Button variant="secondary" disabled={i === 0} onClick={() => { rec.reset(); setI(i - 1); }}>Previous</Button>
@@ -179,7 +179,7 @@ export function CommandsTab({ lang }) {
       </Card>
       <TextArea label={`Type what you will say in ${lang}`} value={said} onChange={setSaid} rows={2} />
       {rec.state === "recording" && <Level level={rec.level} />}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      { }
       {rec.take && <audio controls src={rec.take.url} className="w-full" />}
       <div className="grid gap-2 sm:grid-cols-2">
         <Button icon={rec.state === "recording" ? "stop" : "mic"} disabled={!consent || !said.trim()}
@@ -299,7 +299,7 @@ export function ReviewTab({ lang, meId }) {
         <Card key={r.id}>
           <p className="font-mono text-xs text-muted">{r.kind} · {r.key} · by {r.speaker}</p>
           <p className="font-semibold" lang={lang}>“{r.transcript}”</p>
-          {audio[r.id] ? <audio controls src={audio[r.id]} className="mt-2 w-full" /> /* eslint-disable-line jsx-a11y/media-has-caption */
+          {audio[r.id] ? <audio controls src={audio[r.id]} className="mt-2 w-full" />  
             : <Button size="md" variant="secondary" icon="play" className="mt-2" onClick={async () => setAudio({ ...audio, [r.id]: await api.recordingAudioUrl(r.id) })}>Listen</Button>}
           <div className="mt-2 grid grid-cols-2 gap-2">
             <Button size="md" onClick={() => decide("r", r.id, true)}>Approve</Button>

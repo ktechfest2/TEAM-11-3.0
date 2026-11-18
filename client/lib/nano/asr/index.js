@@ -4,43 +4,36 @@
  *   supports(lang) -> boolean
  * Providers are independent and replaceable (e.g. by a Nigerian-language fine-tuned model).
  */
-import { getTransformers } from "../transformers";
+import { loadRecognizer, releaseRecognizer } from "../speech";
 import { hasSpeech, recordUtterance } from "./recorder";
 import { classifyTemplates, mfcc } from "./features";
 import { getPack } from "../voicepack";
 
-const WHISPER_LANG = { en: "english", pcm: "english", yo: "yoruba", ha: "hausa" }; // no Igbo in Whisper
-
-let whisper = null;
-
-export const whisperLocal = {
-  id: "whisper-local", offline: true, packId: "asr-whisper-tiny",
-  supports: (lang) => lang in WHISPER_LANG,
-  async load(onProgress) {
-    if (whisper) return whisper;
-    const { pipeline } = await getTransformers();
-    whisper = await pipeline("automatic-speech-recognition", "onnx-community/whisper-tiny", {
-      dtype: "q8", device: "wasm", progress_callback: onProgress,
-    });
-    return whisper;
-  },
-  async listen({ lang, signal, onLevel, onState }) {
-    onState?.("loading");
-    const asr = await this.load();
-    onState?.("listening");
-    const pcm = await recordUtterance({ onLevel, signal });
-    if (!hasSpeech(pcm)) return { text: "", confidence: null, provider: this.id, offline: true, latencyMs: 0, noSpeech: true };
-    onState?.("transcribing");
-    const t0 = performance.now();
-    const out = await asr(pcm, { language: WHISPER_LANG[lang] ?? "english", task: "transcribe", chunk_length_s: 30 });
-    // Whisper (via Transformers.js) exposes no calibrated confidence; downstream intent confidence gates actions.
-    return { text: (out.text || "").trim(), confidence: null, provider: this.id, offline: true, latencyMs: Math.round(performance.now() - t0) };
-  },
-  async release() {
-    await whisper?.dispose?.();
-    whisper = null;
-  },
-};
+/**
+ * On-device Whisper-family recogniser (N-ATLaS when hosted, else Whisper-tiny), chosen and
+ * set up automatically by ../speech.js.
+ */
+export function speechLocal(choice) {
+  return {
+    id: choice.natlas ? "natlas-local" : "whisper-local", offline: true,
+    async listen({ signal, onLevel, onState }) {
+      onState?.("loading");
+      const asr = await loadRecognizer(choice);
+      onState?.("listening");
+      const pcm = await recordUtterance({ onLevel, signal });
+      if (!hasSpeech(pcm)) return { text: "", confidence: null, provider: this.id, offline: true, latencyMs: 0, noSpeech: true };
+      onState?.("transcribing");
+      const t0 = performance.now();
+      const opts = { task: "transcribe", chunk_length_s: 30 };
+      if (choice.language) opts.language = choice.language;
+      const out = await asr(pcm, opts);
+      // Whisper exposes no calibrated confidence via Transformers.js; intent confidence gates actions.
+      return { text: (out.text || "").trim(), confidence: null, provider: this.id, model: choice.name, offline: true,
+        latencyMs: Math.round(performance.now() - t0) };
+    },
+    release: releaseRecognizer,
+  };
+}
 
 /**
  * Browser speech recognition. In Chrome this sends audio to an ONLINE Google service, so
@@ -98,12 +91,12 @@ export const templatesLocal = {
 };
 
 /**
- * Pick a provider: native-speaker templates for the language first (closed vocabulary, works
- * for any language), then the offline Whisper pack, then the online one only if opted in.
+ * Pick a provider: the automatically-installed speech model first, then native-speaker
+ * command templates (any language), then the browser's online service only if opted in.
  */
-export function selectRecognizer({ lang, allowOnline, whisperInstalled, templatePack }) {
+export function selectRecognizer({ allowOnline, speech, templatePack }) {
+  if (speech?.status === "ready" && speech.model) return speechLocal(speech.model);
   if (templatePack) return templatesLocal;
-  if (whisperInstalled && whisperLocal.supports(lang)) return whisperLocal;
   if (allowOnline && navigator.onLine && webSpeechOnline.available()) return webSpeechOnline;
   return null;
 }

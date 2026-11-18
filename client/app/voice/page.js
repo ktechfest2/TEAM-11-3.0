@@ -4,10 +4,11 @@ import { useApp } from "@/hooks/useApp";
 import PageHeader from "@/components/layout/PageHeader";
 import { ButtonLink, Card, Notice } from "@/components/ui";
 import { deviceVoiceFor } from "@/lib/nano/tts";
+import SpeechStatus, { SpeechAttribution } from "@/components/voice/SpeechStatus";
 
 /** Example commands come from the same seed dataset the classifier was trained on. */
 export default function VoiceHelpPage() {
-  const { t, settings, packs } = useApp();
+  const { t, settings } = useApp();
   const [examples, setExamples] = useState([]);
   const [hasVoice, setHasVoice] = useState(null);
 
@@ -22,9 +23,8 @@ export default function VoiceHelpPage() {
   return (
     <div className="flex flex-col gap-4" data-speak-root>
       <PageHeader title={t("nav.voice")} subtitle={t("voice.notChat")} />
-      {!packs["asr-whisper-tiny"] && !settings.allowOnlineSpeech && (
-        <Notice tone="warn">{t("voice.asrUnavailable")}</Notice>
-      )}
+      <SpeechStatus showReady />
+      <SpeechAttribution />
       {hasVoice === false && <Notice tone="warn">{t("voice.ttsUnavailable")}</Notice>}
       <Card>
         <h2 className="text-lg font-bold">{t("voice.examples")}</h2>

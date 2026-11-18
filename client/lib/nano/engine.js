@@ -4,7 +4,7 @@
  *   -> confirmation (sensitive actions) -> execution -> concise spoken response.
  *
  * UI-framework independent. The host app supplies:
- *   getSettings()     { language, speechRate, allowOnlineSpeech, mmsVoice, whisperInstalled }
+ *   getSettings()     { language, speechRate, allowOnlineSpeech, mmsVoice, speech, voicePacks }
  *   execute(action)   performs navigate / set_language / go_back / read_aloud / sync_now
  */
 import { classify, release as releaseIntent, warmup } from "./intent/classifier";
@@ -50,7 +50,7 @@ export class NanoEngine extends EventTarget {
   /** Capture one spoken command. Returns the transcript (also emitted) so the user can correct it. */
   async listen() {
     const s = this.getSettings();
-    const rec = selectRecognizer({ lang: s.language, allowOnline: s.allowOnlineSpeech, whisperInstalled: s.whisperInstalled,
+    const rec = selectRecognizer({ allowOnline: s.allowOnlineSpeech, speech: s.speech,
       templatePack: !!s.voicePacks?.[s.language]?.commands });
     if (!rec) {
       this.emit("asr-unavailable", { lang: s.language });

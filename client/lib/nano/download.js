@@ -1,6 +1,5 @@
 /** Download (and cache) a model pack, reporting aggregate progress 0-100. */
 import { getTransformers } from "./transformers";
-import { whisperLocal } from "./asr";
 
 function progressAggregator(onProgress) {
   const files = new Map();
@@ -15,11 +14,6 @@ function progressAggregator(onProgress) {
 
 export async function downloadPack(pack, onProgress = () => {}) {
   const cb = progressAggregator(onProgress);
-  if (pack.id === "asr-whisper-tiny") {
-    await whisperLocal.load(cb);
-    await whisperLocal.release(); // cached on disk; free memory until actually used
-    return;
-  }
   const { pipeline } = await getTransformers();
   const task = pack.kind === "tts" ? "text-to-speech" : "feature-extraction";
   const p = await pipeline(task, pack.hfModel, { dtype: "q8", device: "wasm", progress_callback: cb });

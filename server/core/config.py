@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     environment: str = "development"
     database_url: str = f"sqlite:///{SERVER_DIR / 'awavote.db'}"
     storage_dir: Path = SERVER_DIR / "storage"
+    # Converted on-device speech models (see ai/speech_to_text/convert_natlas.py), served at /models/.
+    models_dir: Path = SERVER_DIR / "data" / "models"
     # Origins allowed to call the API from a browser (the PWA).
     cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
     max_upload_bytes: int = 15 * 1024 * 1024

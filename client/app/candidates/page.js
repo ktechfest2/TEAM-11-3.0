@@ -40,7 +40,11 @@ export default function CandidatesPage() {
       <Card><ContestPicker value={contest} onChange={setContest} /></Card>
       <Notice tone="info">{t("candidates.neutral")}</Notice>
 
-      {contestComplete(contest) && ballot === undefined && <p role="status">{t("common.loading")}</p>}
+      {contestComplete(contest) && ballot === undefined && (
+        <div role="status" aria-label={t("common.loading")} className="flex flex-col gap-2">
+          {[0, 1, 2].map((i) => <div key={i} className="skeleton h-28" />)}
+        </div>
+      )}
       {ballot === null && <Notice tone="warn">{t("elections.dataUnavailable")}</Notice>}
       {ballot && (
         <>
@@ -52,7 +56,7 @@ export default function CandidatesPage() {
           <ul className="flex flex-col gap-2">
             {entries.map((e) => (
               <li key={`${e.party}-${e.sn}`}>
-                <Card as="article">
+                <Card as="article" className="lift">
                   <div className="flex flex-wrap items-center gap-2">
                     <Pill tone="info">{e.party}</Pill>
                     <span className="text-sm text-muted">{partyNames[e.party]}</span>
@@ -61,7 +65,12 @@ export default function CandidatesPage() {
                     <p className="mt-2 font-semibold">{t("elections.courtOrder")}</p>
                   ) : (
                     <>
-                      <p className="mt-2 text-xl font-bold">{displayName(e.candidate?.name)}</p>
+                      <div className="mt-3 flex items-center gap-3">
+                        <span aria-hidden="true" className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-surface-2 font-display text-lg font-bold text-muted">
+                          {(e.candidate?.name || "").split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("")}
+                        </span>
+                        <p className="font-display text-xl font-bold leading-tight">{displayName(e.candidate?.name)}</p>
+                      </div>
                       <p className="text-sm text-muted">
                         {e.candidate?.position}
                         {e.candidate?.age ? ` · ${t("candidates.age", { n: e.candidate.age })}` : ""}

@@ -37,15 +37,15 @@ export default function SpeakButton({ text }) {
     <div className="flex shrink-0 flex-col items-end">
       <div className="flex gap-1">
         {state === "idle" ? (
-          <button type="button" onClick={play} className="inline-flex min-h-12 items-center gap-1 rounded-xl border-2 border-line px-3 font-semibold">
-            <Icon name="speaker" /> <span className="hidden sm:inline">{t("common.readAloud")}</span><span className="sr-only sm:hidden">{t("common.readAloud")}</span>
+          <button type="button" onClick={play} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-surface px-4 text-sm font-semibold ring-1 ring-line transition hover:ring-brand active:scale-95">
+            <Icon name="speaker" size={20} /> <span>{t("common.readAloud")}</span>
           </button>
         ) : (
           <>
-            <button type="button" onClick={toggle} className="grid min-h-12 min-w-12 place-items-center rounded-xl border-2 border-line" aria-label={state === "playing" ? "Pause" : "Resume"}>
+            <button type="button" onClick={toggle} className="grid h-11 w-11 place-items-center rounded-full bg-brand text-brand-ink" aria-label={state === "playing" ? "Pause" : "Resume"}>
               <Icon name={state === "playing" ? "pause" : "play"} />
             </button>
-            <button type="button" onClick={stop} className="grid min-h-12 min-w-12 place-items-center rounded-xl border-2 border-line" aria-label={t("voice.stop")}>
+            <button type="button" onClick={stop} className="grid h-11 w-11 place-items-center rounded-full bg-surface ring-1 ring-line" aria-label={t("voice.stop")}>
               <Icon name="stop" />
             </button>
           </>

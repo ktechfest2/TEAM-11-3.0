@@ -27,6 +27,13 @@ const P = {
   plus: "M12 5v14M5 12h14",
   x: "M6 6l12 12M18 6 6 18",
   download: "M12 4v12M7 11l5 5 5-5M4 20h16",
+  chevronRight: "M9 5l7 7-7 7",
+  users: "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 3.5a4 4 0 0 1 0 7.5M22 21v-1a6 6 0 0 0-4-5.6",
+  calendar: "M4 6h16v15H4zM4 10h16M8 3v4M16 3v4",
+  menu: "M4 7h16M4 12h16M4 17h10",
+  languages: "M4 5h9M8.5 3v2M6 5c.6 3.2 2.6 5.8 5.5 7.2M11 5c-.8 4-3.4 7.4-7 9M13 21l4-9 4 9M14.5 18h5",
+  moon: "M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5z",
+  sun: "M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4",
 };
 
 export default function Icon({ name, size = 24, className = "", strokeWidth = 2 }) {

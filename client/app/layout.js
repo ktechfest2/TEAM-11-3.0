@@ -15,14 +15,14 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0b6b47" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1411" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f1e8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c1310" },
   ],
 };
 
 // Apply accessibility settings before first paint (no flash of small / low-contrast text).
 const PRE_PAINT = `try{var s=JSON.parse(localStorage.getItem("awavote.settings")||"{}"),h=document.documentElement;
-h.dataset.textSize=s.textSize||"lg";h.dataset.contrast=s.highContrast?"high":"normal";h.dataset.reduceMotion=String(!!s.reduceMotion);
+h.dataset.textSize=s.textSize||"lg";h.dataset.contrast=s.highContrast?"high":"normal";h.dataset.theme=s.theme||"system";h.dataset.reduceMotion=String(!!s.reduceMotion);
 if(s.language)h.lang=s.language}catch(e){}`;
 
 export default function RootLayout({ children }) {

@@ -11,7 +11,7 @@ import { flushOutbox, outboxCounts, startAutoSync } from "@/services/sync";
 import { isPackInstalled, PACKS } from "@/lib/nano/packs";
 
 export const DEFAULT_SETTINGS = {
-  language: "en", textSize: "lg", highContrast: false, reduceMotion: false,
+  language: "en", theme: "system", textSize: "lg", highContrast: false, reduceMotion: false,
   speechRate: 1, autoSpeak: false, allowOnlineSpeech: false, mmsVoice: false,
 };
 const LS_KEY = "awavote.settings";
@@ -30,6 +30,7 @@ export default function AppProvider({ children }) {
   const [voicePacks, setVoicePacks] = useState({});
   const [i18nVersion, setI18nVersion] = useState(0);
   const [languageStats, setLanguageStats] = useState(null);
+  const [speech, setSpeech] = useState({ status: "checking" });
   const engineRef = useRef(null);
   const settingsRef = useRef(settings);
   useEffect(() => { settingsRef.current = settings; }, [settings]);
@@ -41,6 +42,9 @@ export default function AppProvider({ children }) {
     h.lang = languageByCode(settings.language)?.bcp47 || settings.language;
     h.dataset.textSize = settings.textSize;
     h.dataset.contrast = settings.highContrast ? "high" : "normal";
+    h.dataset.theme = settings.theme || "system";
+    const dark = settings.theme === "dark" || (settings.theme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.setAttribute("content", dark ? "#0c1310" : "#f5f1e8"));
     h.dataset.reduceMotion = String(settings.reduceMotion);
   }, [settings]);
 
@@ -124,6 +128,31 @@ export default function AppProvider({ children }) {
     load();
     return onChange(({ store }) => store === "voicepacks" && load());
   }, []);
+  // Automatic speech setup for the current language (no user configuration). Runs when the
+  // browser is idle so it never competes with the first paint.
+  useEffect(() => {
+    let live = true;
+    const lang = settings.language;
+    const run = () => import("@/lib/nano/speech").then(({ ensureSpeech }) =>
+      ensureSpeech(lang, (st) => live && setSpeech(st))).catch(() => live && setSpeech({ status: "unavailable" }));
+    const idle = window.requestIdleCallback ? window.requestIdleCallback(run, { timeout: 4000 }) : setTimeout(run, 1500);
+    const onOnline = () => run();
+    window.addEventListener("online", onOnline);
+    return () => {
+      live = false;
+      window.cancelIdleCallback ? window.cancelIdleCallback(idle) : clearTimeout(idle);
+      window.removeEventListener("online", onOnline);
+    };
+  }, [settings.language]);
+
+  /** One-tap download on metered connections (the only time users are ever asked). */
+  const downloadSpeech = useCallback(async () => {
+    const { ensureSpeech } = await import("@/lib/nano/speech");
+    return ensureSpeech(settingsRef.current.language, setSpeech, { userConfirmed: true });
+  }, []);
+  const speechRef = useRef(speech);
+  useEffect(() => { speechRef.current = speech; }, [speech]);
+
   const voicePacksRef = useRef(voicePacks);
   useEffect(() => { voicePacksRef.current = voicePacks; }, [voicePacks]);
 
@@ -152,14 +181,12 @@ export default function AppProvider({ children }) {
 
   const executeRef = useRef(execute);
   useEffect(() => { executeRef.current = execute; }, [execute]);
-  const packsRef = useRef(packs);
-  useEffect(() => { packsRef.current = packs; }, [packs]);
 
   const getEngine = useCallback(async () => {
     if (!engineRef.current) {
       const { NanoEngine } = await import("@/lib/nano/engine");
       engineRef.current = new NanoEngine({
-        getSettings: () => ({ ...settingsRef.current, whisperInstalled: !!packsRef.current["asr-whisper-tiny"], voicePacks: voicePacksRef.current }),
+        getSettings: () => ({ ...settingsRef.current, speech: speechRef.current, voicePacks: voicePacksRef.current }),
         execute: (a) => executeRef.current(a),
       });
     }
@@ -168,7 +195,8 @@ export default function AppProvider({ children }) {
 
   const value = useMemo(() => ({
     settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats,
-  }), [settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats]);
+    speech, downloadSpeech,
+  }), [settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats, speech, downloadSpeech]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

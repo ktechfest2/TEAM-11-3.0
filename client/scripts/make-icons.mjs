@@ -29,21 +29,27 @@ const segDist = (px, py, ax, ay, bx, by) => {
   return Math.hypot(px - (ax + t * dx), py - (ay + t * dy));
 };
 const clamp = (v) => Math.max(0, Math.min(1, v));
-function icon({ inset = 0, radius = 0.22, full = false }) {
+// Mirrors components/layout/Logo.js: green tile, ballot-box slot, marigold tick.
+function icon({ inset = 0, radius = 0.275, full = false }) {
+  const GREEN = [15, 92, 61], WHITE = [255, 253, 248], GOLD = [233, 162, 59];
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v * (1 - t) + b[i] * t));
   return (x, y, px) => {
-    const GREEN = [11, 107, 71];
-    // rounded-rect coverage
     let bg = 1;
     if (!full) {
       const qx = Math.abs(x - 0.5) - (0.5 - radius), qy = Math.abs(y - 0.5) - (0.5 - radius);
       const d = Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - radius;
       bg = clamp(0.5 - d / px);
     }
-    // tick, scaled into the safe zone
-    const s = 1 - inset * 2, u = (x - inset) / s, v = (y - inset) / s;
-    const d = Math.min(segDist(u, v, 0.27, 0.53, 0.43, 0.69), segDist(u, v, 0.43, 0.69, 0.75, 0.33));
-    const tick = clamp(0.5 - (d - 0.065) / (px / s));
-    const c = GREEN.map((g) => Math.round(g * (1 - tick) + 255 * tick));
+    const s = 1 - inset * 2, u = (x - inset) / s, v = (y - inset) / s, ps = px / s;
+    // slot: rounded bar from (9,9) to (31,13) on a 40-unit grid
+    const sx = Math.abs(u - 0.5) - 0.25, sy = Math.abs(v - 0.275) - 0.05;
+    const ds = Math.hypot(Math.max(sx, 0), Math.max(sy, 0)) + Math.min(Math.max(sx, sy), 0) - 0.0;
+    const slot = clamp(0.5 - ds / ps) * 0.9;
+    // tick: (12.5,23.5) -> (17.5,28.5) -> (28,17.5), stroke width 4
+    const dt = Math.min(segDist(u, v, 0.3125, 0.5875, 0.4375, 0.7125), segDist(u, v, 0.4375, 0.7125, 0.7, 0.4375));
+    const tick = clamp(0.5 - (dt - 0.05) / ps);
+    let c = mix(GREEN, WHITE, slot);
+    c = mix(c, GOLD, tick);
     return [...c, Math.round(255 * bg)];
   };
 }

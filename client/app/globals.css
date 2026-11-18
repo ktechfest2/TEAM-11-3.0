@@ -1,71 +1,129 @@
 @import "tailwindcss";
 
-/* ============ AwaVote design tokens ============ */
+/* ============ Fonts (self-hosted so the app looks right offline) ============
+   Bricolage Grotesque for headings (includes Yoruba ẹ/ọ/ṣ and Hausa ɗ/ƙ/ɓ),
+   Figtree for body text. Missing glyphs fall back to the system font. */
+@font-face {
+  font-family: "Bricolage"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("/fonts/bricolagegrotesque-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bricolage"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("/fonts/bricolagegrotesque-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Bricolage"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("/fonts/bricolagegrotesque-vietnamese.woff2") format("woff2");
+  unicode-range: U+0300-0301, U+0303, U+0309, U+0323, U+1EA0-1EF1;
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("/fonts/figtree-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Figtree"; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url("/fonts/figtree-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ============ Colour tokens ============
+   Warm "paper" neutrals, deep forest green, marigold accent. */
 :root {
-  --bg: #f6f7f5;
-  --surface: #ffffff;
-  --surface-2: #eef1ee;
-  --ink: #0e1a14;
-  --muted: #475850;
-  --line: #cfd8d2;
-  --brand: #0b6b47;
-  --brand-strong: #07563a;
+  --bg: #f5f1e8;
+  --surface: #fffdf8;
+  --surface-2: #ede7da;
+  --ink: #14241c;
+  --muted: #5a675f;
+  --line: #e0d8c7;
+  --brand: #0f5c3d;
+  --brand-strong: #0a4530;
   --brand-ink: #ffffff;
-  --brand-soft: #e1f0e8;
-  --ok: #0f6a39;      --ok-soft: #e0f3e7;
-  --warn: #7a4a00;    --warn-soft: #fff1d6;
-  --danger: #a8251c;  --danger-soft: #fde6e3;
-  --info: #1d4a85;    --info-soft: #e4edf9;
-  --focus: #f2b705;
+  --brand-soft: #dcebe1;
+  --hero: #0d4a32;
+  --hero-ink: #f6f1e4;
+  --accent: #e9a23b;
+  --accent-ink: #2b1a00;
+  --accent-soft: #fbecd1;
+  --ok: #1d7448;      --ok-soft: #e0f0e5;
+  --warn: #8a5a00;    --warn-soft: #fcefd5;
+  --danger: #b2382b;  --danger-soft: #fbe4de;
+  --info: #2a5a88;    --info-soft: #e3ecf6;
+  --focus: #e9a23b;
+  --shadow: 0 1px 2px rgb(20 36 28 / 0.06), 0 8px 24px -12px rgb(20 36 28 / 0.18);
   color-scheme: light;
 }
 
+/* Dark theme: follows the phone ("system") unless the user picked Light or Dark in the app. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-contrast="high"]) {
-    --bg: #0d1411;
-    --surface: #15201b;
-    --surface-2: #1c2a24;
-    --ink: #eef4f0;
-    --muted: #a9bab1;
-    --line: #2f4038;
-    --brand: #3ccf8e;
-    --brand-strong: #63dda5;
-    --brand-ink: #04140c;
-    --brand-soft: #173a2a;
-    --ok: #6fdc9c;      --ok-soft: #133524;
-    --warn: #f5c165;    --warn-soft: #3b2c0e;
-    --danger: #ff8f84;  --danger-soft: #42171386;
-    --info: #9cc1f5;    --info-soft: #172a45;
+  :root:not([data-contrast="high"]):not([data-theme="light"]) {
+    --bg: #0c1310;
+    --surface: #131d18;
+    --surface-2: #1b2721;
+    --ink: #eef2ee;
+    --muted: #9fb0a6;
+    --line: #26342c;
+    --brand: #56c48f;
+    --brand-strong: #7dd6aa;
+    --brand-ink: #04190f;
+    --brand-soft: #173628;
+    --hero: #10372a;
+    --hero-ink: #f1ede2;
+    --accent: #f0b65c;
+    --accent-ink: #2b1a00;
+    --accent-soft: #3a2b12;
+    --ok: #74d79c;      --ok-soft: #143222;
+    --warn: #f3c46e;    --warn-soft: #3a2c10;
+    --danger: #ff9283;  --danger-soft: #3e1a15;
+    --info: #9cc2f2;    --info-soft: #172a42;
+    --focus: #f0b65c;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
     color-scheme: dark;
   }
 }
+:root[data-theme="dark"]:not([data-contrast="high"]) {
+    --bg: #0c1310;
+    --surface: #131d18;
+    --surface-2: #1b2721;
+    --ink: #eef2ee;
+    --muted: #9fb0a6;
+    --line: #26342c;
+    --brand: #56c48f;
+    --brand-strong: #7dd6aa;
+    --brand-ink: #04190f;
+    --brand-soft: #173628;
+    --hero: #10372a;
+    --hero-ink: #f1ede2;
+    --accent: #f0b65c;
+    --accent-ink: #2b1a00;
+    --accent-soft: #3a2b12;
+    --ok: #74d79c;      --ok-soft: #143222;
+    --warn: #f3c46e;    --warn-soft: #3a2c10;
+    --danger: #ff9283;  --danger-soft: #3e1a15;
+    --info: #9cc2f2;    --info-soft: #172a42;
+    --focus: #f0b65c;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
 
 /* High contrast: black / white / yellow, overrides everything */
 :root[data-contrast="high"] {
-  --bg: #000000;
-  --surface: #000000;
-  --surface-2: #111111;
-  --ink: #ffffff;
-  --muted: #ffffff;
-  --line: #ffffff;
-  --brand: #ffd400;
-  --brand-strong: #ffe766;
-  --brand-ink: #000000;
-  --brand-soft: #222200;
-  --ok: #7dff9b;      --ok-soft: #000000;
-  --warn: #ffd400;    --warn-soft: #000000;
-  --danger: #ff6b6b;  --danger-soft: #000000;
-  --info: #8fd3ff;    --info-soft: #000000;
-  --focus: #00e5ff;
+  --bg: #000; --surface: #000; --surface-2: #111; --ink: #fff; --muted: #fff; --line: #fff;
+  --brand: #ffd400; --brand-strong: #ffe766; --brand-ink: #000; --brand-soft: #222200;
+  --hero: #000; --hero-ink: #fff; --accent: #ffd400; --accent-ink: #000; --accent-soft: #000;
+  --ok: #7dff9b; --ok-soft: #000; --warn: #ffd400; --warn-soft: #000; --danger: #ff6b6b; --danger-soft: #000;
+  --info: #8fd3ff; --info-soft: #000; --focus: #00e5ff; --shadow: none;
   color-scheme: dark;
 }
 
-/* Text size scale (default is large: 18px base) */
-html { font-size: 112.5%; }
+/* Text size scale (default is large: 17px base) */
+html { font-size: 106.25%; }
 html[data-text-size="md"] { font-size: 100%; }
-html[data-text-size="lg"] { font-size: 112.5%; }
-html[data-text-size="xl"] { font-size: 125%; }
-html[data-text-size="xxl"] { font-size: 143.75%; }
+html[data-text-size="lg"] { font-size: 106.25%; }
+html[data-text-size="xl"] { font-size: 118.75%; }
+html[data-text-size="xxl"] { font-size: 137.5%; }
 
 @theme inline {
   --color-bg: var(--bg);
@@ -78,6 +136,11 @@ html[data-text-size="xxl"] { font-size: 143.75%; }
   --color-brand-strong: var(--brand-strong);
   --color-brand-ink: var(--brand-ink);
   --color-brand-soft: var(--brand-soft);
+  --color-hero: var(--hero);
+  --color-hero-ink: var(--hero-ink);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
   --color-ok: var(--ok);
   --color-ok-soft: var(--ok-soft);
   --color-warn: var(--warn);
@@ -86,8 +149,12 @@ html[data-text-size="xxl"] { font-size: 143.75%; }
   --color-danger-soft: var(--danger-soft);
   --color-info: var(--info);
   --color-info-soft: var(--info-soft);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+  --font-display: "Bricolage", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: var(--shadow);
 }
+
+html { -webkit-tap-highlight-color: transparent; }
 
 body {
   background: var(--bg);
@@ -95,26 +162,113 @@ body {
   font-family: var(--font-sans);
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  font-optical-sizing: auto;
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
 
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 [data-contrast="high"] a, [data-contrast="high"] button { text-decoration-thickness: 2px; }
+[data-contrast="high"] .adire { background-image: none !important; outline: 2px solid #fff; outline-offset: -2px; }
+[data-contrast="high"] .logo-tick { stroke: #000; }
+
+/* Adire-inspired textile pattern (concentric circles + dotted lattice) for the hero band. */
+.adire {
+  background-color: var(--hero);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='1.5'%3E%3Ccircle cx='36' cy='36' r='22'/%3E%3Ccircle cx='36' cy='36' r='14'/%3E%3Ccircle cx='36' cy='36' r='6'/%3E%3Cpath d='M0 0l12 12M72 0L60 12M0 72l12-12M72 72L60 60'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.09'%3E%3Ccircle cx='0' cy='36' r='2'/%3E%3Ccircle cx='72' cy='36' r='2'/%3E%3Ccircle cx='36' cy='0' r='2'/%3E%3Ccircle cx='36' cy='72' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
 
 /* Reduced motion: honour both the OS setting and the in-app toggle */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 html[data-reduce-motion="true"] *, html[data-reduce-motion="true"] *::before, html[data-reduce-motion="true"] *::after {
-  animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
+}
+
+/* ============ Motion ============
+   Small, CSS-only, transform/opacity (GPU-composited, no layout work), so they cost almost
+   nothing on low-end phones and need no download. All disabled by reduced-motion above. */
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-page { animation: rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes draw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+.logo-tick { stroke-dasharray: 30; animation: draw 700ms 150ms cubic-bezier(0.6, 0, 0.2, 1) both; }
+
+/* Live hero pattern: the textile slowly drifts (pattern lives on a composited layer). */
+@keyframes drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(72px, 72px, 0); } }
+.adire-live { position: relative; isolation: isolate; overflow: hidden; background-image: none !important; }
+.adire-live::before {
+  content: ""; position: absolute; inset: -72px -72px 0 0; z-index: -1; pointer-events: none;
+  background-size: 72px 72px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='1.5'%3E%3Ccircle cx='36' cy='36' r='22'/%3E%3Ccircle cx='36' cy='36' r='14'/%3E%3Ccircle cx='36' cy='36' r='6'/%3E%3Cpath d='M0 0l12 12M72 0L60 12M0 72l12-12M72 72L60 60'/%3E%3C/g%3E%3Cg fill='%23ffffff' fill-opacity='0.09'%3E%3Ccircle cx='0' cy='36' r='2'/%3E%3Ccircle cx='72' cy='36' r='2'/%3E%3Ccircle cx='36' cy='0' r='2'/%3E%3Ccircle cx='36' cy='72' r='2'/%3E%3C/g%3E%3C/svg%3E");
+  animation: drift 48s linear infinite;
+  will-change: transform;
+}
+/* A soft glow in the hero corner */
+.adire-live::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; width: 22rem; height: 22rem; right: -8rem; top: -10rem;
+  border-radius: 9999px; background: radial-gradient(closest-side, rgb(233 162 59 / 0.22), transparent);
+}
+[data-contrast="high"] .adire-live::before, [data-contrast="high"] .adire-live::after { display: none; }
+
+/* The Speak button "breathes" twice after load to show where voice lives, then stops. */
+@keyframes breathe { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.55); opacity: 0; } }
+.breathe { position: relative; }
+.breathe::after {
+  content: ""; position: absolute; inset: 0; border-radius: 9999px; background: var(--brand); z-index: -1;
+  animation: breathe 1.6s 1.2s ease-out 2 both;
+}
+
+/* Loading placeholders */
+@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.skeleton { position: relative; overflow: hidden; background: var(--surface-2); border-radius: 1rem; }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  animation: shimmer 1.3s ease-in-out infinite;
+}
+
+/* Pressable cards lift slightly on hover (pointer devices only) */
+@media (hover: hover) {
+  .lift { transition: transform 200ms ease, box-shadow 200ms ease; }
+  .lift:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+}
+
+/* Smooth colour change when the theme is switched */
+html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after {
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, fill 300ms ease, box-shadow 300ms ease !important;
 }
 
 .sr-only-focusable:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-dialog::backdrop { background: rgb(0 0 0 / 0.55); }
+dialog::backdrop { background: rgb(10 20 15 / 0.55); backdrop-filter: blur(2px); }
 
 input[type="number"]::-webkit-inner-spin-button { opacity: 1; }
+
+/* Native selects: custom chevron so they match the rest of the form controls */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235a675f' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.6rem !important;
+}
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }

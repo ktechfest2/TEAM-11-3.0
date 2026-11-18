@@ -4,6 +4,7 @@ import { useApp } from "@/hooks/useApp";
 import { Button, Icon, Notice } from "@/components/ui";
 import { LANGUAGES } from "@/lib/i18n/messages";
 import { NAV_ROUTES, SENSITIVE } from "@/lib/nano/router";
+import SpeechStatus, { SpeechAttribution } from "./SpeechStatus";
 
 /**
  * Voice command sheet. Shows the current step of the command pipeline, the recognised text
@@ -11,7 +12,7 @@ import { NAV_ROUTES, SENSITIVE } from "@/lib/nano/router";
  * conversation history — it is a command bar, not a chat.
  */
 export default function VoicePanel({ onClose }) {
-  const { t, getEngine, settings, packs } = useApp();
+  const { t, getEngine, settings } = useApp();
   const [engine, setEngine] = useState(null);
   const [state, setState] = useState("idle");
   const [level, setLevel] = useState(0);
@@ -75,43 +76,43 @@ export default function VoicePanel({ onClose }) {
   const close = () => { engine?.cancelListening(); dialogRef.current?.close(); onClose(); };
   const busy = ["loading", "listening", "transcribing", "understanding"].includes(state);
   const langName = (code) => LANGUAGES.find((l) => l.code === code)?.native ?? code;
-  const asrReady = packs["asr-whisper-tiny"] || settings.allowOnlineSpeech;
 
   return (
     <dialog ref={dialogRef} onCancel={(e) => { e.preventDefault(); close(); }} aria-labelledby="voice-title"
-      className="mx-auto mb-0 mt-auto w-full max-w-3xl rounded-t-3xl border border-line bg-surface p-0 text-ink sm:mb-auto sm:rounded-3xl">
-      <div className="flex max-h-[90dvh] flex-col gap-4 overflow-y-auto p-5">
+      className="mx-auto mb-0 mt-auto w-full max-w-xl rounded-t-[2rem] bg-surface p-0 text-ink shadow-2xl sm:mb-auto sm:rounded-[2rem]">
+      <div className="flex max-h-[90dvh] flex-col gap-4 overflow-y-auto p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div aria-hidden="true" className="mx-auto -mt-1 h-1.5 w-12 rounded-full bg-line sm:hidden" />
         <div className="flex items-center justify-between">
-          <h2 id="voice-title" className="text-xl font-bold">{t("voice.title")}</h2>
-          <button type="button" onClick={close} className="grid min-h-12 min-w-12 place-items-center rounded-xl hover:bg-surface-2" aria-label={t("common.close")}>
+          <h2 id="voice-title" className="text-2xl font-bold">{t("voice.title")}</h2>
+          <button type="button" onClick={close} className="grid h-11 w-11 place-items-center rounded-full bg-surface-2 transition active:scale-95" aria-label={t("common.close")}>
             <Icon name="x" />
           </button>
         </div>
         <p className="text-sm text-muted">{t("voice.notChat")} · {langName(settings.language)}</p>
 
         {/* Big microphone control */}
-        <div className="flex flex-col items-center gap-3 py-2">
+        <div className="adire -mx-5 flex flex-col items-center gap-3 px-5 py-6 text-hero-ink">
           <button type="button" onClick={busy ? () => engine?.cancelListening() : listen} disabled={!engine}
             aria-label={busy ? t("voice.stop") : t("voice.tapToSpeak")}
-            className={`relative grid h-28 w-28 place-items-center rounded-full text-brand-ink shadow-lg ${state === "listening" ? "bg-danger" : "bg-brand"}`}>
+            className={`relative grid h-28 w-28 place-items-center rounded-full shadow-xl transition active:scale-95 ${state === "listening" ? "bg-danger text-white" : "bg-accent text-accent-ink"}`}>
             {state === "listening" && (
-              <span aria-hidden="true" className="absolute inset-0 rounded-full border-4 border-danger"
+              <span aria-hidden="true" className="absolute inset-0 rounded-full ring-4 ring-white/60"
                 style={{ transform: `scale(${1 + level * 0.35})`, transition: "transform 80ms linear" }} />
             )}
             <Icon name={busy ? "stop" : "mic"} size={44} />
           </button>
-          <p role="status" aria-live="polite" className="text-lg font-semibold">
+          <p role="status" aria-live="polite" className="font-display text-xl font-semibold">
             {state === "idle" || state === "speaking" ? (state === "speaking" ? t("voice.speaking") : t("voice.tapToSpeak")) : t(`voice.${state}`)}
           </p>
-          {!asrReady && <Notice tone="warn">{t("voice.asrUnavailable")}</Notice>}
         </div>
+        <SpeechStatus />
 
         {/* Recognised text: editable so users can correct recognition errors */}
         <form onSubmit={(e) => { e.preventDefault(); submitText(inputRef.current.value); }} className="flex flex-col gap-2">
           <label htmlFor="voice-text" className="font-semibold">{transcript ? t("voice.youSaid") : t("voice.typeCommand")}</label>
           <div className="flex gap-2">
             <input id="voice-text" ref={inputRef} key={transcript} defaultValue={transcript} autoComplete="off"
-              className="min-h-12 w-full min-w-0 rounded-xl border-2 border-line bg-surface px-3 text-lg" />
+              className="min-h-13 w-full min-w-0 rounded-2xl bg-surface-2/70 px-4 text-lg ring-1 ring-inset ring-line focus:bg-surface focus:outline-none focus:ring-2 focus:ring-brand" />
             <Button type="submit" size="md" disabled={!engine || busy}>{t("voice.go")}</Button>
           </div>
           {transcript && <p className="text-sm text-muted">{t("voice.correctHint")}</p>}
@@ -123,7 +124,7 @@ export default function VoicePanel({ onClose }) {
           </p>
         )}
 
-        {response && <p className="rounded-xl bg-surface-2 p-3 text-lg" aria-live="polite">{response}</p>}
+        {response && <p className="rounded-2xl rounded-tl-md bg-brand-soft p-4 text-lg leading-snug" aria-live="polite">{response}</p>}
         {notice && <Notice tone="warn">{notice}</Notice>}
 
         {clarify?.length > 0 && (
@@ -143,6 +144,7 @@ export default function VoicePanel({ onClose }) {
           </div>
         )}
 
+        <SpeechAttribution />
         {lastCommand && !busy && (
           <Button variant="ghost" icon="refresh" onClick={() => submitText(lastCommand)}>{t("voice.repeatCommand")}</Button>
         )}

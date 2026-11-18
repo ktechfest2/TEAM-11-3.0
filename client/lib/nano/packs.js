@@ -1,6 +1,6 @@
 /**
- * Downloadable model packs. Sizes/licences were checked against the Hugging Face model
- * repos (Nov 2026); performance on 2 GB RAM phones is NOT yet benchmarked.
+ * Optional extra model packs. Speech recognition is NOT here: it is set up automatically
+ * (see ./speech.js). Sizes/licences were checked against the Hugging Face repos (Nov 2026).
  */
 import { TRANSFORMERS_CACHE } from "./transformers";
 
@@ -10,12 +10,6 @@ export const PACKS = [
     title: "Command understanding (core)", model: "awavote-nano-intent v1 (seed)",
     languages: ["en", "pcm", "yo", "ha", "ig"], license: "Project-owned",
     note: "Trained on a small developer-written seed set. Accuracy in Yoruba, Hausa, Igbo and Pidgin is unvalidated.",
-  },
-  {
-    id: "asr-whisper-tiny", kind: "asr", sizeMB: 41, hfModel: "onnx-community/whisper-tiny",
-    title: "Offline speech recognition", model: "Whisper tiny (int8)",
-    languages: ["en", "yo", "ha"], license: "MIT",
-    note: "Whisper has no Igbo or Nigerian Pidgin support (Pidgin is transcribed as English). Yoruba/Hausa accuracy of the tiny model is low; a Nigerian-language fine-tune is needed.",
   },
   {
     id: "tts-mms-yor", kind: "tts", sizeMB: 38, hfModel: "Xenova/mms-tts-yor",

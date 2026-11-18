@@ -111,6 +111,26 @@ export default function CountCamPage() {
             <video ref={videoRef} playsInline muted className="block w-full" aria-label="Camera preview" />
             <div aria-hidden="true" className="pointer-events-none absolute inset-[6%] rounded-lg border-2 border-dashed border-white/70" />
           </div>
+          {camStatus !== "live" && (
+            <div className="flex flex-col items-center gap-4 rounded-2xl bg-surface-2/60 p-5 text-center sm:flex-row sm:text-left">
+              <svg viewBox="0 0 96 120" className="h-28 w-24 shrink-0" aria-hidden="true">
+                <rect x="10" y="8" width="76" height="104" rx="6" fill="var(--surface)" stroke="var(--line)" strokeWidth="2" />
+                {[24, 36, 48, 60, 72].map((y) => <rect key={y} x="20" y={y} width={y % 24 ? 40 : 56} height="5" rx="2.5" fill="var(--line)" />)}
+                <rect x="20" y="86" width="28" height="12" rx="3" fill="var(--brand-soft)" />
+                {[[4, 2], [92, 2], [4, 118], [92, 118]].map(([x, y]) => (
+                  <path key={`${x}${y}`} d={`M${x} ${y + (y < 60 ? 12 : -12)}V${y}H${x + (x < 48 ? 12 : -12)}`} fill="none" stroke="var(--accent)" strokeWidth="4" strokeLinecap="round" />
+                ))}
+              </svg>
+              <ol className="flex flex-col gap-2 text-left">
+                {["countcam.tip1", "countcam.tip2", "countcam.tip3"].map((k, n) => (
+                  <li key={k} className="flex items-start gap-3">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand font-display text-sm font-bold text-brand-ink">{n + 1}</span>
+                    <span className="pt-0.5 leading-snug">{t(k)}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
           {camError && <Notice tone="danger">{t(camError)}</Notice>}
           {camStatus === "live" ? (
             <Button icon="camera" onClick={capture} className="w-full">{t("countcam.capture")}</Button>

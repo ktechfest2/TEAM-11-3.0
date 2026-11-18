@@ -14,7 +14,7 @@ const STATUS_TONE = { allegation: "warn", under_review: "info", verified: "ok", 
 const blank = () => ({ category: "intimidation", description: "", occurredAt: "", where: "", anonymous: true, contact: "" });
 
 export default function ReportPage() {
-  const { t, settings, packs } = useApp();
+  const { t, settings, speech } = useApp();
   const reports = useLiveQuery(listIncidents, ["incidents"]);
   const [form, setForm] = useState(blank);
   const [photos, setPhotos] = useState([]); // saved evidence records
@@ -27,7 +27,8 @@ export default function ReportPage() {
 
   async function dictate() {
     if (dictating) { abortRef.current?.abort(); return; }
-    const rec = selectRecognizer({ lang: settings.language, allowOnline: settings.allowOnlineSpeech, whisperInstalled: !!packs["asr-whisper-tiny"] });
+    // Dictation needs free text, so command templates cannot be used here.
+    const rec = selectRecognizer({ allowOnline: settings.allowOnlineSpeech, speech });
     if (!rec) return setNotice(t("voice.asrUnavailable"));
     setNotice(null);
     setDictating(true);
