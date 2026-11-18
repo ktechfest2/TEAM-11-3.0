@@ -79,6 +79,9 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return; // API + model hub: not handled here
+  // Bundled AI models: Transformers.js keeps its own persistent cache ("transformers-cache"),
+  // so caching them here as well would store ~80 MB twice on the phone.
+  if (url.pathname.startsWith("/models/hf/")) return;
   if (request.mode === "navigate") return event.respondWith(networkFirstPage(request));
   if (url.searchParams.has("_rsc")) {
     // Client-side navigation payloads: try network, fall back to the precached .txt payload.

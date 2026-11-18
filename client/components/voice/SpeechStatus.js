@@ -3,7 +3,7 @@ import { useApp } from "@/hooks/useApp";
 import { Button, Icon, Notice } from "@/components/ui";
 import { languageByCode } from "@/lib/i18n/languages";
 
-/** Shows the automatic speech setup state; the only action ever needed is one tap on mobile data. */
+/** Shows the automatic speech setup state. Users never have to act, except to retry a failed setup. */
 export default function SpeechStatus({ showReady = false }) {
   const { t, speech, downloadSpeech, settings, online } = useApp();
   const lang = languageByCode(settings.language)?.native || settings.language;
@@ -23,10 +23,10 @@ export default function SpeechStatus({ showReady = false }) {
   if (speech.status === "needs-download") {
     return (
       <div className="rounded-2xl bg-accent-soft p-4">
-        <p className="font-semibold">{online ? t("speech.needsDownload", { lang, size: m?.sizeMB ?? "?" }) : t("speech.needsInternet", { lang })}</p>
+        <p className="font-semibold">{online ? t("speech.needsDownload", { lang }) : t("speech.needsInternet", { lang })}</p>
         {m?.heavy && <p className="mt-1 text-sm text-muted">{t("speech.heavy")}</p>}
         {online && (
-          <Button size="md" icon="download" className="mt-3 w-full" onClick={downloadSpeech}>{t("speech.downloadNow", { size: m?.sizeMB ?? "?" })}</Button>
+          <Button size="md" icon="refresh" className="mt-3 w-full" onClick={downloadSpeech}>{t("speech.downloadNow")}</Button>
         )}
         {speech.error && <p className="mt-2 text-sm text-danger">{speech.error}</p>}
       </div>

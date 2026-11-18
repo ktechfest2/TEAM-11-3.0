@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/copy-runtime-assets.mjs && next dev",
-    "build": "node scripts/copy-runtime-assets.mjs && next build && node scripts/build-sw.mjs",
+    "dev": "node scripts/copy-runtime-assets.mjs && node scripts/fetch-models.mjs && next dev",
+    "build": "node scripts/copy-runtime-assets.mjs && node scripts/fetch-models.mjs && next build && node scripts/build-sw.mjs",
     "start": "node scripts/serve.mjs 3000",
     "lint": "eslint",
     "test": "vitest run",
-    "copy-assets": "node scripts/copy-runtime-assets.mjs"
+    "copy-assets": "node scripts/copy-runtime-assets.mjs",
+    "fetch-models": "node scripts/fetch-models.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

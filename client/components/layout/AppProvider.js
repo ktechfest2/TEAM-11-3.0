@@ -123,6 +123,23 @@ export default function AppProvider({ children }) {
     setPacks(Object.fromEntries(entries));
   }, []);
   useEffect(() => { refreshPacks(); }, [refreshPacks]);
+  // Packs that ship with the app install themselves in the background (no user action).
+  useEffect(() => {
+    let live = true;
+    const run = async () => {
+      if (!navigator.onLine) return;
+      const { downloadPack } = await import("@/lib/nano/download");
+      for (const p of PACKS.filter((x) => x.bundled)) {
+        if (!live || (await isPackInstalled(p))) continue;
+        try { await downloadPack(p); } catch (e) { console.warn(`pack ${p.id}`, e); }
+      }
+      if (live) refreshPacks();
+    };
+    // Start after speech setup has had its turn, so the two don't compete for bandwidth.
+    const timer = setTimeout(run, 20000);
+    window.addEventListener("online", run);
+    return () => { live = false; clearTimeout(timer); window.removeEventListener("online", run); };
+  }, [refreshPacks]);
   useEffect(() => {
     const load = () => installedPacks().then(setVoicePacks).catch(() => {});
     load();
@@ -145,10 +162,10 @@ export default function AppProvider({ children }) {
     };
   }, [settings.language]);
 
-  /** One-tap download on metered connections (the only time users are ever asked). */
+  /** Retry the automatic speech setup (only offered if the background load failed). */
   const downloadSpeech = useCallback(async () => {
     const { ensureSpeech } = await import("@/lib/nano/speech");
-    return ensureSpeech(settingsRef.current.language, setSpeech, { userConfirmed: true });
+    return ensureSpeech(settingsRef.current.language, setSpeech);
   }, []);
   const speechRef = useRef(speech);
   useEffect(() => { speechRef.current = speech; }, [speech]);

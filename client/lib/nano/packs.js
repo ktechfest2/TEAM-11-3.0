@@ -1,5 +1,7 @@
 /**
- * Optional extra model packs. Speech recognition is NOT here: it is set up automatically
+ * Model packs. `builtIn` packs are part of the app bundle; `bundled` packs ship with the app
+ * too (scripts/fetch-models.mjs) and install themselves in the background, so users never
+ * download them by hand. The rest are optional. Speech recognition is NOT here: it is set up automatically
  * (see ./speech.js). Sizes/licences were checked against the Hugging Face repos (Nov 2026).
  */
 import { TRANSFORMERS_CACHE } from "./transformers";
@@ -12,7 +14,7 @@ export const PACKS = [
     note: "Trained on a small developer-written seed set. Accuracy in Yoruba, Hausa, Igbo and Pidgin is unvalidated.",
   },
   {
-    id: "tts-mms-yor", kind: "tts", sizeMB: 38, hfModel: "Xenova/mms-tts-yor",
+    id: "tts-mms-yor", kind: "tts", bundled: true, sizeMB: 38, hfModel: "Xenova/mms-tts-yor",
     title: "Yoruba voice", model: "Meta MMS-TTS Yoruba (int8)",
     languages: ["yo"], license: "CC-BY-NC-4.0 (non-commercial only)",
     note: "Non-commercial licence. Hausa and Igbo MMS voices need ONNX conversion before they can be offered.",
@@ -25,14 +27,14 @@ export const PACKS = [
   },
 ];
 
-/** Is every file of a Transformers.js pack present in Cache Storage? (heuristic: any entry for the repo) */
+/** Is every file of a Transformers.js pack present in Cache Storage? (its ONNX weights are cached) */
 export async function isPackInstalled(pack) {
   if (pack.builtIn) return true;
   if (typeof caches === "undefined") return false;
   try {
     const cache = await caches.open(TRANSFORMERS_CACHE);
     const keys = await cache.keys();
-    return keys.some((k) => k.url.includes(`/${pack.hfModel}/`));
+    return keys.some((k) => k.url.includes(`/${pack.hfModel}/`) && k.url.endsWith(".onnx"));
   } catch {
     return false;
   }

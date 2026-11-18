@@ -5,19 +5,19 @@
  *   1. an N-ATLaS model hosted by this AwaVote server (en, pcm via en, yo, ha, ig)
  *   2. otherwise public Whisper-tiny (en, pcm via en, yo, ha) as an interim fallback
  *   3. otherwise native-speaker command templates (any language with a voice pack)
- * The model downloads by itself in the background when the connection is unmetered
- * (Wi-Fi / ethernet). On mobile data or unknown connections the voice panel offers a one-tap
- * download with the exact size, so nobody is surprised by a large data charge. After one
- * download everything runs offline on the phone.
+ * Whisper-tiny ships with the app (public/models/hf/, fetched from Hugging Face at build time),
+ * so the user never downloads anything themselves: the app loads it in the background the
+ * first time it is online and keeps it for offline use. The "needs-download" status only
+ * remains as a retry when that background load failed.
  */
 import { kvGet, kvSet } from "@/lib/db";
 import { apiBase } from "@/services/api";
-import { getTransformers, TRANSFORMERS_CACHE } from "./transformers";
+import { BUNDLED_MODELS, getTransformers, TRANSFORMERS_CACHE } from "./transformers";
 import { getPack, installPack } from "./voicepack";
 
 const HUB = "https://huggingface.co/";
 const HUB_TEMPLATE = "{model}/resolve/{revision}/";
-const TINY = { id: "onnx-community/whisper-tiny", name: "Whisper tiny (OpenAI)", sizeMB: 41, host: "hub", attribution: "" };
+const TINY = { id: "onnx-community/whisper-tiny", name: "Whisper tiny (OpenAI)", sizeMB: 41, host: "bundled", attribution: "" };
 const TINY_LANGS = { en: "english", pcm: "english", yo: "yoruba", ha: "hausa" };
 
 // ---------------------------------------------------------------- catalogue
@@ -56,9 +56,11 @@ export function chooseModel(lang, catalog, deviceMemoryGB = (typeof navigator !=
 async function configure(choice) {
   const tf = await getTransformers();
   if (choice.host === "awavote") {
+    tf.env.allowLocalModels = false;
     tf.env.remoteHost = `${apiBase()}/models/`;
     tf.env.remotePathTemplate = "{model}/";
   } else {
+    tf.env.allowLocalModels = true; // bundled copy first, Hugging Face as fallback
     tf.env.remoteHost = HUB;
     tf.env.remotePathTemplate = HUB_TEMPLATE;
   }
@@ -70,7 +72,11 @@ export async function isModelCached(choice) {
   try {
     const keys = await (await caches.open(TRANSFORMERS_CACHE)).keys();
     const hits = keys.filter((k) => k.url.includes(`/${choice.id}/`));
-    return hits.some((k) => k.url.includes("decoder_model_merged")) && hits.some((k) => k.url.includes("encoder_model"));
+    if (hits.some((k) => k.url.includes("decoder_model_merged")) && hits.some((k) => k.url.includes("encoder_model"))) return true;
+    // Bundled files may instead sit in the service worker's cache.
+    if (choice.host !== "bundled") return false;
+    const base = `${BUNDLED_MODELS}${choice.id}/onnx/`;
+    return Boolean((await caches.match(`${base}encoder_model_quantized.onnx`)) && (await caches.match(`${base}decoder_model_merged_quantized.onnx`)));
   } catch {
     return false;
   }
@@ -105,20 +111,14 @@ export async function releaseRecognizer() {
 }
 
 // ---------------------------------------------------------------- automatic setup
-function unmetered() {
-  const c = typeof navigator !== "undefined" && navigator.connection;
-  if (!c || c.saveData) return false;
-  return c.type === "wifi" || c.type === "ethernet";
-}
-
 let inflight = null;
 
 /**
  * Make speech ready for `lang`. Emits status objects via `onStatus`:
  *   {status: "checking"|"ready"|"downloading"|"needs-download"|"templates"|"unavailable", ...}
- * `userConfirmed` = the user tapped "download" (used on metered connections).
+ * Loads automatically whenever online; `needs-download` only appears if that failed (retry).
  */
-export async function ensureSpeech(lang, onStatus, { userConfirmed = false } = {}) {
+export async function ensureSpeech(lang, onStatus) {
   onStatus({ status: "checking" });
   const catalog = await getCatalog();
   const choice = chooseModel(lang, catalog);
@@ -136,7 +136,6 @@ export async function ensureSpeech(lang, onStatus, { userConfirmed = false } = {
   const base = { lang, model: choice };
   if (await isModelCached(choice)) { onStatus({ ...base, status: "ready" }); return; }
   if (!navigator.onLine) { onStatus({ ...base, status: pack?.commands?.length ? "templates" : "needs-download", offline: true }); return; }
-  if (!userConfirmed && !unmetered()) { onStatus({ ...base, status: "needs-download" }); return; }
 
   if (inflight?.id === choice.id) return inflight.promise;
   const promise = (async () => {

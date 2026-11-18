@@ -63,3 +63,14 @@ export function daysUntil(isoDate, now = new Date()) {
   const d = new Date(`${isoDate}T00:00:00+01:00`); // dates are in Nigerian time (WAT, UTC+1)
   return Math.ceil((d - now) / 86_400_000);
 }
+
+/** Party logo (official INEC artwork, bundled for offline use). */
+export const partyLogo = (acronym) => `/media/parties/${acronym}.webp`;
+
+/**
+ * Candidate photos bundled with the app (see server/scripts/fetch_candidate_photos.py).
+ * Keyed by the INEC name exactly as it appears on the list; candidates without a verified,
+ * freely-licensed photo are simply absent (the app shows their initials instead).
+ * @returns {Promise<Record<string, {file: string, credit: string, license: string, source: string}>>}
+ */
+export const getCandidatePhotos = () => getJSON("candidate_photos.json").catch(() => ({}));

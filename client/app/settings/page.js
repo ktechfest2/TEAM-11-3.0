@@ -36,13 +36,13 @@ function PackRow({ pack }) {
     <li className="rounded-xl border border-line p-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="font-bold">{pack.title}</p>
-        {pack.builtIn ? <Pill tone="ok">{t("pack.builtIn")}</Pill> : installed ? <Pill tone="ok" icon="check">{t("pack.installed")}</Pill> : <Pill>{pack.sizeMB} MB</Pill>}
+        {pack.builtIn || (pack.bundled && installed) ? <Pill tone="ok">{t("pack.builtIn")}</Pill> : pack.bundled ? <Pill>{t("pack.settingUp")}</Pill> : installed ? <Pill tone="ok" icon="check">{t("pack.installed")}</Pill> : <Pill>{pack.sizeMB} MB</Pill>}
       </div>
       <p className="text-sm text-muted">{pack.model} · {t("pack.languages")}: {pack.languages.map((l) => LANGUAGES.find((x) => x.code === l)?.native).join(", ")}</p>
       <p className="text-sm text-muted">{t("pack.license")}: {pack.license}</p>
       <p className="mt-1 text-sm">{pack.note}</p>
       {error && <Notice tone="danger" className="mt-2">{error}</Notice>}
-      {!pack.builtIn && (
+      {!pack.builtIn && !pack.bundled && (
         <div className="mt-2">
           {pct !== null ? (
             <div role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={t("pack.downloading", { pct })} className="h-3 overflow-hidden rounded-full bg-surface-2">

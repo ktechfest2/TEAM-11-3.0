@@ -1,0 +1,125 @@
+{
+ "_note": "Hand-checked matches between INEC candidate names and Wikidata people (Nigerian citizen, politician, matching full name, description consistent with the race). Rejected: ambiguous or common names (e.g. KASHIM IBRAHIM MUHAMMAD, SANI UBA USMAN, UBA SANI ABDULLAHI, ADAMU ISAH BELLO, BELLO ADAMU, ADAMU ABDULLAHI, MOHAMMED ABDULLAHI, IBRAHIM ISA ALI, UMAR FARUK, SHEHU-GUSAU IBRAHIM, IBRAHIM SANUSI KASHIM). Add a person only after checking it is the same individual. HAMZAT KADRI OBAFEMI: every Commons photo is a crowded scene with face masks, so none is used. Kwankwaso/Otu: Wikidata's main image was a group photo / carried campaign messaging, so a different Commons photo is used. `crop` = [left, top, size] as fractions of image width/height for photos where automatic cropping missed the face.",
+ "photos": {
+  "SOWORE OMOYELE": {
+   "wikidata": "Q54166065",
+   "commons_file": "Omoyele Sowore (29682338514).jpg",
+   "wikidata_label": "Omoyele Sowore"
+  },
+  "ABUBAKAR ATIKU": {
+   "wikidata": "Q755878",
+   "commons_file": "Atiku Abubakar-2010.jpg",
+   "wikidata_label": "Atiku Abubakar"
+  },
+  "AMAECHI CHIBUIKE ROTIMI": {
+   "wikidata": "Q7370548",
+   "commons_file": "Chibuike Amaechi (cropped).jpg",
+   "wikidata_label": "Chibuike Amaechi"
+  },
+  "TINUBU BOLA AHMED": {
+   "wikidata": "Q3510872",
+   "commons_file": "Bola Tinubu portrait.jpg",
+   "wikidata_label": "Bola Tinubu"
+  },
+  "SHETTIMA KASHIM": {
+   "wikidata": "Q6374297",
+   "commons_file": "Kashim Shettima office portrait.jpg",
+   "wikidata_label": "Kashim Shettima"
+  },
+  "OBI PETER GREGORY": {
+   "wikidata": "Q3510850",
+   "commons_file": "Peter Obi 2022.jpg",
+   "wikidata_label": "Peter Obi"
+  },
+  "MUSA MOHAMMED RABIU KWANKWASO": {
+   "wikidata": "Q3509922",
+   "commons_file": "Rabiu Kwankwaso (cropped).jpg",
+   "wikidata_label": "Rabiu Kwankwaso",
+   "crop": [
+    0.1364,
+    0.1459,
+    0.7576
+   ]
+  },
+  "ISHAKU ELISHA CLIFF": {
+   "wikidata": "Q65048215",
+   "commons_file": "Senator Ishaku Abbo 2.jpg",
+   "wikidata_label": "Ishaku Elisha Abbo"
+  },
+  "DAHIRU AISHATU AHMED": {
+   "wikidata": "Q64976705",
+   "commons_file": "Aishatu Binani.png",
+   "wikidata_label": "Aishatu Dahiru Ahmed"
+  },
+  "EYAKENYI AKON ETIM": {
+   "wikidata": "Q64852980",
+   "commons_file": "Akon Eyakenyi.jpg",
+   "wikidata_label": "Akon Eyakenyi"
+  },
+  "SHIJA TERHEMBA": {
+   "wikidata": "Q91779096",
+   "commons_file": "Terhemba Shija.jpg",
+   "wikidata_label": "Terhemba Shija"
+  },
+  "OTU BASSEY EDET": {
+   "wikidata": "Q4868129",
+   "commons_file": "Prince bassey edet otu.jpg",
+   "wikidata_label": "Bassey Otu",
+   "crop": [
+    0.1212,
+    0,
+    0.5152
+   ]
+  },
+  "NWIFURU OGBONNA FRANCIS": {
+   "wikidata": "Q112156901",
+   "commons_file": "Francis Ogbonna Nwifuru.jpg",
+   "wikidata_label": "Nwifuru Francis"
+  },
+  "MBAH PETER NDUBUISI": {
+   "wikidata": "Q111722355",
+   "commons_file": "Ndubuisi Mbah.jpg",
+   "wikidata_label": "Peter Mbah"
+  },
+  "OSSAI IFEANYI MARTINS": {
+   "wikidata": "Q124537511",
+   "commons_file": "Ifeanyi Ossai.jpg",
+   "wikidata_label": "Ifeanyi Ossai"
+  },
+  "SABO MOHAMMED NAKUDU": {
+   "wikidata": "Q85912730",
+   "commons_file": "Nakudu 2023.jpg",
+   "wikidata_label": "Mohammed Sabo"
+  },
+  "NAMADI UMAR A.": {
+   "wikidata": "Q106774462",
+   "commons_file": "Umar Namadi.png",
+   "wikidata_label": "Umar Namadi"
+  },
+  "SANI UBA": {
+   "wikidata": "Q62604069",
+   "commons_file": "Mal Uba Sani.jpg",
+   "wikidata_label": "Uba Sani"
+  },
+  "MOHAMMED UMARU BAGO": {
+   "wikidata": "Q65929260",
+   "commons_file": "Mohammed Umar Bago.jpg",
+   "wikidata_label": "Mohammed Umar Bago"
+  },
+  "ADEOLA SOLOMON OLAMILEKAN": {
+   "wikidata": "Q19938118",
+   "commons_file": "Solomo Adeola.jpg",
+   "wikidata_label": "Solomon Olamilekan Adeola"
+  },
+  "LAWAL DAUDA": {
+   "wikidata": "Q26923175",
+   "commons_file": "Dauda Lawal.jpg",
+   "wikidata_label": "Dauda lawal",
+   "crop": [
+    0.2362,
+    0.0355,
+    0.5118
+   ]
+  }
+ }
+}

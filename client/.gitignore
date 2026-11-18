@@ -45,3 +45,6 @@ next-env.d.ts
 /public/ort-tf/
 /public/tesseract/
 /public/RUNTIME_ASSETS.txt
+
+# AI models fetched from Hugging Face by scripts/fetch-models.mjs (large; re-downloaded on build)
+/public/models/hf/

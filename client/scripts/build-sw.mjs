@@ -8,9 +8,11 @@ const MAX_BYTES = 15 * 1024 * 1024;
 // Not precached (kept small for users on expensive mobile data). These are cached by the
 // service worker on first use instead:
 //   tesseract/  OCR engine + English data (~15 MB), cached the first time OCR runs online
-//   ort-tf/     runtime for optional speech packs (~83 MB), cached when a pack is downloaded
+//   ort-tf/     runtime for speech + voice models, cached when they load (automatically)
+//   models/hf/  bundled speech + voice models (~80 MB), loaded in the background and kept in
+//               Transformers.js's own cache (see lib/nano/speech.js, AppProvider)
 //   _next/static/media/*.wasm  bundler-emitted duplicates of the ORT runtime (we load /ort/)
-const SKIP = [/^_next\/static\/media\/.*\.wasm$/, /^sw\.js$/, /^tesseract\//, /^ort-tf\//, /^audio\/.+\.(mp3|ogg|wav)$/, /\.map$/,
+const SKIP = [/^_next\/static\/media\/.*\.wasm$/, /^sw\.js$/, /^tesseract\//, /^ort-tf\//, /^models\/hf\//, /^audio\/.+\.(mp3|ogg|wav)$/, /\.map$/,
   // Election data: the reference, presidential + governorship lists and the index are precached
   // (~200 KB); per-state Senate/Reps/Assembly lists (~2.3 MB total) are cached when first opened.
   /^data\/(?!elections\/2027\/[a-z_]+\.json$)/];

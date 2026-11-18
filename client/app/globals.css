@@ -53,6 +53,8 @@
   --info: #2a5a88;    --info-soft: #e3ecf6;
   --focus: #e9a23b;
   --shadow: 0 1px 2px rgb(20 36 28 / 0.06), 0 8px 24px -12px rgb(20 36 28 / 0.18);
+  --logo-ink: #003d27;
+  --logo-accent: #00c15b;
   color-scheme: light;
 }
 
@@ -80,6 +82,8 @@
     --info: #9cc2f2;    --info-soft: #172a42;
     --focus: #f0b65c;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+    --logo-ink: #eef2ee;
+    --logo-accent: #00c15b;
     color-scheme: dark;
   }
 }
@@ -105,6 +109,8 @@
     --info: #9cc2f2;    --info-soft: #172a42;
     --focus: #f0b65c;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+    --logo-ink: #eef2ee;
+    --logo-accent: #00c15b;
     color-scheme: dark;
   }
 
@@ -115,6 +121,7 @@
   --hero: #000; --hero-ink: #fff; --accent: #ffd400; --accent-ink: #000; --accent-soft: #000;
   --ok: #7dff9b; --ok-soft: #000; --warn: #ffd400; --warn-soft: #000; --danger: #ff6b6b; --danger-soft: #000;
   --info: #8fd3ff; --info-soft: #000; --focus: #00e5ff; --shadow: none;
+  --logo-ink: #fff; --logo-accent: #ffd400;
   color-scheme: dark;
 }
 
@@ -182,7 +189,6 @@ h1, h2, h3, .font-display {
 
 [data-contrast="high"] a, [data-contrast="high"] button { text-decoration-thickness: 2px; }
 [data-contrast="high"] .adire { background-image: none !important; outline: 2px solid #fff; outline-offset: -2px; }
-[data-contrast="high"] .logo-tick { stroke: #000; }
 
 /* Adire-inspired textile pattern (concentric circles + dotted lattice) for the hero band. */
 .adire {
@@ -207,8 +213,6 @@ html[data-reduce-motion="true"] *, html[data-reduce-motion="true"] *::before, ht
 .animate-rise { animation: rise 380ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .animate-page { animation: rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
-@keyframes draw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
-.logo-tick { stroke-dasharray: 30; animation: draw 700ms 150ms cubic-bezier(0.6, 0, 0.2, 1) both; }
 
 /* Live hero pattern: the textile slowly drifts (pattern lives on a composited layer). */
 @keyframes drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(72px, 72px, 0); } }
