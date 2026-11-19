@@ -4,7 +4,7 @@
  *   supports(lang) -> boolean
  * Providers are independent and replaceable (e.g. by a Nigerian-language fine-tuned model).
  */
-import { loadRecognizer, releaseRecognizer } from "../speech";
+import { releaseRecognizer, transcribe as transcribeWith } from "../speech";
 import { hasSpeech, recordUtterance } from "./recorder";
 import { classifyTemplates, mfcc } from "./features";
 import { getPack } from "../voicepack";
@@ -17,16 +17,12 @@ export function speechLocal(choice) {
   return {
     id: choice.natlas ? "natlas-local" : "whisper-local", offline: true,
     async listen({ signal, onLevel, onState }) {
-      onState?.("loading");
-      const asr = await loadRecognizer(choice);
       onState?.("listening");
       const pcm = await recordUtterance({ onLevel, signal });
       if (!hasSpeech(pcm)) return { text: "", confidence: null, provider: this.id, offline: true, latencyMs: 0, noSpeech: true };
       onState?.("transcribing");
       const t0 = performance.now();
-      const opts = { task: "transcribe", chunk_length_s: 30 };
-      if (choice.language) opts.language = choice.language;
-      const out = await asr(pcm, opts);
+      const out = await transcribeWith(choice, pcm);
       // Whisper exposes no calibrated confidence via Transformers.js; intent confidence gates actions.
       return { text: (out.text || "").trim(), confidence: null, provider: this.id, model: choice.name, offline: true,
         latencyMs: Math.round(performance.now() - t0) };
@@ -98,5 +94,41 @@ export function selectRecognizer({ allowOnline, speech, templatePack }) {
   if (speech?.status === "ready" && speech.model) return speechLocal(speech.model);
   if (templatePack) return templatesLocal;
   if (allowOnline && navigator.onLine && webSpeechOnline.available()) return webSpeechOnline;
+  return null;
+}
+
+/**
+ * Transcribe an already-captured phrase (hands-free mode) in `lang`, using the best recogniser
+ * available ON THE PHONE right now:
+ *   1. that language's N-ATLaS model if it is downloaded,
+ *   2. else Whisper-tiny (bundled with the app) for English/Pidgin/Yoruba/Hausa,
+ *   3. else the native-speaker command templates for that language.
+ * If the N-ATLaS model is missing it starts downloading in the background for next time.
+ * @returns {Promise<{text, intent?, confidence, provider, model?, offline, latencyMs, lang} | null>}
+ */
+export async function transcribeIn(lang, pcm, { allowDownload = true, full = false } = {}) {
+  const sp = await import("../speech");
+  const catalog = await sp.getCatalog();
+  const best = sp.chooseModel(lang, catalog);
+  const t0 = performance.now();
+  let choice = null;
+  if (best && await sp.isModelCached(best)) choice = best;
+  else {
+    if (best?.host === "awavote" && allowDownload && navigator.onLine) sp.prefetchModel(best).catch(() => {});
+    const tiny = sp.chooseModel(lang, { models: [] }); // Whisper-tiny entry for en/pcm/yo/ha, else null
+    if (tiny && await sp.isModelCached(tiny)) choice = tiny;
+    else if (tiny && navigator.onLine) choice = tiny; // bundled with the app: loads from our own server
+  }
+  if (choice) {
+    const out = await sp.transcribe(choice, pcm, { full });
+    return { text: out.text, confidence: null, provider: choice.natlas ? "natlas-local" : "whisper-local",
+      model: choice.name, offline: true, latencyMs: Math.round(performance.now() - t0), lang, shortWindow: out.short };
+  }
+  const pack = await getPack(lang);
+  if (pack?.commands?.length) {
+    const r = classifyTemplates(mfcc(pcm), pack.commands);
+    return { text: "", intent: r.intent, confidence: r.confidence, alternatives: r.alternatives, provider: "templates-local",
+      offline: true, latencyMs: Math.round(performance.now() - t0), lang };
+  }
   return null;
 }

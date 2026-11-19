@@ -26,7 +26,9 @@ function resolve(urlPath) {
 createServer((req, res) => {
   const path = resolve(new URL(req.url, "http://x").pathname);
   if (!path) { res.writeHead(404, { "content-type": "text/html" }); return createReadStream(join(ROOT, "404.html")).on("error", () => res.end("Not found")).pipe(res); }
-  const headers = { "content-type": TYPES[extname(path)] || "application/octet-stream" };
+  // Cross-origin isolation: lets the speech models run multi-threaded (see next.config.mjs).
+  const headers = { "content-type": TYPES[extname(path)] || "application/octet-stream",
+    "cross-origin-opener-policy": "same-origin", "cross-origin-embedder-policy": "credentialless" };
   if (path.endsWith("sw.js")) headers["cache-control"] = "no-cache";
   else if (path.includes("/_next/static/")) headers["cache-control"] = "public, max-age=31536000, immutable";
   res.writeHead(200, headers);

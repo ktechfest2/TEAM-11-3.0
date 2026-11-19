@@ -13,6 +13,8 @@ import { isPackInstalled, PACKS } from "@/lib/nano/packs";
 export const DEFAULT_SETTINGS = {
   language: "en", theme: "system", textSize: "lg", highContrast: false, reduceMotion: false,
   speechRate: 1, autoSpeak: false, allowOnlineSpeech: false, mmsVoice: false,
+  handsFree: true,     // listen for speech while the app is open (no mic button needed)
+  autoLanguage: true,  // follow the language the user speaks
 };
 const LS_KEY = "awavote.settings";
 
@@ -31,6 +33,9 @@ export default function AppProvider({ children }) {
   const [i18nVersion, setI18nVersion] = useState(0);
   const [languageStats, setLanguageStats] = useState(null);
   const [speech, setSpeech] = useState({ status: "checking" });
+  const [handsFree, setHandsFree] = useState({ state: "off" }); // hands-free listener state for the UI
+  const [voiceEvent, setVoiceEvent] = useState(null);          // last thing the voice engine did (shown briefly)
+  const listenerRef = useRef(null);
   const engineRef = useRef(null);
   const settingsRef = useRef(settings);
   useEffect(() => { settingsRef.current = settings; }, [settings]);
@@ -49,12 +54,12 @@ export default function AppProvider({ children }) {
   }, [settings]);
 
   const updateSettings = useCallback((patch) => {
-    setSettings((s) => {
-      const next = { ...s, ...patch };
-      settingsRef.current = next; // visible to the voice engine immediately, before re-render
-      try { localStorage.setItem(LS_KEY, JSON.stringify(next)); } catch { /* private mode */ }
-      return next;
-    });
+    // Update the ref synchronously: React may run a state updater only at the next render, and the
+    // voice engine reads settings right after switching language (to answer in the new language).
+    const next = { ...settingsRef.current, ...patch };
+    settingsRef.current = next;
+    try { localStorage.setItem(LS_KEY, JSON.stringify(next)); } catch { /* private mode */ }
+    setSettings(next);
   }, []);
 
   // Approved native-speaker translations: cached copy first (offline), then refresh from the server.
@@ -210,10 +215,68 @@ export default function AppProvider({ children }) {
     return engineRef.current;
   }, []);
 
+  // ---- hands-free listening (wake on speech) ----
+  const startHandsFree = useCallback(async () => {
+    if (!navigator.mediaDevices?.getUserMedia) { setHandsFree({ state: "unsupported" }); return; }
+    if (!listenerRef.current) {
+      const { HandsFreeListener } = await import("@/lib/nano/asr/handsfree");
+      const l = new HandsFreeListener();
+      l.addEventListener("state", (e) => setHandsFree((h) => ({ ...h, state: e.detail.state })));
+      l.addEventListener("level", (e) => { const v = e.detail.level; setHandsFree((h) => (Math.abs((h.level || 0) - v) > 0.05 ? { ...h, level: v } : h)); });
+      l.addEventListener("utterance", async (e) => {
+        const eng = await getEngine();
+        try { if (localStorage.getItem("awavote.debug") === "1") console.info("[voice] utterance", JSON.stringify({ ms: e.detail.ms, busy: eng.busy })); } catch { /* private mode */ }
+        if (eng.busy || document.querySelector("dialog[open][aria-labelledby='voice-title']")) return; // the panel is in charge
+        l.pause();
+        try { await eng.handleUtterance(e.detail.pcm, { source: "handsfree" }); } finally { if (eng.state !== "speaking") l.resume(); }
+      });
+      listenerRef.current = l;
+      const eng = await getEngine();
+      // Never listen to ourselves: pause while AwaVote speaks or works on a phrase.
+      eng.addEventListener("state", (ev) => {
+        const st = ev.detail.state;
+        if (st === "speaking" || st === "transcribing" || st === "understanding" || st === "loading") l.pause();
+        else if (st === "idle") setTimeout(() => !eng.busy && l.resume(), 250);
+      });
+      for (const type of ["transcript", "result", "response", "ignored", "language-switched", "spoken-language", "error", "asr-unavailable"]) {
+        eng.addEventListener(type, (ev) => setVoiceEvent({ type, ...ev.detail, at: Date.now() }));
+      }
+      eng.addEventListener("state", (ev) => setVoiceEvent((v) => ({ ...(v || {}), state: ev.detail.state })));
+    }
+    await listenerRef.current.start();
+    // Warm up the models in the background so the first command is quick.
+    const w = () => getEngine().then((e) => e.prepare()).catch(() => {});
+    window.requestIdleCallback ? window.requestIdleCallback(w, { timeout: 3000 }) : setTimeout(w, 1000);
+  }, [getEngine]);
+
+  const stopHandsFree = useCallback(async () => { await listenerRef.current?.stop(); }, []);
+
+  useEffect(() => {
+    if (!settings.handsFree) { stopHandsFree(); return; }
+    let live = true;
+    (async () => {
+      // Start by itself only if the microphone is already allowed; otherwise the UI shows a one-tap "Turn on".
+      let perm = "prompt";
+      try { perm = (await navigator.permissions.query({ name: "microphone" })).state; } catch { /* Safari: unknown */ }
+      if (!live) return;
+      if (perm === "granted") startHandsFree();
+      else setHandsFree((h) => ({ ...h, state: perm === "denied" ? "denied" : "needs-permission" }));
+    })();
+    return () => { live = false; };
+  }, [settings.handsFree, startHandsFree, stopHandsFree]);
+
+  // Follow-the-speaker needs the other languages' models: fetch them in the background on Wi-Fi.
+  useEffect(() => {
+    if (!settings.autoLanguage || speech.status !== "ready") return;
+    const id = setTimeout(() => import("@/lib/nano/speech").then((m) => m.prefetchAllLanguages()).catch(() => {}), 15000);
+    return () => clearTimeout(id);
+  }, [settings.autoLanguage, speech.status]);
+
   const value = useMemo(() => ({
     settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats,
-    speech, downloadSpeech,
-  }), [settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats, speech, downloadSpeech]);
+    speech, downloadSpeech, handsFree, startHandsFree, stopHandsFree, voiceEvent,
+  }), [settings, updateSettings, t, online, serverUp, sync, packs, refreshPacks, getEngine, readPage, voicePacks, languageStats, speech, downloadSpeech,
+    handsFree, startHandsFree, stopHandsFree, voiceEvent]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

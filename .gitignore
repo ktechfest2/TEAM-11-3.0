@@ -17,3 +17,7 @@ server/.env
 /docs
 # Converted speech models (large; regenerate with ai/speech_to_text/convert_natlas.py)
 server/data/models/
+
+# Demo recordings (large binaries)
+/demo/*.mp4
+/demo/*.webm

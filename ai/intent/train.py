@@ -32,6 +32,21 @@ SEED = 7
 
 
 CONTRIB = ROOT / "ai/datasets/contributed_utterances.json"
+# Recogniser transcripts of the seed phrases (ai/intent/make_asr_variants.py): what the phone hears.
+ASR_VARIANTS = ROOT / "ai/datasets/asr_variants.json"
+
+
+def asr_rows(rows):
+    """(transcript, intent, lang) for each row whose phrase has a recogniser transcript that differs."""
+    if not ASR_VARIANTS.exists():
+        return []
+    v = json.loads(ASR_VARIANTS.read_text())
+    out = []
+    for text, intent, lang in rows:
+        t = v.get(lang, {}).get(text, "").strip()
+        if len(t) >= 2 and normalize(t) != normalize(text):
+            out.append((t, intent, lang))
+    return out
 
 
 def load():
@@ -160,11 +175,15 @@ def main():
     d, rows = load()
     intents = sorted(d["intents"].keys())
     train, test = split(rows)
-    Wi, bi, Wl, bl = fit(augment(train, d["augment_prefixes"]), intents)
+    # Transcripts only of TRAIN phrases (no leakage); the held-out phrases' transcripts form a
+    # second test set: "does the classifier understand what the recogniser outputs?"
+    Wi, bi, Wl, bl = fit(augment(train, d["augment_prefixes"]) + asr_rows(train), intents)
     report, errors = evaluate(test, intents, Wi, bi, Wl, bl)
+    asr_test = asr_rows(test)
+    asr_report, asr_errors = evaluate(asr_test, intents, Wi, bi, Wl, bl) if asr_test else ({}, [])
 
     # Final model is trained on everything.
-    Wi, bi, Wl, bl = fit(augment(rows, d["augment_prefixes"]), intents)
+    Wi, bi, Wl, bl = fit(augment(rows, d["augment_prefixes"]) + asr_rows(rows), intents)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     onnx_path = OUT_DIR / "intent-v1.onnx"
     export_onnx(intents, Wi, bi, Wl, bl, onnx_path)
@@ -203,10 +222,11 @@ def main():
     (ROOT / "client/lib/nano/intent/parity_vectors.json").write_text(json.dumps(vectors, indent=1, ensure_ascii=False))
 
     full = {"model": meta, "train_utterances": len(train), "test_utterances": len(test), "per_language": report,
-            "errors": errors,
+            "errors": errors, "asr_transcript_test": {"n": len(asr_test), "per_language": asr_report, "errors": asr_errors},
             "caveat": "Held-out split of a tiny developer-written seed set. This is a smoke test, NOT evidence of real-world language support."}
     (ROOT / "ai/evaluation/intent_report.json").write_text(json.dumps(full, indent=2, ensure_ascii=False))
-    print(json.dumps({"size_kb": round(meta["size_bytes"] / 1024, 1), "per_language": report, "n_errors": len(errors)}, indent=1))
+    print(json.dumps({"size_kb": round(meta["size_bytes"] / 1024, 1), "per_language": report, "n_errors": len(errors),
+                      "asr_transcripts": {k: v["intent_accuracy"] for k, v in asr_report.items()}}, indent=1))
     for e in errors:
         print("  miss:", e)
 

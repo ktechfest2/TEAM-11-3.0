@@ -138,6 +138,10 @@ def convert(code: str, source: str, model_id: str, name: str, whisper_lang: str 
         _step("quantize", str(t / "decoder_with_past_model.onnx"), str(t / "decoder_with_past_q.onnx"))
         print(f"[{code}] merging decoders …", flush=True)
         _step("merge", str(t / "decoder_q.onnx"), str(t / "decoder_with_past_q.onnx"), str(dest / "onnx" / "decoder_model_merged_quantized.onnx"))
+    # Let the encoder take shorter audio windows than 30 s (≈4x faster for short voice commands).
+    sys.path.insert(0, str(Path(__file__).parent))
+    from shorten_window import patch as shorten_window
+    shorten_window(str(dest / "onnx" / "encoder_model_quantized.onnx"))
     for f in COPY:
         if (src / f).exists():
             shutil.copy2(src / f, dest / f)
@@ -158,6 +162,7 @@ def convert(code: str, source: str, model_id: str, name: str, whisper_lang: str 
         "size_bytes": sum(f["bytes"] for f in files.values()), "files": files,
         "license": "N-ATLaS Open-Source Research and Innovation License (max 1,000 active users / 30 days without a commercial licence)" if natlas else "see source",
         "attribution": attribution, "converted_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "dynamic_window": True,  # encoder accepts < 30 s windows (see shorten_window.py)
     }
     reg_path = OUT / "registry.json"
     import fcntl

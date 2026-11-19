@@ -49,12 +49,12 @@
   "per_language": {
     "en": {
       "n": 21,
-      "intent_accuracy": 0.714,
-      "language_id_accuracy": 0.762
+      "intent_accuracy": 0.667,
+      "language_id_accuracy": 0.81
     },
     "pcm": {
       "n": 6,
-      "intent_accuracy": 1.0,
+      "intent_accuracy": 0.833,
       "language_id_accuracy": 0.667
     },
     "yo": {
@@ -79,85 +79,264 @@
       "lang": "yo",
       "gold": "nav.countcam",
       "pred": "nav.voteaccess",
-      "conf": 0.416
+      "conf": 0.475
     },
     {
       "text": "buɗe kyamara",
       "lang": "ha",
       "gold": "nav.countcam",
       "pred": "nav.settings",
-      "conf": 0.276
+      "conf": 0.219
     },
     {
       "text": "tabbatar da sakamakon zaɓe",
       "lang": "ha",
       "gold": "nav.result_verify",
       "pred": "nav.countcam",
-      "conf": 0.177
+      "conf": 0.237
     },
     {
       "text": "election materials are missing",
       "lang": "en",
       "gold": "nav.incident",
       "pred": "nav.voteaccess",
-      "conf": 0.327
+      "conf": 0.4
     },
     {
       "text": "mo fẹ́ fi ìṣẹ̀lẹ̀ kan tó yín létí",
       "lang": "yo",
       "gold": "nav.incident",
       "pred": "action.help",
-      "conf": 0.126
+      "conf": 0.136
     },
     {
       "text": "kayan zaɓe ba su iso ba",
       "lang": "ha",
       "gold": "nav.incident",
       "pred": "nav.voteaccess",
-      "conf": 0.318
+      "conf": 0.307
     },
     {
       "text": "ẹ̀kọ́ fún olùdìbò",
       "lang": "yo",
       "gold": "nav.voteaccess",
       "pred": "nav.candidates",
-      "conf": 0.236
+      "conf": 0.222
     },
     {
       "text": "what does this say",
       "lang": "en",
       "gold": "action.read_aloud",
       "pred": "unknown",
-      "conf": 0.28
+      "conf": 0.222
     },
     {
       "text": "speak igbo",
       "lang": "en",
       "gold": "action.change_language",
       "pred": "action.read_aloud",
-      "conf": 0.216
+      "conf": 0.178
+    },
+    {
+      "text": "yes please",
+      "lang": "en",
+      "gold": "action.confirm",
+      "pred": "action.stop_speaking",
+      "conf": 0.136
     },
     {
       "text": "stop that",
       "lang": "en",
       "gold": "action.cancel",
       "pred": "action.stop_speaking",
-      "conf": 0.557
+      "conf": 0.506
     },
     {
       "text": "silence",
       "lang": "en",
       "gold": "action.stop_speaking",
-      "pred": "nav.result_verify",
-      "conf": 0.141
+      "pred": "nav.sync",
+      "conf": 0.16
     },
     {
       "text": "who will win the election",
       "lang": "en",
       "gold": "unknown",
       "pred": "nav.voteaccess",
-      "conf": 0.575
+      "conf": 0.62
+    },
+    {
+      "text": "wetin una chop",
+      "lang": "pcm",
+      "gold": "unknown",
+      "pred": "nav.settings",
+      "conf": 0.129
     }
   ],
+  "asr_transcript_test": {
+    "n": 30,
+    "per_language": {
+      "en": {
+        "n": 13,
+        "intent_accuracy": 0.385,
+        "language_id_accuracy": 0.615
+      },
+      "pcm": {
+        "n": 6,
+        "intent_accuracy": 0.667,
+        "language_id_accuracy": 0.333
+      },
+      "yo": {
+        "n": 4,
+        "intent_accuracy": 0.25,
+        "language_id_accuracy": 1.0
+      },
+      "ha": {
+        "n": 3,
+        "intent_accuracy": 0.0,
+        "language_id_accuracy": 1.0
+      },
+      "ig": {
+        "n": 4,
+        "intent_accuracy": 0.25,
+        "language_id_accuracy": 1.0
+      }
+    },
+    "errors": [
+      {
+        "text": "yá àwòrán ìwé-ìsidìwò",
+        "lang": "yo",
+        "gold": "nav.countcam",
+        "pred": "nav.candidates",
+        "conf": 0.118
+      },
+      {
+        "text": "mu dake mana!",
+        "lang": "ha",
+        "gold": "nav.countcam",
+        "pred": "nav.voteaccess",
+        "conf": 0.13
+      },
+      {
+        "text": "nne bụ ite aị maịrị a",
+        "lang": "ig",
+        "gold": "nav.countcam",
+        "pred": "nav.sync",
+        "conf": 0.16
+      },
+      {
+        "text": "ṣé ẹ wọ sí dìbò wú?",
+        "lang": "yo",
+        "gold": "nav.result_verify",
+        "pred": "nav.voteaccess",
+        "conf": 0.169
+      },
+      {
+        "text": "ta ɓatar da saka makon zabe.",
+        "lang": "ha",
+        "gold": "nav.result_verify",
+        "pred": "nav.voteaccess",
+        "conf": 0.244
+      },
+      {
+        "text": "nne m nne m nne na nzuzo n'ala.",
+        "lang": "ig",
+        "gold": "nav.result_verify",
+        "pred": "nav.home",
+        "conf": 0.182
+      },
+      {
+        "text": "show me where them they var",
+        "lang": "pcm",
+        "gold": "nav.polling_unit",
+        "pred": "nav.dashboard",
+        "conf": 0.303
+      },
+      {
+        "text": "lection materials are missing.",
+        "lang": "en",
+        "gold": "nav.incident",
+        "pred": "nav.voteaccess",
+        "conf": 0.262
+      },
+      {
+        "text": "mo fẹ́ fi ìṣẹ̀lẹ̀ kan túyí létí.",
+        "lang": "yo",
+        "gold": "nav.incident",
+        "pred": "action.help",
+        "conf": 0.142
+      },
+      {
+        "text": "ba ya ninsa ɗe.",
+        "lang": "ha",
+        "gold": "nav.voteaccess",
+        "pred": "action.go_back",
+        "conf": 0.15
+      },
+      {
+        "text": "ri gbasara ntuli atali?",
+        "lang": "ig",
+        "gold": "nav.voteaccess",
+        "pred": "nav.incident",
+        "conf": 0.243
+      },
+      {
+        "text": "pupin transparency-bored.",
+        "lang": "en",
+        "gold": "nav.dashboard",
+        "pred": "action.read_aloud",
+        "conf": 0.124
+      },
+      {
+        "text": "chelopoietque",
+        "lang": "en",
+        "gold": "nav.sync",
+        "pred": "action.stop_speaking",
+        "conf": 0.149
+      },
+      {
+        "text": "maintaining",
+        "lang": "en",
+        "gold": "nav.home",
+        "pred": "nav.polling_unit",
+        "conf": 0.222
+      },
+      {
+        "text": "absolutely, it promotes clarity and respect in communication.",
+        "lang": "en",
+        "gold": "action.go_back",
+        "pred": "nav.sync",
+        "conf": 0.246
+      },
+      {
+        "text": "taking note?",
+        "lang": "en",
+        "gold": "action.change_language",
+        "pred": "nav.incident",
+        "conf": 0.178
+      },
+      {
+        "text": "dell",
+        "lang": "en",
+        "gold": "action.help",
+        "pred": "action.confirm",
+        "conf": 0.242
+      },
+      {
+        "text": "sounds bad",
+        "lang": "en",
+        "gold": "action.cancel",
+        "pred": "action.go_back",
+        "conf": 0.221
+      },
+      {
+        "text": "waking on the chore?",
+        "lang": "pcm",
+        "gold": "unknown",
+        "pred": "nav.incident",
+        "conf": 0.163
+      }
+    ]
+  },
   "caveat": "Held-out split of a tiny developer-written seed set. This is a smoke test, NOT evidence of real-world language support."
 }

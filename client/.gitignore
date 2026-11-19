@@ -48,3 +48,4 @@ next-env.d.ts
 
 # AI models fetched from Hugging Face by scripts/fetch-models.mjs (large; re-downloaded on build)
 /public/models/hf/
+/public/vendor/

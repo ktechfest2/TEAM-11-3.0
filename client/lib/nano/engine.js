@@ -13,6 +13,12 @@ import { selectRecognizer } from "./asr";
 import * as tts from "./tts";
 import { translate } from "../i18n/messages";
 
+/** Voice debug log: on in development, or anywhere with localStorage["awavote.debug"] = "1". */
+const DEBUG = process.env.NODE_ENV !== "production" || (() => { try { return localStorage.getItem("awavote.debug") === "1"; } catch { return false; } })();
+
+/** English and Pidgin share one speech model; every other language is its own family. */
+const family = (lang) => (lang === "pcm" ? "en" : lang);
+
 export class NanoEngine extends EventTarget {
   constructor({ getSettings, execute }) {
     super();
@@ -24,7 +30,10 @@ export class NanoEngine extends EventTarget {
     this.abort = null;
   }
 
-  emit(type, detail) { this.dispatchEvent(new CustomEvent(type, { detail })); }
+  emit(type, detail) {
+    if (DEBUG && type !== "level" && type !== "state") console.info("[voice]", type, JSON.stringify(detail)?.slice(0, 300));
+    this.dispatchEvent(new CustomEvent(type, { detail }));
+  }
   setState(state, extra = {}) { this.state = state; this.emit("state", { state, ...extra }); }
 
   t(key, vars, lang) {
@@ -50,6 +59,25 @@ export class NanoEngine extends EventTarget {
   /** Capture one spoken command. Returns the transcript (also emitted) so the user can correct it. */
   async listen() {
     const s = this.getSettings();
+    if (s.autoLanguage !== false && !(s.allowOnlineSpeech && s.speech?.status !== "ready")) {
+      // Record one phrase, then the automatic-language pipeline (same as hands-free).
+      tts.stop();
+      this.abort = new AbortController();
+      try {
+        this.setState("listening");
+        const { recordUtterance, hasSpeech } = await import("./asr/recorder");
+        const pcm = await recordUtterance({ onLevel: (level) => this.emit("level", { level }), signal: this.abort.signal });
+        if (!hasSpeech(pcm)) { await this.respond("voice.didntCatch"); return null; }
+        return await this.handleUtterance(pcm, { source: "panel" });
+      } catch (e) {
+        if (e.name === "AbortError") { this.setState("idle"); return null; }
+        this.emit("error", { message: e.message });
+        await this.respond(e.name === "NotAllowedError" ? "voice.micDenied" : "voice.error");
+        return null;
+      } finally {
+        this.abort = null;
+      }
+    }
     const rec = selectRecognizer({ allowOnline: s.allowOnlineSpeech, speech: s.speech,
       templatePack: !!s.voicePacks?.[s.language]?.commands });
     if (!rec) {
@@ -91,6 +119,118 @@ export class NanoEngine extends EventTarget {
   }
 
   cancelListening() { this.abort?.abort(); tts.stop(); this.setState("idle"); }
+
+  /** Load everything a spoken command needs (hands-free mode), so the first one is fast. */
+  async prepare() {
+    const s = this.getSettings();
+    warmup().catch(() => {});
+    const sp = await import("./speech");
+    sp.setKeepLoaded(true);
+    if (s.autoLanguage !== false) await import("./lid").then((m) => m.warmupLid()).catch(() => {});
+    const choice = sp.chooseModel(s.language, await sp.getCatalog());
+    if (choice && await sp.isModelCached(choice)) await sp.loadRecognizer(choice).catch(() => {});
+  }
+
+  /**
+   * A phrase captured by hands-free listening (or the panel) — the whole pipeline with
+   * automatic language: detect the spoken language, transcribe with that language's model,
+   * switch the app to that language if it changed, then understand and act.
+   * `source: "handsfree"` = nobody pressed anything: only act on clear commands and stay
+   * silent about background talk (no "I didn't catch that" for every TV voice).
+   */
+  async handleUtterance(pcm, { source = "handsfree" } = {}) {
+    if (this.busy) return null;
+    this.busy = true;
+    const s = this.getSettings();
+    const quiet = source === "handsfree" && !this.pendingConfirmation;
+    const idleOr = async (key) => { if (!quiet) await this.respond(key); else this.setState("idle"); return null; };
+    try {
+      this.setState("transcribing");
+      warmup().catch(() => {});
+      const current = s.language;
+      // 1. Which language is this? (en = English or Pidgin: one speech model serves both)
+      let spoken = null;
+      if (s.autoLanguage !== false) {
+        const { detectSpokenLanguage } = await import("./lid");
+        spoken = await detectSpokenLanguage(pcm).catch(() => null);
+        this.emit("spoken-language", spoken || {});
+      }
+      // Languages to try, best guess first. English and Pidgin share one model ("en" family).
+      const asLang = (l) => (l === "en" ? (current === "pcm" ? "pcm" : "en") : l);
+      const ranked = spoken ? Object.entries(spoken.probs).sort((x, y) => y[1] - x[1]) : [];
+      // Sure (>= 0.6): the top language, then (if needed) the current one. Unsure: every language with
+      // >= 15 % (max 3) is transcribed and the most confident command wins — guessing wrong would
+      // make AwaVote act on a mis-heard command.
+      const unsure = !spoken || spoken.p < 0.6;
+      const tries = [];
+      for (const [l, p] of ranked) if (tries.length < 3 && (tries.length === 0 || (unsure ? p >= 0.15 : p >= 0.3))) tries.push(asLang(l));
+      if (!spoken || spoken.p < 0.3) tries.unshift(current);
+      if (!tries.some((l) => family(l) === family(current)) && !(spoken?.p >= 0.85)) tries.push(current); // also the current language
+      const order = [...new Set(tries)].slice(0, unsure ? 4 : 3);
+
+      // 2. Transcribe + understand.
+      let best = null;
+      for (const [k, lang] of order.entries()) {
+        let res = await this.#understandIn(lang, pcm);
+        // Fast short-window transcript unclear for the most likely language? Re-check with the full window.
+        if (k === 0 && res && !res.fits && res.r.shortWindow) res = (await this.#understandIn(lang, pcm, { full: true })) || res;
+        if (!res) continue;
+        if (!best || (res.fits && !best.fits) || (res.fits === best.fits && (res.c?.confidence ?? 0) > (best.c?.confidence ?? 0))) best = res;
+        if (res.fits && !unsure) break;
+      }
+      if (!best) { if (!quiet) this.emit("asr-unavailable", { lang: order[0] }); return idleOr("voice.asrUnavailable"); }
+      const { r, c } = best;
+      this.emit("transcript", r);
+      if (!c) return idleOr("voice.didntCatch");
+
+      const action = route(c, r.text, { pendingConfirmation: this.pendingConfirmation });
+      if (quiet && (!c.confident || c.intent === "unknown" || ["clarify", "out_of_scope", "nothing_pending"].includes(action.type))) {
+        this.emit("ignored", { text: r.text, classification: c });
+        this.setState("idle");
+        return null;
+      }
+      // 3. Follow the user's language.
+      if (s.autoLanguage !== false && c.language && c.language !== this.getSettings().language) {
+        await this.execute({ type: "set_language", lang: c.language, auto: true });
+        this.emit("language-switched", { lang: c.language, from: current });
+      }
+      this.lastTranscript = r.text;
+      this.emit("result", { text: r.text, classification: c, action, spoken });
+      await this.perform(action, c);
+      return r.text || c.intent;
+    } catch (e) {
+      this.emit("error", { message: e.message });
+      return idleOr(e.name === "NotAllowedError" ? "voice.micDenied" : "voice.error");
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  /**
+   * Transcribe `pcm` as language `lang` and classify it.
+   * @returns {Promise<{r, c, fits: boolean} | null>} fits = a confident command whose words are in that language
+   */
+  async #understandIn(lang, pcm, { full = false } = {}) {
+    const { transcribeIn } = await import("./asr");
+    const r = await transcribeIn(lang, pcm, { full });
+    this.emit("attempt", { lang, text: r?.text, provider: r?.provider, model: r?.model, ms: r?.latencyMs, short: r?.shortWindow });
+    if (!r) return null;
+    if (r.provider === "templates-local") {
+      if (!r.intent) return { r, c: null, fits: false };
+      const c = { intent: r.intent, confidence: r.confidence, margin: r.confidence, alternatives: r.alternatives || [],
+        language: lang, languageConfidence: 1, confident: r.confidence >= 0.5, latencyMs: r.latencyMs };
+      return { r, c, fits: c.confident };
+    }
+    if (!r.text || r.text.replace(/[^\p{L}]/gu, "").length < 2) return { r, c: null, fits: false };
+    this.setState("understanding");
+    const c = await classify(r.text);
+    const textLang = c.language;
+    // English-family speech: the words decide English vs Pidgin. Otherwise the model's language stands.
+    if (family(lang) === "en") c.language = textLang === "pcm" && c.languageConfidence >= 0.5 ? "pcm" : textLang === "en" ? "en" : lang;
+    else c.language = lang;
+    const wordsAgree = family(textLang) === family(lang) || c.languageConfidence < 0.5;
+    return { r, c, fits: c.confident && c.intent !== "unknown" && wordsAgree };
+  }
 
   /** Entry point for typed or corrected commands (same pipeline minus ASR). */
   async handleText(text, { asrConfidence = null } = {}) {

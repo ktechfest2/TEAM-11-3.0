@@ -7,7 +7,7 @@
  * If none can speak the language, speak() resolves { spoken: false, reason } and the UI
  * keeps showing the text — we never read Yoruba text with an English voice silently.
  */
-import { getTransformers } from "../transformers";
+import { loadFrom } from "../transformers";
 import { getPromptAudio } from "../voicepack";
 
 const BCP47 = { en: ["en-NG", "en-GB", "en"], pcm: ["en-NG", "en-GB", "en"], yo: ["yo"], ha: ["ha"], ig: ["ig"] };
@@ -54,8 +54,7 @@ function playAudio(src, rate) {
 let mmsYor = null;
 async function mmsSpeak(text, rate) {
   if (!mmsYor) {
-    const { pipeline } = await getTransformers();
-    mmsYor = await pipeline("text-to-speech", "Xenova/mms-tts-yor", { dtype: "q8", device: "wasm" });
+    mmsYor = await loadFrom("bundled", (tf) => tf.pipeline("text-to-speech", "Xenova/mms-tts-yor", { dtype: "q8", device: "wasm" }));
   }
   const out = await mmsYor(text);
   const ctx = new AudioContext();

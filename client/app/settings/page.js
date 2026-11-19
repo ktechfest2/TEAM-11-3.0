@@ -189,6 +189,8 @@ export default function SettingsPage() {
         <div className="mt-3 flex flex-col gap-2"><SpeechStatus showReady /><SpeechAttribution /></div>
         <h3 className="mt-5 font-bold">{t("voice.packsTitle")}</h3>
         <ul className="mt-3 flex flex-col gap-3">{PACKS.map((p) => <PackRow key={p.id} pack={p} />)}</ul>
+        <Toggle label={t("settings.handsFree")} hint={t("settings.handsFreeDesc")} checked={settings.handsFree} onChange={(v) => updateSettings({ handsFree: v })} />
+        <Toggle label={t("settings.autoLanguage")} hint={t("settings.autoLanguageDesc")} checked={settings.autoLanguage} onChange={(v) => updateSettings({ autoLanguage: v })} />
         <Toggle label={t("settings.onlineSpeech")} hint={t("settings.onlineSpeechHint")} checked={settings.allowOnlineSpeech} onChange={(v) => updateSettings({ allowOnlineSpeech: v })} />
         {packs["tts-mms-yor"] && <Toggle label={t("settings.mmsVoice")} checked={settings.mmsVoice} onChange={(v) => updateSettings({ mmsVoice: v })} />}
       </Card>

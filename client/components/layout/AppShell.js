@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useApp } from "@/hooks/useApp";
 import { Icon } from "@/components/ui";
 import VoicePanel from "@/components/voice/VoicePanel";
+import HandsFreeBar from "@/components/voice/HandsFreeBar";
 import ConnectivityBadge from "./ConnectivityBadge";
 import ThemeToggle from "./ThemeToggle";
 import Logo from "./Logo";
@@ -154,6 +155,7 @@ export default function AppShell({ children }) {
         </ul>
       </nav>
 
+      {!voiceOpen && <HandsFreeBar />}
       {menuOpen && <MenuSheet onClose={() => setMenuOpen(false)} />}
       {voiceOpen && <VoicePanel onClose={() => setVoiceOpen(false)} />}
     </div>

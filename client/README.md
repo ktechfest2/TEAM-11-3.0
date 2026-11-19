@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Hosting: two required headers
+Speech recognition runs multi-threaded only when the page is *cross-origin isolated*. Serve every
+file with:
+```
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: credentialless
+```
+`npm run dev` and `npm start` (scripts/serve.mjs) already send them. Without them the app still
+works, but each voice command takes about twice as long.
+
+## Voice: hands-free and automatic language
+- The microphone stays on while the app is visible and wakes up when someone speaks
+  (`lib/nano/asr/handsfree.js`). It turns on after one tap, the first time; it pauses while the
+  app is hidden or talking; and audio never leaves the phone.
+- Each phrase goes through `lib/nano/lid.js`, which detects English/Pidgin, Yoruba, Hausa or Igbo
+  (see `ai/language_id/`). The matching N-ATLaS model transcribes it in a Web Worker
+  (`lib/nano/asr/worker.js`), and the app switches its language to follow the speaker.
+- Hands-free mode only acts on clear commands. Background talk is ignored.

@@ -1,5 +1,5 @@
 /** Download (and cache) a model pack, reporting aggregate progress 0-100. */
-import { getTransformers } from "./transformers";
+import { loadFrom } from "./transformers";
 
 function progressAggregator(onProgress) {
   const files = new Map();
@@ -14,8 +14,8 @@ function progressAggregator(onProgress) {
 
 export async function downloadPack(pack, onProgress = () => {}) {
   const cb = progressAggregator(onProgress);
-  const { pipeline } = await getTransformers();
+
   const task = pack.kind === "tts" ? "text-to-speech" : "feature-extraction";
-  const p = await pipeline(task, pack.hfModel, { dtype: "q8", device: "wasm", progress_callback: cb });
+  const p = await loadFrom("bundled", (tf) => tf.pipeline(task, pack.hfModel, { dtype: "q8", device: "wasm", progress_callback: cb }));
   await p.dispose?.();
 }
