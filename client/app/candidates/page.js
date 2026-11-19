@@ -12,12 +12,15 @@ const initials = (name) => (name || "").split(" ").filter(Boolean).slice(0, 2).m
 /** Candidate face (bundled, offline), or their initials when no verified photo exists. */
 function Face({ name, photo, size }) {
   const cls = `shrink-0 rounded-full ${size === "sm" ? "h-9 w-9 text-xs" : "h-16 w-16 text-lg"}`;
+  // Plain <img>: static export, files are already tiny bundled WebP (next/image needs a server).
+  // eslint-disable-next-line @next/next/no-img-element
   if (photo) return <img src={`/media/candidates/${photo.file}`} alt="" loading="lazy" decoding="async" className={`${cls} bg-surface-2 object-cover ring-2 ring-line`} />;
   return <span aria-hidden="true" className={`${cls} grid place-items-center bg-surface-2 font-display font-bold text-muted`}>{initials(name)}</span>;
 }
 
 /** Official party logo from INEC (bundled, offline). */
 function PartyLogo({ acronym }) {
+  // eslint-disable-next-line @next/next/no-img-element
   return <img src={partyLogo(acronym)} alt="" width={40} height={40} loading="lazy" decoding="async" className="h-10 w-10 shrink-0 rounded-lg bg-white object-contain p-0.5 ring-1 ring-line" />;
 }
 

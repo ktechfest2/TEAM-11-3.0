@@ -10,7 +10,8 @@ const TYPES = {
   ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".mjs": "text/javascript", ".css": "text/css",
   ".json": "application/json", ".webmanifest": "application/manifest+json", ".png": "image/png", ".svg": "image/svg+xml",
   ".ico": "image/x-icon", ".wasm": "application/wasm", ".onnx": "application/octet-stream", ".txt": "text/plain; charset=utf-8",
-  ".gz": "application/gzip", ".mp3": "audio/mpeg", ".woff2": "font/woff2",
+  ".gz": "application/gzip", ".mp3": "audio/mpeg", ".woff2": "font/woff2", ".webp": "image/webp", ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg", ".ogg": "audio/ogg", ".wav": "audio/wav",
 };
 
 function resolve(urlPath) {

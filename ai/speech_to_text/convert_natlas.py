@@ -79,14 +79,36 @@ def _python314_optimum_fix():
             setattr(cls, "NORMALIZED_CONFIG_CLASS", staticmethod(v))
 
 
+def _step(*args):
+    """Run one conversion phase in a fresh interpreter (see _phase)."""
+    import subprocess
+    r = subprocess.run([sys.executable, "-I", __file__, "--phase", *args])
+    if r.returncode:
+        sys.exit(f"phase {args[0]} failed (exit {r.returncode}; -9 usually means out of memory)")
+
+
+def _phase(name: str, *args: str):
+    if name == "export":
+        import torch
+        from optimum.exporters.onnx import main_export
+        torch.set_num_threads(2)
+        if sys.version_info >= (3, 14):
+            _python314_optimum_fix()
+        # no_post_process: skip Optimum's in-process decoder merge (the memory peak); merged later.
+        main_export(args[0], output=args[1], task="automatic-speech-recognition-with-past", device="cpu", no_post_process=True)
+    elif name == "quantize":
+        from onnxruntime.quantization import QuantType, quantize_dynamic
+        quantize_dynamic(args[0], args[1], weight_type=QuantType.QUInt8, extra_options={"EnableSubgraph": True})
+    elif name == "merge":
+        from optimum.onnx import merge_decoders
+        merge_decoders(args[0], args[1], strict=False, save_path=args[2])
+    else:
+        sys.exit(f"unknown phase {name}")
+
+
 def convert(code: str, source: str, model_id: str, name: str, whisper_lang: str | None, natlas: bool):
     from huggingface_hub import snapshot_download
-    from onnxruntime.quantization import QuantType, quantize_dynamic
-    from optimum.exporters.onnx import main_export
     import onnxruntime as ort
-
-    if sys.version_info >= (3, 14):
-        _python314_optimum_fix()
 
     token = os.environ.get("HF_TOKEN") or None
     print(f"[{code}] downloading {source} …", flush=True)
@@ -99,18 +121,23 @@ def convert(code: str, source: str, model_id: str, name: str, whisper_lang: str 
     if dest.exists():
         shutil.rmtree(dest)
     (dest / "onnx").mkdir(parents=True)
-    with tempfile.TemporaryDirectory() as tmp:
+    # Each heavy step runs in its own Python process so its memory is returned to the OS before
+    # the next one starts (a single process peaked at ~5 GB and was OOM-killed on a 14 GB laptop).
+    # Decoders are quantised BEFORE merging: merging two int8 graphs needs a fraction of the memory.
+    # On disk next to the output, not /tmp (often RAM-backed tmpfs; the fp32 graphs are ~2 GB).
+    with tempfile.TemporaryDirectory(dir=OUT.parent, prefix=".convert-") as tmp:
+        t = Path(tmp)
         print(f"[{code}] exporting to ONNX …", flush=True)
-        main_export(str(src), output=tmp, task="automatic-speech-recognition-with-past", device="cpu")
-        for part in ("encoder_model", "decoder_model_merged"):
-            fp = Path(tmp) / f"{part}.onnx"
-            if not fp.exists():
-                sys.exit(f"export did not produce {fp.name}; got {sorted(os.listdir(tmp))}")
-            print(f"[{code}] quantising {part} to int8 …", flush=True)
-            # EnableSubgraph: the merged decoder keeps its weights inside If-node sub-graphs, which the
-            # quantiser otherwise skips (leaving them fp32 and ~6x larger).
-            quantize_dynamic(str(fp), str(dest / "onnx" / f"{part}_quantized.onnx"), weight_type=QuantType.QUInt8,
-                             extra_options={"EnableSubgraph": True})
+        _step("export", str(src), tmp)
+        for part in ("encoder_model", "decoder_model", "decoder_with_past_model"):
+            if not (t / f"{part}.onnx").exists():
+                sys.exit(f"export did not produce {part}.onnx; got {sorted(os.listdir(tmp))}")
+        print(f"[{code}] quantising to int8 …", flush=True)
+        _step("quantize", str(t / "encoder_model.onnx"), str(dest / "onnx" / "encoder_model_quantized.onnx"))
+        _step("quantize", str(t / "decoder_model.onnx"), str(t / "decoder_q.onnx"))
+        _step("quantize", str(t / "decoder_with_past_model.onnx"), str(t / "decoder_with_past_q.onnx"))
+        print(f"[{code}] merging decoders …", flush=True)
+        _step("merge", str(t / "decoder_q.onnx"), str(t / "decoder_with_past_q.onnx"), str(dest / "onnx" / "decoder_model_merged_quantized.onnx"))
     for f in COPY:
         if (src / f).exists():
             shutil.copy2(src / f, dest / f)
@@ -133,13 +160,20 @@ def convert(code: str, source: str, model_id: str, name: str, whisper_lang: str 
         "attribution": attribution, "converted_at": datetime.now(UTC).isoformat(timespec="seconds"),
     }
     reg_path = OUT / "registry.json"
-    reg = json.loads(reg_path.read_text()) if reg_path.exists() else {"models": []}
-    reg["models"] = [m for m in reg["models"] if m["id"] != model_id] + [entry]
-    reg_path.write_text(json.dumps(reg, indent=1, ensure_ascii=False))
+    import fcntl
+    with open(OUT / ".registry.lock", "w") as lock:  # two conversions finishing together must not clobber each other
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        reg = json.loads(reg_path.read_text()) if reg_path.exists() else {"models": []}
+        reg["models"] = [m for m in reg["models"] if m["id"] != model_id] + [entry]
+        tmp_reg = reg_path.with_suffix(".tmp")
+        tmp_reg.write_text(json.dumps(reg, indent=1, ensure_ascii=False))
+        tmp_reg.replace(reg_path)
     print(f"[{code}] done: {model_id} ({entry['size_bytes'] / 1e6:.0f} MB)", flush=True)
 
 
 def main():
+    if len(sys.argv) > 2 and sys.argv[1] == "--phase":
+        return _phase(*sys.argv[2:])
     ap = argparse.ArgumentParser()
     ap.add_argument("--langs", nargs="+", default=list(NATLAS), choices=list(NATLAS))
     ap.add_argument("--source", help="convert a different (public) Whisper checkpoint instead, e.g. for testing")

@@ -9,21 +9,32 @@ Speech is set up automatically on users' phones. See `docs/speech.md` for the us
 | en, pcm, yo, ha (interim) | `onnx-community/whisper-tiny` (MIT) | Same |
 | All other languages | Native-speaker command templates (`client/lib/nano/asr/features.js`) | Same |
 
-## Converter: verified
-`convert_natlas.py` was tested end to end on the public `openai/whisper-tiny`:
-1. The conversion completed: download → ONNX export → int8, including sub-graphs.
-2. The output was 64 MB.
-3. The AwaVote server hosted it, and the app downloaded it automatically.
-4. The JFK sample clip was played into Chrome as microphone input and transcribed correctly on the device.
+## N-ATLaS models: converted and live (2026-11-19)
+All four N-ATLaS models are converted (int8 ONNX, 291 MB each) and served from `server/data/models/`:
 
-Notes:
-- Expected N-ATLaS output size: roughly 250–300 MB per language.
-- On Python 3.14, the script patches an Optimum incompatibility: `functools.partial` class attributes became method descriptors in 3.14.
+| Model id | Languages | Check on the converted (int8) model |
+|---|---|---|
+| `natlas-asr-en-int8` | en, pcm | JFK clip transcribed word for word |
+| `natlas-asr-yo-int8` | yo | Yoruba sentence (MMS-TTS) correct except one word, tone marks kept |
+| `natlas-asr-ha-int8` | ha | Hausa sentence (MMS-TTS) correct except the last word |
+| `natlas-asr-ig-int8` | ig | Output matches Awarri's original fp32 model on the same clip. Accuracy not confirmed: no good Igbo test voice is available, so test with real speakers |
 
-To run it for N-ATLaS, set `HF_TOKEN` to a token from an account that has accepted Awarri's terms.
+The app picks the right model per language automatically and loads it in the background (no button).
+Phones with 2 GB of memory or less keep the 41 MB Whisper-tiny instead.
+
+## Running the converter
+```bash
+ai/.venv/bin/hf auth login        # account must have accepted Awarri's terms on all four model pages
+HF_HUB_DISABLE_XET=1 ai/.venv/bin/python ai/speech_to_text/convert_natlas.py --langs yo ha ig en
+```
+- Weights are ~1 GB per language. `HF_HUB_DISABLE_XET=1` makes interrupted downloads resume over plain HTTP (xet transfers can hang on a flaky connection).
+- Each heavy step (export, int8 quantisation, decoder merge) runs in its own process, and the decoders are quantised before merging. Peak memory is about 4.7 GB; in one process it was over 5 GB and was OOM-killed.
+- Temporary files go to `server/data/.convert-*`, not `/tmp`, which can be RAM-backed.
+- Python 3.14: the script patches an Optimum incompatibility (`functools.partial` class attributes became method descriptors).
+- The converter was first validated end to end on `openai/whisper-tiny`, including on-device transcription in Chrome.
 
 ## Gaps
 - **Pidgin:** no dedicated model; it uses Nigerian-accented English.
 - **Other languages:** no dedicated models; they rely on native-speaker templates.
-- **Accuracy:** not yet measured on AwaVote commands. Use the accuracy-test tool in `/contribute`.
+- **Accuracy:** checked on single synthetic sentences only (see above), not yet on real voters' AwaVote commands. Use the accuracy-test tool in `/contribute`, especially for Igbo.
 - **Licence:** the N-ATLaS licence caps use at 1,000 active users per 30 days without a commercial agreement.
