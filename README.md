@@ -8,7 +8,7 @@ evidence, and it speaks the voter's language, hands-free.
 
 | | |
 |---|---|
-| **Live app** | **https://zakumi-awavote.static.hf.space** (also listed at https://huggingface.co/spaces/zakumi/awavote) |
+| **Live app** | **https://awavote.onrender.com** |
 | **Live API** | https://awavote-api.onrender.com 
 
 **Demo Video** - 
@@ -55,7 +55,8 @@ in the whole result suffers.
 ### Built for real Nigerian conditions
 - **Poor or no network:** works fully offline. See [How offline works](#3-how-offline-works).
 - **Voters who don't read English:**
-  - **Hands-free voice.** The microphone wakes when you speak, with no button. AwaVote **detects the
+  - **Hands-free voice** (preview, still under development; see [its status](#5-how-ai-is-used-on-the-phone-offline)).
+    The microphone wakes when you speak, with no button. AwaVote **detects the
     language you speak** (English, Pidgin, Yorùbá, Hausa, Igbo), switches to it and acts. For
     example, "fi àwọn olùdíje hàn mí" opens the candidates, in Yorùbá.
   - Read-aloud.
@@ -90,7 +91,7 @@ installed with **Add to Home screen**.
    Only *Track a result* (comparing with what other people sent) needs a connection.
 
 ## 4. Try the live demo
-1. Open **https://zakumi-awavote.static.hf.space** on a phone (Chrome or Safari), or on a desktop
+1. Open **https://awavote.onrender.com** on a phone (Chrome or Safari), or on a desktop
    browser. The free API host sleeps when unused, so the first *Track a result* can take about a
    minute.
 2. **Track a result:** enter `DEMO-001`, where the announced result matches the wall, then
@@ -118,6 +119,23 @@ installed with **Add to Home screen**.
 4. The command model decides what it means.
 5. AwaVote acts only on clear commands and ignores background talk.
 
+> **Status: Nigerian-language voice is a working preview, still under active development.** It is
+> not perfect yet:
+> - **Accuracy varies by language and speaker.** English and Pidgin are the most reliable. Yorùbá,
+>   Hausa and Igbo work for the common commands, but accents, background noise or unusual
+>   phrasing can be misheard. In our tests one Igbo command was taken for Yorùbá, and Hausa is
+>   detected with lower confidence than the other languages.
+> - **Speed depends on the phone.** A Yorùbá, Hausa or Igbo command takes about 10–20 seconds to
+>   understand on a mid-range phone, against 2–3 seconds for English.
+> - **First download is large.** Each Nigerian-language speech model is about 290 MB, downloaded
+>   once in the background on Wi-Fi.
+> - **Translation is partial.** About 36–62% of the interface text is translated, depending on
+>   the language; the rest stays in English until a translation passes the quality checks.
+>
+> When AwaVote is unsure it does nothing rather than act on a wrong guess, and every action
+> can also be done by tapping. Next: more native-speaker phrasings (through `/contribute`),
+> fine-tuning the language detector on real Nigerian voices, and smaller, faster speech models.
+
 ## 6. Architecture
 ```
 client/   Next.js 16 static-export PWA (React 19, Tailwind 4): service worker, IndexedDB outbox,
@@ -126,7 +144,7 @@ server/   FastAPI + SQLAlchemy + Alembic (SQLite): results, official results, ev
           signed receipts, hash-chained audit log, election data, speech-model hosting (/asr-models)
 ai/       model conversion (N-ATLaS → int8 ONNX), language-ID training, command-model training,
           interface translation, model cards and evaluation reports
-deploy/   deployment scripts (demo data seeding, model upload) and an optional Dockerfile
+deploy/   deployment scripts (demo data seeding, model upload) and an optional single-server Dockerfile
 ```
 Main API endpoints:
 - `POST /api/results`: an independent EC8A submission;
@@ -176,35 +194,39 @@ The one failure is an Igbo command spoken by a synthetic test voice, which the l
 hears as Yorùbá. Nothing happens in that case.
 
 ## 9. Deployment
-Two free, public HTTPS services:
+Three free, public HTTPS services. Render builds the app and the API from this GitHub repository
+on every push to `main`.
 
 | Part | Host | Address |
 |---|---|---|
-| App, OCR, language ID, command model | Hugging Face **static Space** `zakumi/awavote` | https://zakumi-awavote.static.hf.space |
-| N-ATLaS speech models (1.15 GB) | Hugging Face **model repo** `zakumi/awavote-models` | https://huggingface.co/zakumi/awavote-models |
+| App (PWA), OCR, language ID, command model | **Render** free static site `awavote` | https://awavote.onrender.com |
 | API (FastAPI) | **Render** free web service `awavote-api` | https://awavote-api.onrender.com |
+| N-ATLaS speech models (1.15 GB) | Hugging Face **model repo** `zakumi/awavote-models` | https://huggingface.co/zakumi/awavote-models |
 
 **Why it still works offline:** the app is static files. On the first visit the service worker
-stores the pages, the INEC data and the AI models on the phone, so the app no longer needs either
+stores the pages, the INEC data and the AI models on the phone, so the app no longer needs any
 host. Only uploading records and *Track a result* use the API; uploads wait in the phone's outbox
 until there is signal. No server, wherever it is hosted, can be reached without internet, so this
 is the part that makes AwaVote work offline.
 
-**App (static Space):**
-1. Upload the speech models (`server/data/models/`, with `registry.json`) to a public model
-   repository. A Space is limited to 1 GB, and the four N-ATLaS models are 1.15 GB.
-2. Build the client pointed at the API and the model repository, with folder-style page URLs
-   (the static host serves only real files):
-   `AWAVOTE_TRAILING_SLASH=1 NEXT_PUBLIC_API_URL=https://awavote-api.onrender.com NEXT_PUBLIC_MODELS_URL=https://huggingface.co/zakumi/awavote-models/resolve/main npm run build`.
-3. Upload `client/out/` to the Space. Its `README.md`
-   front matter sets `sdk: static` and `custom_headers` (`cross-origin-embedder-policy:
-   require-corp`, `cross-origin-opener-policy: same-origin`, `cross-origin-resource-policy:
-   cross-origin`) so speech recognition can run multi-threaded.
+**Speech models:** upload `server/data/models/` (the four converted N-ATLaS folders and
+`registry.json`) to a public Hugging Face model repository. Each folder keeps its `NOTICE.txt`
+and the "Powered by Awarri" name, as the N-ATLaS licence requires.
+
+**App (Render static site):** root directory `client`, publish directory `out`.
+- Build: `npm ci && npm run build` (it also downloads the bundled Whisper-tiny and Yorùbá voice
+  models and copies the ONNX Runtime, Tesseract and Transformers.js files).
+- Environment: `NEXT_PUBLIC_API_URL=https://awavote-api.onrender.com`,
+  `NEXT_PUBLIC_MODELS_URL=https://huggingface.co/zakumi/awavote-models/resolve/main`,
+  `AWAVOTE_TRAILING_SLASH=1` (folder-style page URLs), `NODE_VERSION=22`.
+- Response headers on `/*`: `Cross-Origin-Opener-Policy: same-origin` and
+  `Cross-Origin-Embedder-Policy: credentialless`, so speech recognition can use several CPU
+  threads. On `/sw.js`: `Cache-Control: no-cache`, so phones pick up new versions.
 
 **API (Render):** root directory `server`, Python 3.12.
 - Build: `pip install -r requirements.txt`
 - Start: `alembic upgrade head && python ../deploy/seed_demo.py && uvicorn main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips '*'`
-- Environment: `AWAVOTE_CORS_ORIGINS=["https://zakumi-awavote.static.hf.space"]`,
+- Environment: `AWAVOTE_CORS_ORIGINS=["https://awavote.onrender.com"]`,
   `AWAVOTE_ENVIRONMENT=production`, and secrets `AWAVOTE_RECEIPT_SECRET` and
   `AWAVOTE_OBSERVER_KEY` (random values; the observer key is given only to accredited observers).
 - The free plan's disk is temporary, so the demo database is re-created and re-seeded
@@ -214,7 +236,7 @@ is the part that makes AwaVote work offline.
 `NEXT_PUBLIC_API_URL=/` and start the API with `AWAVOTE_STATIC_DIR=../client/out`. It then serves
 the app, the API and the models (`/asr-models`) from one address and adds the cross-origin
 isolation headers itself. `deploy/Dockerfile` packages this (Hugging Face Docker and Gradio Spaces
-now need a paid plan, so the live demo uses the two free hosts above).
+now need a paid plan, so the live demo uses the free hosts above).
 
 ## 10. Credits
 AwaVote was built during the hackathon. It stands on these open-source libraries, pre-trained
@@ -253,7 +275,7 @@ classifier on top of Whisper-tiny).
 Next.js, React, Tailwind CSS, ONNX Runtime Web, Transformers.js (Hugging Face), Tesseract.js, idb,
 sharp, Vitest, ESLint. FastAPI, Uvicorn, SQLAlchemy, Alembic, Pydantic, httpx, pytest.
 PyTorch, Hugging Face Transformers, Optimum, ONNX, ONNX Runtime, CTranslate2, SentencePiece,
-soundfile, PyArrow. Hugging Face Spaces (static), Render.
+soundfile, PyArrow. Render (hosting), Hugging Face Hub (model hosting).
 
 ### AI coding assistant
 We used **Claude Code (Anthropic)** during the hackathon to help write and

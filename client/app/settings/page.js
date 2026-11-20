@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useApp } from "@/hooks/useApp";
 import PageHeader from "@/components/layout/PageHeader";
 import { Button, Card, Icon, Notice, Pill, Toggle } from "@/components/ui";
@@ -166,7 +167,7 @@ export default function SettingsPage() {
           </details>
         </fieldset>
         <VoicePackRow />
-        <a href="/languages" className="mt-3 inline-block font-semibold text-brand underline">{t("lang.dashboardLink")}</a>
+        <Link href="/languages" className="mt-3 inline-block font-semibold text-brand underline">{t("lang.dashboardLink")}</Link>
       </Card>
 
       <Card>
