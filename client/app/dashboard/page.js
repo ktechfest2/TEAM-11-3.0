@@ -3,8 +3,10 @@ import { useCallback, useEffect, useState } from "react";
 import { useApp } from "@/hooks/useApp";
 import { useLiveQuery } from "@/hooks/useLiveQuery";
 import PageHeader from "@/components/layout/PageHeader";
-import { Button, Card, Notice, Pill, Stat, TextInput } from "@/components/ui";
+import { Button, Card, Notice, Stat, TextInput } from "@/components/ui";
 import { apiFetch } from "@/services/api";
+import Link from "next/link";
+import WallVsAnnounced from "@/components/results/WallVsAnnounced";
 import { kvGet, kvSet } from "@/lib/db";
 import { listEvidence, listIncidents, listResults } from "@/lib/records";
 import { timeAgo } from "@/lib/time";
@@ -101,7 +103,14 @@ export default function DashboardPage() {
 
       <Card>
         <h2 className="text-lg font-bold">{t("dashboard.official")}</h2>
-        <p className="mt-1 text-muted">{t("dashboard.officialNotConnected")}</p>
+        {d?.official_results?.connected ? (
+          <div className="mt-2 grid grid-cols-3 gap-2">
+            <Stat label={t("dashboard.officialPus")} value={d.official_results.polling_units} />
+            <Stat label={t("dashboard.officialMatch")} value={d.official_results.matches} />
+            <Stat label={t("dashboard.officialDiffer")} value={d.official_results.differs} />
+          </div>
+        ) : <p className="mt-1 text-muted">{t("dashboard.officialNotConnected")}</p>}
+        <Link href="/results" className="mt-2 inline-block font-semibold text-brand underline">{t("track.title")}</Link>
       </Card>
 
       {stale && <Notice tone="warn">{t("dashboard.stale", { when: timeAgo(server.fetchedAt, settings.language) })}</Notice>}
@@ -132,13 +141,7 @@ export default function DashboardPage() {
           <Button type="submit" size="md" disabled={!pu.trim() || !online}>{t("voice.go")}</Button>
         </form>
         {compare?.error && <Notice tone="danger" className="mt-2">{compare.error}</Notice>}
-        {compare && !compare.error && (
-          <div className="mt-3 flex flex-col gap-2">
-            <Pill tone={compare.status === "submissions_agree" ? "ok" : compare.status === "needs_review" ? "warn" : "muted"}>{compare.status.replace(/_/g, " ")} · {compare.independent_submissions}</Pill>
-            <ul>{Object.entries(compare.parties).map(([p, v]) => <li key={p} className="tabular-nums">{p}: {v.join(" / ")}{compare.disagreements[p] && " ⚠"}</li>)}</ul>
-            <p className="text-sm text-muted">{compare.official_result_note}</p>
-          </div>
-        )}
+        {compare && !compare.error && <div className="mt-3"><WallVsAnnounced compare={compare} /></div>}
       </Card>
 
       <Button variant="secondary" icon="download" onClick={downloadCsv}>{t("dashboard.download")}</Button>

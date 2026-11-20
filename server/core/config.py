@@ -20,6 +20,12 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
     max_upload_bytes: int = 15 * 1024 * 1024
     rate_limit_per_minute: int = 120
+    # Production single-origin mode: also serve the built PWA (client/out) from this server, so app,
+    # API and speech models share one origin (no CORS) — e.g. one Hugging Face Space / container.
+    static_dir: Path | None = None
+    # Key that accredited observers use to enter OFFICIAL results (IReV / collation) for comparison.
+    # Unset = official-result entry is disabled.
+    observer_key: str | None = None
     # Secret used for HMAC signing of server receipts. MUST be overridden in production.
     receipt_secret: str = "dev-only-change-me"
 

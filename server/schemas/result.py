@@ -78,3 +78,35 @@ class ResultOut(ORMModel):
 class ResultReceipt(BaseModel):
     result: ResultOut
     receipt: Receipt
+
+
+class OfficialResultIn(BaseModel):
+    """An officially published result for one polling unit, entered by an accredited observer."""
+    id: UUIDStr
+    created_at: datetime
+    election_type: Literal["presidential", "senate", "house_of_reps", "governorship", "state_assembly", "local_government", "other"]
+    polling_unit_code: PUCode = Field(min_length=1)
+    source: Literal["irev", "collation", "announcement"]
+    source_url: str | None = Field(None, max_length=500, pattern=r"^https://")
+    party_votes: list[PartyVote] = Field(min_length=1, max_length=40)
+    total_valid_votes: Count | None = None
+    entered_by: ShortText = Field(min_length=2)
+
+
+class OfficialResultOut(ORMModel):
+    id: str
+    reference: str
+    election_type: str
+    polling_unit_code: str
+    source: str
+    source_url: str | None
+    party_votes: list[dict[str, Any]]
+    total_valid_votes: int | None
+    entered_by: str
+    created_at: datetime
+    received_at: datetime
+
+
+class OfficialResultReceipt(BaseModel):
+    official: OfficialResultOut
+    receipt: Receipt

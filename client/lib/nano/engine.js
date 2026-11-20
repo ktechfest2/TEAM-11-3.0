@@ -11,7 +11,7 @@ import { classify, release as releaseIntent, warmup } from "./intent/classifier"
 import { route } from "./router";
 import { selectRecognizer } from "./asr";
 import * as tts from "./tts";
-import { translate } from "../i18n/messages";
+import { hasTranslation, translate } from "../i18n/messages";
 
 /** Voice debug log: on in development, or anywhere with localStorage["awavote.debug"] = "1". */
 const DEBUG = process.env.NODE_ENV !== "production" || (() => { try { return localStorage.getItem("awavote.debug") === "1"; } catch { return false; } })();
@@ -171,9 +171,10 @@ export class NanoEngine extends EventTarget {
       // 2. Transcribe + understand.
       let best = null;
       for (const [k, lang] of order.entries()) {
-        let res = await this.#understandIn(lang, pcm);
+        const spokenP = spoken && family(asLang(spoken.lang)) === family(lang) ? spoken.p : 0;
+        let res = await this.#understandIn(lang, pcm, { spokenP });
         // Fast short-window transcript unclear for the most likely language? Re-check with the full window.
-        if (k === 0 && res && !res.fits && res.r.shortWindow) res = (await this.#understandIn(lang, pcm, { full: true })) || res;
+        if (k === 0 && res && !res.fits && res.r.shortWindow) res = (await this.#understandIn(lang, pcm, { full: true, spokenP })) || res;
         if (!res) continue;
         if (!best || (res.fits && !best.fits) || (res.fits === best.fits && (res.c?.confidence ?? 0) > (best.c?.confidence ?? 0))) best = res;
         if (res.fits && !unsure) break;
@@ -210,7 +211,7 @@ export class NanoEngine extends EventTarget {
    * Transcribe `pcm` as language `lang` and classify it.
    * @returns {Promise<{r, c, fits: boolean} | null>} fits = a confident command whose words are in that language
    */
-  async #understandIn(lang, pcm, { full = false } = {}) {
+  async #understandIn(lang, pcm, { full = false, spokenP = 0 } = {}) {
     const { transcribeIn } = await import("./asr");
     const r = await transcribeIn(lang, pcm, { full });
     this.emit("attempt", { lang, text: r?.text, provider: r?.provider, model: r?.model, ms: r?.latencyMs, short: r?.shortWindow });
@@ -229,6 +230,12 @@ export class NanoEngine extends EventTarget {
     if (family(lang) === "en") c.language = textLang === "pcm" && c.languageConfidence >= 0.5 ? "pcm" : textLang === "en" ? "en" : lang;
     else c.language = lang;
     const wordsAgree = family(textLang) === family(lang) || c.languageConfidence < 0.5;
+    // Two independent signals: the voice is near-certainly this language, and the words point clearly
+    // (if not strongly) to one command. Together they count as a confident command.
+    if (!c.confident && spokenP >= 0.9 && wordsAgree && c.intent !== "unknown" && c.confidence >= 0.33 && c.margin >= 0.15) {
+      c.confident = true;
+      c.fusedWithSpokenLanguage = true;
+    }
     return { r, c, fits: c.confident && c.intent !== "unknown" && wordsAgree };
   }
 
@@ -247,9 +254,13 @@ export class NanoEngine extends EventTarget {
   async perform(action, c) {
     const name = (intent) => this.t(`intent.${intent}`);
     switch (action.type) {
-      case "navigate":
+      case "navigate": {
         await this.execute(action);
-        return this.respond("voice.opening", { name: name(action.intent) });
+        // Never a half-translated sentence: without a translated page name, a short "Done" instead.
+        const lang = this.getSettings().language;
+        return hasTranslation(lang, `intent.${action.intent}`) && hasTranslation(lang, "voice.opening")
+          ? this.respond("voice.opening", { name: name(action.intent) }) : this.respond("voice.done");
+      }
       case "confirm":
         this.pendingConfirmation = action.action;
         this.emit("confirm-request", { action: action.action, promptKey: action.promptKey });

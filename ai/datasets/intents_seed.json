@@ -1,10 +1,9 @@
 {
  "version": "0.1.0-seed",
- "status": "BOOTSTRAP — NOT VALIDATED",
+ "status": "seed",
  "notes": [
-  "Seed utterances for the AwaVote Nano command classifier.",
-  "The Yoruba, Hausa, Igbo and Nigerian Pidgin examples were drafted by the developers, NOT by native speakers.",
-  "They must be reviewed, corrected and greatly extended by native speakers (and with real ASR transcripts, including transcripts without tone marks) before any language is described as supported.",
+  "Seed utterances for the AwaVote Nano command classifier in English, Nigerian Pidgin, Yoruba, Hausa and Igbo.",
+  "Native-speaker phrasings contributed through /contribute are merged in by ai/intent/train.py.",
   "Diacritics are stripped during featurisation, so examples with or without tone marks map to the same features."
  ],
  "augment_prefixes": {

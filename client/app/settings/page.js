@@ -4,7 +4,6 @@ import { useApp } from "@/hooks/useApp";
 import PageHeader from "@/components/layout/PageHeader";
 import { Button, Card, Icon, Notice, Pill, Toggle } from "@/components/ui";
 import { LANGUAGES } from "@/lib/i18n/languages";
-import { languageSupport } from "@/components/languages/status";
 import { installPack, removePack as removeVoicePack } from "@/lib/nano/voicepack";
 import { PACKS, removePack } from "@/lib/nano/packs";
 import { applyTheme } from "@/components/layout/ThemeToggle";
@@ -59,19 +58,6 @@ function PackRow({ pack }) {
   );
 }
 
-function SupportBadges({ code }) {
-  const { t, languageStats } = useApp();
-  const s = languageSupport(code, languageStats);
-  return (
-    <span className="mt-1 flex flex-wrap gap-1">
-      <Pill tone={s.ui.pct >= 90 ? "ok" : s.ui.reviewed ? "info" : "muted"}>
-        {code === "en" ? t("lang.uiComplete") : s.ui.reviewed ? t("lang.uiPct", { pct: s.ui.pct }) : s.ui.drafts ? t("lang.uiDraft") : t("lang.uiNone")}
-      </Pill>
-      {s.voice.state === "validated" && <Pill tone="ok" icon="mic">{t("lang.voiceValidated", { pct: Math.round(s.voice.accuracy * 100) })}</Pill>}
-      {s.voice.state === "testing" && <Pill tone="warn" icon="mic">{t("lang.voiceTesting")}</Pill>}
-    </span>
-  );
-}
 
 function VoicePackRow() {
   const { t, settings, voicePacks, online } = useApp();
@@ -159,7 +145,7 @@ export default function SettingsPage() {
                 <input type="radio" name="lang" value={l.code} checked={settings.language === l.code} onChange={() => updateSettings({ language: l.code })} className="h-5 w-5 accent-[var(--brand)]" />
                 <span lang={l.bcp47} className="min-w-0">
                   <span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}
-                  <SupportBadges code={l.code} />
+                  
                 </span>
               </label>
             ))}
@@ -173,13 +159,12 @@ export default function SettingsPage() {
               {LANGUAGES.filter((l) => l.tier === 2 && l.code !== settings.language).map((l) => (
                 <label key={l.code} className="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl px-3 hover:bg-surface-2">
                   <input type="radio" name="lang" value={l.code} checked={false} onChange={() => updateSettings({ language: l.code })} className="h-5 w-5 accent-[var(--brand)]" />
-                  <span lang={l.bcp47} className="min-w-0"><span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}<SupportBadges code={l.code} /></span>
+                  <span lang={l.bcp47} className="min-w-0"><span className="font-bold">{l.native}</span>{l.native !== l.name && <span className="text-muted"> · {l.name}</span>}</span>
                 </label>
               ))}
             </div>
           </details>
         </fieldset>
-        <p className="mt-3 text-sm text-muted">{t("lang.explainer")}</p>
         <VoicePackRow />
         <a href="/languages" className="mt-3 inline-block font-semibold text-brand underline">{t("lang.dashboardLink")}</a>
       </Card>

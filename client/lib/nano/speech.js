@@ -99,7 +99,7 @@ export async function loadRecognizer(choice, onProgress) {
   await releaseRecognizer();
   const worker = new Worker("/asr-worker.js", { type: "module" });
   const msg = choice.host === "awavote"
-    ? { type: "load", model: choice.id, source: "hosted", host: `${apiBase()}/models/` }
+    ? { type: "load", model: choice.id, source: "hosted", host: `${apiBase()}/asr-models/` }
     : { type: "load", model: choice.id, source: "bundled", localPath: BUNDLED_MODELS };
   const entry = { id: choice.id, worker, ready: call(worker, msg, onProgress) };
   loaded = entry;
@@ -142,7 +142,7 @@ export async function refreshStale(choice) {
   const cache = await caches.open(TRANSFORMERS_CACHE);
   let n = 0;
   for (const [name, f] of Object.entries(choice.files)) {
-    const url = `${apiBase()}/models/${choice.id}/${name}`;
+    const url = `${apiBase()}/asr-models/${choice.id}/${name}`;
     const hit = await cache.match(url);
     const len = hit && Number(hit.headers.get("content-length"));
     if (hit && len && len !== f.bytes) {
@@ -176,7 +176,7 @@ export async function prefetchModel(choice, onProgress) {
   const total = names.reduce((n, f) => n + choice.files[f].bytes, 0);
   let done = 0;
   for (const name of names) {
-    const url = `${apiBase()}/models/${choice.id}/${name}`; // = Transformers.js's cache key for this file
+    const url = `${apiBase()}/asr-models/${choice.id}/${name}`; // = Transformers.js's cache key for this file
     if (!(await cache.match(url))) {
       const res = await fetch(url, { cache: "reload" });
       if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);

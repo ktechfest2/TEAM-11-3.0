@@ -5,6 +5,7 @@ import uuid
 
 from sqlalchemy import update
 
+from core.config import get_settings
 from models import AuditRecord
 
 JPEG = b"\xff\xd8\xff\xe0" + b"\x00" * 64 + b"fake-but-signature-valid-jpeg"
@@ -93,7 +94,7 @@ def test_compare_flags_disagreeing_submissions(client):
     assert c["independent_submissions"] == 2
     assert c["status"] == "needs_review"
     assert c["disagreements"] == {"A": [60, 61]}
-    assert c["official_result"] is None
+    assert c["official"] is None  # no official result entered for this polling unit
 
 
 def test_audit_chain_detects_tampering(client):
@@ -107,6 +108,50 @@ def test_audit_chain_detects_tampering(client):
     assert v["valid"] is False and v["broken_at_seq"] == 1
 
 
-def test_dashboard_summary_never_claims_official_results(client):
+def test_dashboard_summary_without_official_results(client):
     s = client.get("/api/dashboard/summary").json()
     assert s["official_results"]["connected"] is False
+
+
+def _wall(client, pu, votes):
+    client.post("/api/results", json={"id": str(uuid.uuid4()), "created_at": "2026-11-18T10:00:00Z",
+                                      "election_type": "presidential", "polling_unit_code": pu,
+                                      "party_votes": [{"party": p, "votes": v} for p, v in votes.items()]})
+
+
+def _official(client, pu, votes, key="observer-secret"):
+    return client.post("/api/official-results", headers={"X-Observer-Key": key} if key else {}, json={
+        "id": str(uuid.uuid4()), "created_at": "2026-11-18T20:00:00Z", "election_type": "presidential",
+        "polling_unit_code": pu, "source": "irev", "source_url": "https://inecelectionresults.ng/pu/example",
+        "entered_by": "Test Observer", "party_votes": [{"party": p, "votes": v} for p, v in votes.items()]})
+
+
+def test_official_result_entry_needs_observer_key(client, monkeypatch):
+    assert _official(client, "PU-1", {"APC": 1}).status_code == 503  # disabled when no key is configured
+    monkeypatch.setattr(get_settings(), "observer_key", "observer-secret")
+    assert _official(client, "PU-1", {"APC": 1}, key="wrong").status_code == 401
+    assert _official(client, "PU-1", {"APC": 1}, key=None).status_code == 401
+    r = _official(client, "PU-1", {"APC": 1})
+    assert r.status_code == 201 and r.json()["official"]["reference"].startswith("AWV-OF-")
+
+
+def test_wall_vs_official_matches_and_differs(client, monkeypatch):
+    monkeypatch.setattr(get_settings(), "observer_key", "observer-secret")
+    for _ in range(2):
+        _wall(client, "PU-OK", {"APC": 120, "PDP": 98})
+    _official(client, "PU-OK", {"APC": 120, "PDP": 98})
+    ok = client.get("/api/results/compare/PU-OK").json()["official"]
+    assert ok["status"] == "matches" and ok["parties"]["APC"] == {"wall": 120, "official": 120, "match": True, "difference": 0}
+
+    _wall(client, "PU-BAD", {"APC": 120, "PDP": 98})
+    _wall(client, "PU-BAD", {"APC": 120, "PDP": 98})
+    _wall(client, "PU-BAD", {"APC": 121, "PDP": 98})  # one mistyped photo: the majority still says 120
+    _official(client, "PU-BAD", {"APC": 150, "PDP": 98})
+    bad = client.get("/api/results/compare/PU-BAD").json()["official"]
+    assert bad["status"] == "differs"
+    assert bad["parties"]["APC"] == {"wall": 120, "official": 150, "match": False, "difference": 30}
+    assert bad["parties"]["PDP"]["match"] is True
+
+    s = client.get("/api/dashboard/summary").json()["official_results"]
+    assert s == {**s, "connected": True, "polling_units": 2, "matches": 1, "differs": 1}
+    assert client.get("/api/audit/verify").json()["valid"] is True

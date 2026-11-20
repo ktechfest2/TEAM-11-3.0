@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" font-family="Inter, system-ui, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#33463d"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00a14b"/></marker>
+    <style>
+      .t{fill:#14241c} .m{fill:#5a675f} .w{fill:#fff}
+      .h1{font-size:30px;font-weight:800} .h2{font-size:19px;font-weight:800} .b{font-size:15px} .s{font-size:13px}
+      .box{fill:#fff;stroke:#c9d3cb;stroke-width:1.5} .chain{fill:#eef4ef;stroke:#9fb5a6;stroke-width:1.5}
+      .hot{fill:#fff3dc;stroke:#e9a23b;stroke-width:2.5} .ln{stroke:#33463d;stroke-width:2;fill:none} .lg{stroke:#00a14b;stroke-width:2.5;fill:none}
+    </style>
+  </defs>
+  <rect width="1600" height="1000" fill="#f7f4ec"/>
+
+  <!-- Title -->
+  <text x="40" y="52" class="t h1">AwaVote — where it fits in Nigeria's election chain</text>
+  <text x="40" y="80" class="m b">One weak link, made stronger: does the result that is announced match the result sheet pasted on the polling-unit wall?</text>
+
+  <!-- Election chain -->
+  <text x="40" y="122" class="m s" font-weight="700" letter-spacing="1">THE ELECTION CHAIN</text>
+  <g>
+    <rect x="40" y="134" width="160" height="70" rx="12" class="chain"/><text x="120" y="164" text-anchor="middle" class="t b" font-weight="700">1 Inform &amp;</text><text x="120" y="184" text-anchor="middle" class="t b" font-weight="700">register</text>
+    <rect x="220" y="134" width="160" height="70" rx="12" class="chain"/><text x="300" y="164" text-anchor="middle" class="t b" font-weight="700">2 Accreditation</text><text x="300" y="184" text-anchor="middle" class="m s">BVAS</text>
+    <rect x="400" y="134" width="160" height="70" rx="12" class="chain"/><text x="480" y="175" text-anchor="middle" class="t b" font-weight="700">3 Voting</text>
+    <rect x="580" y="134" width="190" height="70" rx="12" class="hot"/><text x="675" y="164" text-anchor="middle" class="t b" font-weight="800">4 Count at the PU</text><text x="675" y="184" text-anchor="middle" class="t s">EC8A pasted on the wall</text>
+    <rect x="790" y="134" width="170" height="70" rx="12" class="hot"/><text x="875" y="164" text-anchor="middle" class="t b" font-weight="800">5 Upload</text><text x="875" y="184" text-anchor="middle" class="t s">INEC IReV portal</text>
+    <rect x="980" y="134" width="180" height="70" rx="12" class="hot"/><text x="1070" y="164" text-anchor="middle" class="t b" font-weight="800">6 Collation</text><text x="1070" y="184" text-anchor="middle" class="t s">ward → LGA → state</text>
+    <rect x="1180" y="134" width="170" height="70" rx="12" class="hot"/><text x="1265" y="175" text-anchor="middle" class="t b" font-weight="800">7 Declaration</text>
+    <rect x="1370" y="134" width="190" height="70" rx="12" class="chain"/><text x="1465" y="164" text-anchor="middle" class="t b" font-weight="700">8 Disputes</text><text x="1465" y="184" text-anchor="middle" class="m s">tribunals · public trust</text>
+    <path d="M200 169H220M380 169H400M560 169H580M770 169H790M960 169H980M1160 169H1180M1350 169H1370" class="ln" marker-end="url(#a)"/>
+    <path d="M580 127H1350" stroke="#e9a23b" stroke-width="4"/>
+    <text x="965" y="117" text-anchor="middle" class="t b" font-weight="800">The weak link: results can change between the wall (4) and the declaration (7) — and nobody can check</text>
+  </g>
+
+  <!-- People -->
+  <rect x="40" y="290" width="250" height="380" rx="16" class="box"/>
+  <text x="62" y="324" class="t h2">People on election day</text>
+  <text x="62" y="356" class="t b">• Voters (like Amaka)</text>
+  <text x="62" y="382" class="t b">• Party agents</text>
+  <text x="62" y="408" class="t b">• Observers / CSOs</text>
+  <text x="62" y="434" class="t b">• Community leaders</text>
+  <text x="62" y="460" class="t b">• Journalists</text>
+  <text x="62" y="502" class="m s">Real conditions:</text>
+  <text x="62" y="524" class="m s">no/poor network · low-end phones</text>
+  <text x="62" y="546" class="m s">don't read English · elderly,</text>
+  <text x="62" y="568" class="m s">low vision → voice + read-aloud</text>
+  <text x="62" y="610" class="t s" font-weight="700">Speak, in any of 5 languages:</text>
+  <text x="62" y="632" class="t s">English · Pidgin · Yorùbá</text>
+  <text x="62" y="652" class="t s">Hausa · Igbo</text>
+
+  <!-- Phone / PWA -->
+  <rect x="330" y="290" width="520" height="380" rx="16" fill="#0d4a32"/>
+  <text x="354" y="324" class="w h2">AwaVote on the phone (PWA, works offline)</text>
+  <g font-size="15">
+    <rect x="354" y="342" width="232" height="66" rx="10" fill="#fff"/><text x="368" y="368" class="t" font-weight="800">CountCam</text><text x="368" y="390" class="m s">photo of EC8A · SHA-256 · time</text>
+    <rect x="598" y="342" width="232" height="66" rx="10" fill="#fff"/><text x="612" y="368" class="t" font-weight="800">Verify</text><text x="612" y="390" class="m s">OCR reads sheet · sums checked</text>
+    <rect x="354" y="420" width="232" height="66" rx="10" fill="#fff"/><text x="368" y="446" class="t" font-weight="800">Track a result</text><text x="368" y="468" class="m s">wall vs announced, per party</text>
+    <rect x="598" y="420" width="232" height="66" rx="10" fill="#fff"/><text x="612" y="446" class="t" font-weight="800">Report incident</text><text x="612" y="468" class="m s">allegation + photo, anonymous</text>
+    <rect x="354" y="498" width="232" height="66" rx="10" fill="#fff"/><text x="368" y="524" class="t" font-weight="800">Voter info</text><text x="368" y="546" class="m s">dates · 15,244 INEC candidates</text>
+    <rect x="598" y="498" width="232" height="66" rx="10" fill="#fff"/><text x="612" y="524" class="t" font-weight="800">Hands-free voice</text><text x="612" y="546" class="m s">wakes on speech · 5 languages</text>
+  </g>
+  <rect x="354" y="580" width="476" height="74" rx="10" fill="#e9a23b"/>
+  <text x="368" y="604" class="t" font-size="15" font-weight="800">On-device AI (no audio or photo leaves the phone)</text>
+  <text x="368" y="626" class="t s">Language ID (Whisper-tiny + AwaVote) · Speech (N-ATLaS ×4)</text>
+  <text x="368" y="646" class="t s">Commands (AwaVote Nano) · OCR (Tesseract) · Read-aloud (MMS)</text>
+
+  <path d="M290 480H330" class="ln" marker-end="url(#a)"/>
+
+  <!-- Outbox -->
+  <rect x="880" y="430" width="150" height="100" rx="14" class="box"/>
+  <text x="955" y="466" text-anchor="middle" class="t b" font-weight="800">Offline outbox</text>
+  <text x="955" y="490" text-anchor="middle" class="m s">queued on the phone,</text>
+  <text x="955" y="510" text-anchor="middle" class="m s">syncs when online</text>
+  <path d="M850 480H880" class="ln" marker-end="url(#a)"/>
+  <path d="M1030 480H1070" class="ln" marker-end="url(#a)"/>
+
+  <!-- Server -->
+  <rect x="1070" y="290" width="490" height="380" rx="16" class="box" stroke="#0d4a32" stroke-width="2.5"/>
+  <text x="1094" y="324" class="t h2">AwaVote server (FastAPI)</text>
+  <text x="1094" y="358" class="t b">• Re-checks every EC8A's arithmetic (never trusts the phone)</text>
+  <text x="1094" y="386" class="t b">• HMAC-signed receipt for every record</text>
+  <text x="1094" y="414" class="t b">• Hash-chained, tamper-evident audit log</text>
+  <text x="1094" y="442" class="t b">• Agreement between independent photos</text>
+  <text x="1110" y="464" class="m s">the figure most photos agree on = "the wall"</text>
+  <rect x="1094" y="484" width="442" height="74" rx="10" fill="#dcebe1"/>
+  <text x="1110" y="512" class="t b" font-weight="800">Wall vs announced</text>
+  <text x="1110" y="536" class="t s">per party: matches ✔ / differs ✘ (+30 APC) — a signal, not proof</text>
+  <text x="1094" y="590" class="t b">• Serves the 4 speech models to phones (cached, offline)</text>
+  <text x="1094" y="618" class="t b">• Official 2027 INEC data: dates, parties, candidates</text>
+  <text x="1094" y="646" class="t b">• Transparency dashboard + CSV export</text>
+
+  <!-- Observer input from IReV/collation -->
+  <path d="M875 204 C 875 250, 1240 240, 1240 290" class="lg" marker-end="url(#ag)"/>
+  <rect x="900" y="230" width="320" height="24" rx="6" fill="#f7f4ec"/>
+  <text x="1060" y="247" text-anchor="middle" font-size="13" font-weight="700" fill="#00733a">accredited observer enters announced figures + link</text>
+
+  <!-- Outputs -->
+  <text x="40" y="726" class="m s" font-weight="700" letter-spacing="1">WHAT COMES OUT</text>
+  <rect x="40" y="740" width="360" height="110" rx="14" class="box"/>
+  <text x="62" y="772" class="t h2">For every polling unit</text>
+  <text x="62" y="800" class="t b">Public "Track a result" page: how many</text>
+  <text x="62" y="822" class="t b">photos agree, and whether the announced</text>
+  <text x="62" y="842" class="t b">result matches the wall</text>
+  <rect x="420" y="740" width="360" height="110" rx="14" class="box"/>
+  <text x="442" y="772" class="t h2">For voters</text>
+  <text x="442" y="800" class="t b">Accurate dates, candidates and how-to-vote,</text>
+  <text x="442" y="822" class="t b">offline, by voice, in their language —</text>
+  <text x="442" y="842" class="t b">answers rumours with checkable facts</text>
+  <rect x="800" y="740" width="360" height="110" rx="14" class="box"/>
+  <text x="822" y="772" class="t h2">For agents, CSOs, media</text>
+  <text x="822" y="800" class="t b">Dashboard + CSV, tamper-evident photos</text>
+  <text x="822" y="822" class="t b">and receipts they can take to collation</text>
+  <text x="822" y="842" class="t b">centres and tribunals</text>
+  <rect x="1180" y="740" width="380" height="110" rx="14" fill="#0d4a32"/>
+  <text x="1202" y="772" class="w h2">Back into the chain</text>
+  <text x="1202" y="800" fill="#dcebe1" font-size="15">Mismatches surface within hours — at</text>
+  <text x="1202" y="822" fill="#dcebe1" font-size="15">collation (6) and in disputes (8) — with</text>
+  <text x="1202" y="842" fill="#dcebe1" font-size="15">evidence instead of rumour</text>
+  <path d="M1315 670V740" class="ln" marker-end="url(#a)"/>
+  <path d="M1465 740 C 1590 600, 1590 300, 1470 206" class="lg" marker-end="url(#ag)"/>
+
+  <text x="40" y="900" class="m s">Connects to the rest of the system: party-agent networks and observer groups (e.g. situation rooms) supply the photos and announced results; INEC IReV and collation sheets are the official source; a USSD channel for basic phones and a direct IReV feed</text>
+  <text x="40" y="920" class="m s">are next steps. AwaVote never labels anything as fraud: independent submissions are not official results, incidents are allegations, and a mismatch is a signal to check the original sheets.</text>
+  <text x="40" y="960" class="t s" font-weight="700">AwaVote · Every Vote. Every Count. Every Voice.</text>
+</svg>

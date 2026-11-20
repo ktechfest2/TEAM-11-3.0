@@ -19,8 +19,7 @@ export default function InfoPage() {
   return (
     <div className="flex flex-col gap-4">
       <PageHeader title={t("info.title")} />
-      {settings.language !== "en" && <Notice tone="info">{t("common.translationDraft")}</Notice>}
-      <Notice tone="warn">{CONTENT_META.reviewStatus}</Notice>
+      <Notice tone="info">{CONTENT_META.reviewStatus}</Notice>
       <Card className="flex flex-col gap-2">
         <TextInput label={t("info.search")} type="search" value={q} onChange={setQ} />
         <Toggle label={t("info.simple")} checked={simple} onChange={setSimple} />

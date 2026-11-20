@@ -1,5 +1,7 @@
 /** REST client for the AwaVote FastAPI backend. */
 export function apiBase() {
+  // "/" = same origin: the API (and speech models) are served by the same host as the app.
+  if (process.env.NEXT_PUBLIC_API_URL === "/" && typeof location !== "undefined") return location.origin;
   if (process.env.NEXT_PUBLIC_API_URL) return process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, "");
   if (typeof location !== "undefined") return `${location.protocol}//${location.hostname}:8000`;
   return "http://localhost:8000";

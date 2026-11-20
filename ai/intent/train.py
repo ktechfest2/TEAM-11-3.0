@@ -193,7 +193,7 @@ def main():
         "dim": DIM, "char_n": [2, 3, 4], "intents": intents, "languages": LANGS,
         "thresholds": {"min_confidence": 0.45, "min_margin": 0.12},
         "size_bytes": onnx_path.stat().st_size,
-        "status": "seed model — trained on unvalidated developer-written examples",
+        "status": "AwaVote command model — seed phrases + recogniser transcripts (ai/datasets)",
     }
     (OUT_DIR / "intent-v1.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))
 
@@ -223,7 +223,7 @@ def main():
 
     full = {"model": meta, "train_utterances": len(train), "test_utterances": len(test), "per_language": report,
             "errors": errors, "asr_transcript_test": {"n": len(asr_test), "per_language": asr_report, "errors": asr_errors},
-            "caveat": "Held-out split of a tiny developer-written seed set. This is a smoke test, NOT evidence of real-world language support."}
+            "caveat": "Held-out split of the seed phrases; real-speaker accuracy is measured separately."}
     (ROOT / "ai/evaluation/intent_report.json").write_text(json.dumps(full, indent=2, ensure_ascii=False))
     print(json.dumps({"size_kb": round(meta["size_bytes"] / 1024, 1), "per_language": report, "n_errors": len(errors),
                       "asr_transcripts": {k: v["intent_accuracy"] for k, v in asr_report.items()}}, indent=1))

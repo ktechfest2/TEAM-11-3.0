@@ -3,6 +3,7 @@ export const NAV_GROUPS = [
   { key: "nav.groupElection", items: [
     { href: "/countcam", icon: "camera", key: "nav.countcam" },
     { href: "/verify", icon: "checkCircle", key: "nav.verify" },
+    { href: "/results", icon: "shield", key: "track.title" },
     { href: "/report", icon: "alert", key: "nav.report" },
     { href: "/candidates", icon: "users", key: "candidates.title" },
   ] },

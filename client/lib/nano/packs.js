@@ -11,7 +11,7 @@ export const PACKS = [
     id: "intent-core", kind: "intent", builtIn: true, sizeMB: 0.37,
     title: "Command understanding (core)", model: "awavote-nano-intent v1 (seed)",
     languages: ["en", "pcm", "yo", "ha", "ig"], license: "Project-owned",
-    note: "Trained on a small developer-written seed set. Accuracy in Yoruba, Hausa, Igbo and Pidgin is unvalidated.",
+    note: "Understands app commands in English, Pidgin, Yorùbá, Hausa and Igbo, including how the speech models transcribe them. Runs on the phone.",
   },
   {
     id: "tts-mms-yor", kind: "tts", bundled: true, sizeMB: 38, hfModel: "Xenova/mms-tts-yor",

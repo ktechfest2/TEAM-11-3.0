@@ -273,6 +273,7 @@ function VerifyInner() {
                   <Pill tone={STATUS_TONE[s.validation.status]}>{t(`verify.status.${s.validation.status}`)}</Pill>
                   <SyncPill status={s.syncStatus} />
                   {s.evidenceId && <Link className="text-sm font-semibold text-brand underline" href={`/evidence?id=${s.evidenceId}`}>{t("nav.evidence")}</Link>}
+                  <Link className="text-sm font-semibold text-brand underline" href={`/results?pu=${encodeURIComponent(s.pollingUnitCode)}`}>{t("track.compare")}</Link>
                 </div>
               </li>
             ))}

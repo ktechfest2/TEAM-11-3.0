@@ -1,0 +1,7 @@
+{
+ "_note": "Model translations checked and rejected (wrong meaning, invented words, mangled text). translate_ui.py keeps English for these keys.",
+ "pcm": ["countcam.quality.blurry", "countcam.quality.glare", "countcam.quality.low_contrast", "hero.untilPolls",
+         "syncpage.bgSupported", "syncpage.never", "syncpage.nothing", "syncpage.persisted", "track.official.differs",
+         "track.official.matches", "track.official.no_wall_submissions", "voice.correctHint", "speech.downloading"],
+ "yo": [], "ha": [], "ig": []
+}

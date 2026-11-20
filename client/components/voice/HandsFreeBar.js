@@ -80,7 +80,8 @@ export default function HandsFreeBar() {
   }
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-30 px-3 lg:bottom-5 lg:left-auto lg:right-5 lg:w-96 lg:px-0" data-handsfree>
+    <div className="pointer-events-none fixed inset-x-0 bottom-[calc(5.25rem+env(safe-area-inset-bottom))] z-30 px-3 lg:bottom-5 lg:left-auto lg:right-5 lg:w-96 lg:px-0"
+      data-handsfree data-state={working ? "working" : engineState === "speaking" ? "speaking" : st}>
       <div className="pointer-events-auto mx-auto max-w-xl rounded-2xl border border-line bg-surface/95 p-2.5 shadow-lg backdrop-blur-md">{body}</div>
     </div>
   );

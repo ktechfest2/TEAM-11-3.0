@@ -1,0 +1,16 @@
+**/node_modules
+**/.next
+client/out
+client/public/models/hf
+client/public/ort
+client/public/ort-tf
+client/public/tesseract
+client/public/vendor
+server/.venv
+server/data/models
+server/storage
+server/awavote.db*
+ai/.venv
+demo
+**/__pycache__
+.git

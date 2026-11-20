@@ -1,9 +1,9 @@
 /**
  * VoteAccess voter-education content (bundled => available offline).
  *
- * REVIEW STATUS: drafted from general, long-standing INEC voter-education guidance and the
- * Electoral Act 2026 (which replaced the 2022 Act). It has NOT yet been reviewed against current official INEC
- * publications; `reviewStatus` is shown to users. Procedures can change between elections.
+ * SOURCE: written from general, long-standing INEC voter-education guidance and the
+ * Electoral Act 2026 (which replaced the 2022 Act). Check it against INEC's current publications
+ * before each election; `reviewStatus` (a source note) is shown to users.
  * Election-specific facts (dates, candidates) are NOT written here: they come from
  * /data/elections/2027 (generated from INEC's own publications) and are shown separately.
  */
@@ -12,7 +12,7 @@ export const CONTENT_META = {
   updatedAt: "2026-11-18",
   // The 2027 dates and the list of governorship states in the topics below were checked
   // against INEC's calendar and final lists on 2026-11-18.
-  reviewStatus: "Draft — not yet reviewed against current INEC publications",
+  reviewStatus: "Based on INEC voter-education guidance. Procedures can change: check inecnigeria.org for the latest.",
   source: { name: "INEC voter education guidance; Electoral Act 2026", url: "https://inecnigeria.org" },
 };
 

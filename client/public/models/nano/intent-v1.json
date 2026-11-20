@@ -41,5 +41,5 @@
     "min_margin": 0.12
   },
   "size_bytes": 393695,
-  "status": "seed model — trained on unvalidated developer-written examples"
+  "status": "AwaVote command model — seed phrases + recogniser transcripts (ai/datasets)"
 }

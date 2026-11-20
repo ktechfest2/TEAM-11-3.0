@@ -7,7 +7,7 @@ import hashlib
 from datetime import datetime
 
 ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"  # no 0/O/1/I to avoid misreading aloud
-PREFIX = {"evidence": "EV", "incident": "IN", "result": "RS"}
+PREFIX = {"evidence": "EV", "incident": "IN", "result": "RS", "official": "OF"}
 
 
 def make_reference(kind: str, record_id: str, created_at: datetime) -> str:

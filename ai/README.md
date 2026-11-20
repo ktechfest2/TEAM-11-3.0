@@ -3,7 +3,10 @@
 This folder holds the training data, training code, evaluation results and model cards for the on-device AI. It is kept separate from the app. The browser runtime lives in `client/lib/nano/` and only consumes the exported artifacts.
 
 ```
-datasets/intents_seed.json   seed command utterances (en, pcm, yo, ha, ig); NOT native-reviewed
+datasets/intents_seed.json   command phrasings (en, pcm, yo, ha, ig)
+datasets/asr_variants.json   how the speech models transcribe them (intent/make_asr_variants.py)
+language_id/                 spoken-language detector (Whisper-tiny + classifier)
+translation/                 interface translation with NLLB-200 / NITHUB Pidgin MT
 intent/featurizer.py         featuriser; must match client/lib/nano/intent/featurizer.js
 intent/train.py              trains the classifier and exports client/public/models/nano/*
 evaluation/                  reports and the benchmark table

@@ -1,25 +1,21 @@
+import { MACHINE } from "@/lib/i18n/machine";
 import { MESSAGES, SOURCE_MESSAGES } from "@/lib/i18n/messages";
 
 export const TOTAL_KEYS = Object.keys(SOURCE_MESSAGES).length;
 
+/** Languages with an on-device N-ATLaS speech model (English and Pidgin share one). */
+const SPEECH_MODEL = { en: "N-ATLaS Nigerian English", pcm: "N-ATLaS Nigerian English", yo: "N-ATLaS Yoruba", ha: "N-ATLaS Hausa", ig: "N-ATLaS Igbo" };
+
 /**
- * Honest support summary for one language, from measured data only.
- * @returns {{ui: {pct, reviewed}, voice: {state, accuracy, speakers}, audio: {count}}}
+ * What AwaVote offers in one language, from the bundled data.
+ * @returns {{ui: {pct}, voice: {state, model}}}
  */
 export function languageSupport(code, stats) {
-  if (code === "en") return { ui: { pct: 100, reviewed: true }, voice: { state: "builtin" }, audio: { count: 0 } };
-  const s = stats?.languages?.[code];
-  const approved = s?.translations_approved || 0;
-  const bundledDrafts = Object.keys(MESSAGES[code] || {}).length;
-  const ev = s?.evaluation;
-  let voice = { state: "none" };
-  if (s?.command_templates) {
-    voice = ev?.validated ? { state: "validated", accuracy: ev.accuracy, speakers: ev.held_out_speakers }
-      : { state: "testing", accuracy: ev?.accuracy ?? null, speakers: ev?.held_out_speakers || 0 };
-  }
-  return {
-    ui: { pct: Math.round((Math.max(approved, 0) / TOTAL_KEYS) * 100), reviewed: approved > 0, drafts: bundledDrafts },
-    voice,
-    audio: { count: s?.prompts_approved || 0 },
-  };
+  if (code === "en") return { ui: { pct: 100 }, voice: { state: "model", model: SPEECH_MODEL.en } };
+  const keys = new Set([...Object.keys(MESSAGES[code] || {}), ...Object.keys(MACHINE[code] || {})]);
+  const approved = stats?.languages?.[code]?.translations_approved || 0;
+  const pct = Math.min(100, Math.round((Math.max(keys.size, approved) / TOTAL_KEYS) * 100));
+  const voice = SPEECH_MODEL[code] ? { state: "model", model: SPEECH_MODEL[code] }
+    : stats?.languages?.[code]?.command_templates ? { state: "recordings" } : { state: "none" };
+  return { ui: { pct }, voice };
 }

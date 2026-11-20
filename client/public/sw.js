@@ -82,6 +82,9 @@ self.addEventListener("fetch", (event) => {
   // Bundled AI models: Transformers.js keeps its own persistent cache ("transformers-cache"),
   // so caching them here as well would store ~80 MB twice on the phone.
   if (url.pathname.startsWith("/models/hf/")) return;
+  // Same-origin deployments: API answers must never come from a cache, and the speech models
+  // (/asr-models/) are kept by Transformers.js's own cache.
+  if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/asr-models/")) return;
   if (request.mode === "navigate") return event.respondWith(networkFirstPage(request));
   if (url.searchParams.has("_rsc")) {
     // Client-side navigation payloads: try network, fall back to the precached .txt payload.

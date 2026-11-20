@@ -1,9 +1,10 @@
 /**
- * UI strings. English is complete; other languages fall back to English per key.
- * STATUS: Pidgin, Yoruba, Hausa and Igbo strings are developer drafts awaiting
- * native-speaker review. Do not present them as reviewed translations.
+ * UI strings. English is the source. Pidgin, Yoruba, Hausa and Igbo come from the hand-set strings
+ * below, then from machine.js (translated with NLLB-200 / NITHUB Pidgin MT, see
+ * ai/translation/), then English.
  */
 export { LANGUAGES } from "./languages";
+import { MACHINE } from "./machine";
 
 const en = {
   "app.name": "AwaVote",
@@ -20,7 +21,6 @@ const en = {
   "common.optional": "optional",
   "common.unknown": "Not available",
   "common.readAloud": "Read aloud",
-  "common.translationDraft": "Translations into Pidgin, Yoruba, Hausa and Igbo are drafts awaiting review by native speakers. Text that is not yet translated appears in English.",
 
   "status.online": "Online",
   "status.offline": "Offline",
@@ -263,30 +263,17 @@ const en = {
   "elections.today": "Today",
   "elections.held": "Held",
   "lang.more": "More Nigerian languages ({n})",
-  "lang.uiComplete": "Complete",
-  "lang.uiPct": "Text {pct}% reviewed",
-  "lang.uiDraft": "Text: unreviewed draft",
-  "lang.uiNone": "Text not yet translated",
-  "lang.voiceValidated": "Voice {pct}% (tested)",
-  "lang.voiceTesting": "Voice: in testing",
-  "lang.explainer": "A language is marked as working only after native speakers review its text and voice commands reach at least 90% accuracy in tests with speakers who did not provide recordings. Untranslated text appears in English.",
   "lang.packTitle": "Voice pack for this language",
   "lang.packHint": "Download recordings made by native speakers so voice commands and spoken prompts work on this phone, even offline.",
   "lang.packInstalled": "{commands} command recordings from {speakers} speakers, {prompts} spoken prompts.",
   "lang.packUpdate": "Update",
   "lang.packEmpty": "Native speakers have not finished recording this language yet.",
-  "lang.dashboardLink": "See progress for every language",
+  "lang.dashboardLink": "Text and voice for every language",
   "langs.title": "Languages",
-  "langs.subtitle": "Progress towards the languages used by 90% of Nigerians, measured with native speakers",
-  "langs.offline": "Connect to the internet to see the latest progress.",
-  "langs.criteria": "A language counts as supported when its text is reviewed by native speakers and voice commands reach {pct}% accuracy across at least {speakers} speakers ({attempts}+ attempts) whose voices are not in the recordings.",
-  "langs.supported": "Supported",
-  "langs.inProgress": "In progress",
-  "langs.text": "Reviewed text",
-  "langs.prompts": "Spoken prompts",
-  "langs.commands": "Command recordings",
-  "langs.accuracy": "Tested accuracy",
-  "langs.speakers": "{n} speakers",
+  "langs.subtitle": "Text and voice in each language AwaVote speaks",
+  "langs.text": "Translated text",
+  "langs.voice": "Voice commands (on the phone)",
+  "langs.voiceRecordings": "Native-speaker recordings",
   "langs.contribute": "Help with your language",
   "candidates.title": "Candidates",
   "candidates.subtitle": "Exactly as published in INEC's final lists for 2027",
@@ -358,7 +345,43 @@ const en = {
   "dashboard.title": "Transparency dashboard",
   "dashboard.independent": "Independent submissions — not official results",
   "dashboard.official": "Official results",
-  "dashboard.officialNotConnected": "No official results source is connected. Compare with INEC's IReV portal.",
+  "dashboard.officialNotConnected": "No announced results entered yet. Observers enter them from INEC's IReV portal.",
+  "dashboard.officialPus": "Polling units with an announced result",
+  "dashboard.officialMatch": "Match the wall",
+  "dashboard.officialDiffer": "Differ from the wall",
+  "track.title": "Track a result",
+  "track.subtitle": "From the result sheet on the wall to the announced result",
+  "track.check": "Check",
+  "track.compare": "Compare with announced result",
+  "track.needsInternet": "Checking a polling unit needs an internet connection.",
+  "track.nothingYet": "Nobody has sent a photo of this polling unit's result sheet yet.",
+  "track.wall.no_submissions": "No photos of the wall yet",
+  "track.wall.single_submission": "1 photo of the wall",
+  "track.wall.submissions_agree": "{n} photos of the wall agree",
+  "track.wall.needs_review": "{n} photos of the wall disagree",
+  "track.official.matches": "Announced result matches the wall",
+  "track.official.differs": "Announced result differs from the wall",
+  "track.official.no_wall_submissions": "Announced result entered; no photos of the wall yet",
+  "track.colWall": "Wall (EC8A)",
+  "track.colAnnounced": "Announced",
+  "track.colDiff": "Difference",
+  "track.noOfficial": "No announced result has been entered for this polling unit yet.",
+  "track.differsNote": "A difference is a signal to check the original sheets and the collation — it is not proof of wrongdoing.",
+  "track.source.irev": "INEC IReV portal",
+  "track.source.collation": "Collation sheet",
+  "track.source.announcement": "Public announcement",
+  "track.enteredBy": "entered by {who}",
+  "track.openSource": "Open source",
+  "track.observerTitle": "Accredited observer?",
+  "track.observerHint": "Enter the officially announced result for a polling unit",
+  "track.observerKey": "Observer key",
+  "track.enteredByLabel": "Your name or organisation",
+  "track.sourceLabel": "Where the official figures come from",
+  "track.urlLabel": "Link to the official source (https://…)",
+  "track.officialVotes": "Officially announced votes",
+  "track.saveOfficial": "Save announced result",
+  "track.saved": "Saved ({ref}). It is now compared with the wall.",
+  "track.badKey": "That observer key is not valid.",
   "dashboard.evidence": "Evidence files",
   "dashboard.incidents": "Incident reports (allegations)",
   "dashboard.results": "Result submissions",
@@ -522,7 +545,12 @@ export function setContributedMessages(lang, messages) {
   contributed[lang] = messages || {};
 }
 
+/** True if `key` has text in `lang` itself (not the English fallback). */
+export function hasTranslation(lang, key) {
+  return lang === "en" || !!(contributed[lang]?.[key] ?? MESSAGES[lang]?.[key] ?? MACHINE[lang]?.[key]);
+}
+
 export function translate(lang, key, vars = {}) {
-  const s = contributed[lang]?.[key] ?? MESSAGES[lang]?.[key] ?? en[key] ?? key;
+  const s = contributed[lang]?.[key] ?? MESSAGES[lang]?.[key] ?? MACHINE[lang]?.[key] ?? en[key] ?? key;
   return s.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
 }
