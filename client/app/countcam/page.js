@@ -168,7 +168,7 @@ export default function CountCamPage() {
 
       {step === "details" && (
         <Card className="flex flex-col gap-4">
-          <TextInput label={t("countcam.pollingUnit")} hint={`${t("common.optional")} — e.g. 24-11-05-003`} value={form.pollingUnitCode}
+          <TextInput label={t("countcam.pollingUnit")} hint={`${t("common.optional")} — e.g. 24-11-05-003 (demo: DEMO-001)`} value={form.pollingUnitCode}
             onChange={(v) => setForm({ ...form, pollingUnitCode: cleanPuCode(v) })} autoCapitalize="characters" maxLength={32} />
           <TextArea label={`${t("countcam.note")} (${t("common.optional")})`} value={form.note} onChange={(v) => setForm({ ...form, note: v })} maxLength={2000} />
           <Toggle label={t("countcam.location")} hint={t("countcam.locationHint")} checked={form.withLocation} onChange={(v) => setForm({ ...form, withLocation: v })} />

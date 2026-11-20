@@ -1,0 +1,9 @@
+{
+  "source": "AwaVote demo data (not real polling units)",
+  "publishedAt": "demo",
+  "demo": true,
+  "units": [
+    { "code": "DEMO-001", "name": "Demo Polling Unit 001 (wall result matches announced result)", "ward": "Demo Ward", "lga": "Demo LGA", "state": "Demo State" },
+    { "code": "DEMO-002", "name": "Demo Polling Unit 002 (announced result differs from wall)", "ward": "Demo Ward", "lga": "Demo LGA", "state": "Demo State" }
+  ]
+}

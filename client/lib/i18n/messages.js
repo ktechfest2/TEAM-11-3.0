@@ -341,6 +341,8 @@ const en = {
   "pu.title": "Find polling unit",
   "pu.unavailable": "The polling unit directory has not been loaded on this device yet. AwaVote only uses INEC's published polling unit list.",
   "pu.official": "You can also check INEC's official voter verification service.",
+  "pu.demoTitle": "Demo polling units",
+  "pu.demo": "There is no active polling unit list yet, so these demo units let you try the app. They are not real polling units. Use DEMO-001 or DEMO-002 in Count Cam, Verify and Track a result.",
 
   "dashboard.title": "Transparency dashboard",
   "dashboard.independent": "Independent submissions — not official results",
