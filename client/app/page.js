@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useApp } from "@/hooks/useApp";
 import { Eyebrow, Icon, Notice, Pill } from "@/components/ui";
-import SpeakButton from "@/components/voice/SpeakButton";
 import ElectionHero from "@/components/elections/ElectionHero";
 import { useLiveQuery } from "@/hooks/useLiveQuery";
 import { listEvidence, listIncidents, listResults } from "@/lib/records";
@@ -74,10 +73,7 @@ export default function Home() {
       {!online && <Notice tone="warn">{t("status.offlineHint")}</Notice>}
 
       <section aria-labelledby="actions-title" className="flex flex-col gap-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 id="actions-title" className="text-2xl font-bold leading-tight">{t("home.actions")}</h2>
-          <SpeakButton />
-        </div>
+        <h2 id="actions-title" className="text-2xl font-bold leading-tight">{t("home.actions")}</h2>
 
         {/* Primary action: the one thing an observer does most on election day */}
         <Link href="/countcam"
