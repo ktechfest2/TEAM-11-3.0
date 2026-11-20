@@ -11,7 +11,7 @@ evidence, and it speaks the voter's language, hands-free.
 | **Live app** | **https://awavote.onrender.com** |
 | **Live API** | https://awavote-api.onrender.com 
 
-**Demo Video** - 
+**Demo Video** - **https://drive.google.com/file/d/1DCQgv_nd1fgKyHgPHTLLifeVPckNjo-v/view?usp=drivesdk**
 
 ### System sketch
 ![Where AwaVote fits in Nigeria's election chain: the EC8A on the polling-unit wall, the voter's phone (offline AI, outbox), the AwaVote API (receipts, audit log, wall vs announced) and the announced result](02-system-sketch.png)
