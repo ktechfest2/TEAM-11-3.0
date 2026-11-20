@@ -180,7 +180,8 @@ Two free, public HTTPS services:
 
 | Part | Host | Address |
 |---|---|---|
-| App + on-device AI models | Hugging Face **static Space** `zakumi/awavote` | https://zakumi-awavote.static.hf.space |
+| App, OCR, language ID, command model | Hugging Face **static Space** `zakumi/awavote` | https://zakumi-awavote.static.hf.space |
+| N-ATLaS speech models (1.15 GB) | Hugging Face **model repo** `zakumi/awavote-models` | https://huggingface.co/zakumi/awavote-models |
 | API (FastAPI) | **Render** free web service `awavote-api` | https://awavote-api.onrender.com |
 
 **Why it still works offline:** the app is static files. On the first visit the service worker
@@ -190,9 +191,12 @@ until there is signal. No server, wherever it is hosted, can be reached without 
 is the part that makes AwaVote work offline.
 
 **App (static Space):**
-1. Build the client pointed at the API and at the Space's model folder:
-   `NEXT_PUBLIC_API_URL=https://awavote-api.onrender.com NEXT_PUBLIC_MODELS_URL=/asr-models npm run build`.
-2. Upload `client/out/` plus the speech models (as `asr-models/`) to the Space. Its `README.md`
+1. Upload the speech models (`server/data/models/`, with `registry.json`) to a public model
+   repository. A Space is limited to 1 GB, and the four N-ATLaS models are 1.15 GB.
+2. Build the client pointed at the API and the model repository, with folder-style page URLs
+   (the static host serves only real files):
+   `AWAVOTE_TRAILING_SLASH=1 NEXT_PUBLIC_API_URL=https://awavote-api.onrender.com NEXT_PUBLIC_MODELS_URL=https://huggingface.co/zakumi/awavote-models/resolve/main npm run build`.
+3. Upload `client/out/` to the Space. Its `README.md`
    front matter sets `sdk: static` and `custom_headers` (`cross-origin-embedder-policy:
    require-corp`, `cross-origin-opener-policy: same-origin`, `cross-origin-resource-policy:
    cross-origin`) so speech recognition can run multi-threaded.
