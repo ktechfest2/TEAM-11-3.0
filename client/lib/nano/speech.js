@@ -12,6 +12,18 @@
  */
 import { kvGet, kvSet } from "@/lib/db";
 import { apiBase } from "@/services/api";
+
+/**
+ * Where the on-device speech models (and their registry.json) are served from. Default: the API
+ * server's /asr-models. NEXT_PUBLIC_MODELS_URL overrides it, e.g. "/asr-models" when a static host
+ * serves the models next to the app.
+ */
+export function modelsBase() {
+  const m = process.env.NEXT_PUBLIC_MODELS_URL;
+  if (!m) return `${apiBase()}/asr-models`;
+  const clean = m.replace(/\/$/, "");
+  return clean.startsWith("/") && typeof location !== "undefined" ? location.origin + clean : clean;
+}
 import { BUNDLED_MODELS, TRANSFORMERS_CACHE } from "./transformers";
 import { getPack, installPack } from "./voicepack";
 
@@ -23,7 +35,7 @@ export async function getCatalog() {
   const cached = await kvGet("speechCatalog");
   if (typeof navigator !== "undefined" && navigator.onLine) {
     try {
-      const res = await fetch(`${apiBase()}/api/speech/models`);
+      const res = await fetch(process.env.NEXT_PUBLIC_MODELS_URL ? `${modelsBase()}/registry.json` : `${apiBase()}/api/speech/models`);
       if (res.ok) {
         const fresh = await res.json();
         await kvSet("speechCatalog", fresh);
@@ -99,7 +111,7 @@ export async function loadRecognizer(choice, onProgress) {
   await releaseRecognizer();
   const worker = new Worker("/asr-worker.js", { type: "module" });
   const msg = choice.host === "awavote"
-    ? { type: "load", model: choice.id, source: "hosted", host: `${apiBase()}/asr-models/` }
+    ? { type: "load", model: choice.id, source: "hosted", host: `${modelsBase()}/` }
     : { type: "load", model: choice.id, source: "bundled", localPath: BUNDLED_MODELS };
   const entry = { id: choice.id, worker, ready: call(worker, msg, onProgress) };
   loaded = entry;
@@ -142,7 +154,7 @@ export async function refreshStale(choice) {
   const cache = await caches.open(TRANSFORMERS_CACHE);
   let n = 0;
   for (const [name, f] of Object.entries(choice.files)) {
-    const url = `${apiBase()}/asr-models/${choice.id}/${name}`;
+    const url = `${modelsBase()}/${choice.id}/${name}`;
     const hit = await cache.match(url);
     const len = hit && Number(hit.headers.get("content-length"));
     if (hit && len && len !== f.bytes) {
@@ -176,7 +188,7 @@ export async function prefetchModel(choice, onProgress) {
   const total = names.reduce((n, f) => n + choice.files[f].bytes, 0);
   let done = 0;
   for (const name of names) {
-    const url = `${apiBase()}/asr-models/${choice.id}/${name}`; // = Transformers.js's cache key for this file
+    const url = `${modelsBase()}/${choice.id}/${name}`; // = Transformers.js's cache key for this file
     if (!(await cache.match(url))) {
       const res = await fetch(url, { cache: "reload" });
       if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);

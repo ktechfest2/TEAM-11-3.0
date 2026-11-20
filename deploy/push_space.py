@@ -14,6 +14,7 @@ import tempfile
 from pathlib import Path
 
 from huggingface_hub import HfApi, get_token
+from huggingface_hub.utils._auth import get_stored_tokens
 
 space, models_repo = sys.argv[1], sys.argv[2]
 root = Path(__file__).resolve().parents[1]
@@ -40,9 +41,17 @@ with tempfile.TemporaryDirectory() as tmp:
     shutil.copy(root / "deploy" / "SPACE_README.md", t / "README.md")
     api.upload_folder(repo_id=space, repo_type="space", folder_path=tmp, commit_message="Deploy AwaVote")
 
-# Secrets: read token for the private models repo, a random receipt-signing secret, the observer key.
+# Secrets: a READ token for the private models repo (least privilege: a stored read token if there
+# is one), a random receipt-signing secret, and the observer key.
+def read_token():
+    for tok in get_stored_tokens().values():
+        if HfApi(token=tok).whoami().get("auth", {}).get("accessToken", {}).get("role") == "read":
+            return tok
+    return get_token()
+
+
 observer_key = os.environ.get("AWAVOTE_OBSERVER_KEY") or secrets.token_urlsafe(18)
-for k, v in {"HF_TOKEN": get_token(), "AWAVOTE_RECEIPT_SECRET": secrets.token_hex(32), "AWAVOTE_OBSERVER_KEY": observer_key}.items():
+for k, v in {"HF_TOKEN": os.environ.get("AWAVOTE_SPACE_TOKEN") or read_token(), "AWAVOTE_RECEIPT_SECRET": secrets.token_hex(32), "AWAVOTE_OBSERVER_KEY": observer_key}.items():
     api.add_space_secret(space, k, v)
 for k, v in {"AWAVOTE_MODELS_REPO": models_repo, "AWAVOTE_SEED_DEMO": "1"}.items():
     api.add_space_variable(space, k, v)

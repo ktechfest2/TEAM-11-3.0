@@ -14,6 +14,7 @@ repo = sys.argv[1]
 src = Path(__file__).resolve().parents[1] / "server" / "data" / "models"
 api = HfApi()
 api.create_repo(repo, repo_type="model", private=True, exist_ok=True)
-api.upload_folder(repo_id=repo, repo_type="model", folder_path=str(src), ignore_patterns=[".*", "**/.*"],
-                  commit_message="AwaVote speech models (N-ATLaS int8, Powered by Awarri)")
+# Resumable, chunked upload: safe on a slow or flaky connection (re-run to continue).
+api.upload_large_folder(repo_id=repo, repo_type="model", folder_path=str(src), ignore_patterns=[".*", "**/.*", "**/.cache/**"],
+                        num_workers=4)
 print(f"uploaded {src} -> https://huggingface.co/{repo} (private)")
